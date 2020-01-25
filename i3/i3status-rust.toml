@@ -20,7 +20,7 @@ format_swap = "{SUp}%"
 [[block]]
 block = "cpu"
 interval = 1
-format = "{barchart} {utilization}%"
+format = "{utilization}%"
 
 [[block]]
 block = "load"
@@ -29,11 +29,11 @@ format = "{1m}"
 
 [[block]]
 block = "net"
-device = "wlp4s0"
+device = "wlp0s20f3"
 ssid = true
 ip = false
 speed_up = false
-graph_up = true
+graph_up = false
 interval = 5
 
 [[block]]
@@ -41,9 +41,12 @@ block = "sound"
 on_click = "pulsemixer --toggle-mute"
 
 [[block]]
-block = "time"
-interval = 60
-format = "%a %m/%d %I:%M"
+block = "backlight"
 
 [[block]]
 block = "battery"
+
+[[block]]
+block = "time"
+interval = 60
+format = "%a %m/%d %I:%M"
