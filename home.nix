@@ -4,7 +4,6 @@ let
   # todo: extract to a separate file or environment vars
   email = "rob@wearebrandnew.com";
   github-username = "robsaunders";
-  dotfiles = "~/.dotfiles";
   nixpkgs = (builtins.fetchTarball
     (builtins.fromJSON (builtins.readFile ./nixpkgs.lock.json)));
   color--pink = "#FC0394";
@@ -23,7 +22,7 @@ in {
     rofi = {
       enable = true;
       # font = "${font} 20";
-      theme = "${dotfiles}/i3/rofi/themes/material.rasi";
+      theme = ".config/nixpkgs/rofi/themes/material.rasi";
     };
 
     termite = {
@@ -129,7 +128,8 @@ in {
           # launchers
           "${mod}+f" = "exec thunar";
           "${mod}+d" = "exec dmenu_run";
-          "${mod}+space" = "exec /usr/bin/rofi -show drun";
+          "${mod}+space" =
+            "exec LOCALE_ARCHIVE=$HOME/.nix-profile/lib/locale/locale-archive rofi -show drun";
           "${mod}+return" = "exec i3-sensible-terminal";
 
           # change focus
@@ -210,6 +210,10 @@ in {
   home = {
     stateVersion = "19.09";
 
+    # this fixes a locales bug when using nix as a package manager.
+    # sessionVariables.LOCALE_ARCHIVE =
+    #   "${pkgs.glibcLocales}/lib/locale/locale-archive";
+
     packages = [
       # cli
       pkgs.htop # performance monitor
@@ -229,26 +233,11 @@ in {
 
       # gui
       pkgs.xfce.thunar
+
+      # dirty hax
+      pkgs.glibcLocales
     ];
 
     file = { ".config/i3status/config".source = ./i3status.conf; };
   };
 }
-
-# {
-#   programs.home-manager.enable = true;
-
-#   home.packages = [
-#     pkgs.htop   # performance monitor
-#     pkgs.ranger # file manager
-#     pkgs.broot  # awesome file manager, sorter, finder
-#     pkgs.fzf    # fuzzy finder
-#   ];
-
-#   home.file = {
-#     ".example".text = "blah blah";
-#   };
-
-#   # home-manager version compatibility
-#   home.stateVersion = "19.09";
-# }
