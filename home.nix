@@ -34,6 +34,13 @@ in {
 
   xsession = {
     enable = true;
+
+    pointerCursor = {
+      name = "Vanilla-DMZ";
+      package = pkgs.vanilla-dmz;
+      size = 128;
+    };
+
     windowManager.i3 = rec {
       enable = true;
       config = {
@@ -67,7 +74,7 @@ in {
             };
             urgentWorkspace = {
               background = "${color--red}";
-              border = "${color--black}";
+              border = "${color--red}";
               text = "${color--black}";
             };
             # binding mode is when workspaces have different keybindings
@@ -231,8 +238,12 @@ in {
       pkgs.i3status
       pkgs.rofi
 
-      # gui
+      # gui: file management
       pkgs.xfce.thunar
+
+      # gui: chat
+      pkgs.signal-desktop # signal, secure private im
+      pkgs.tdesktop # telegram, also secure private im
 
       # dirty hax
       pkgs.glibcLocales
@@ -240,4 +251,7 @@ in {
 
     file = { ".config/i3status/config".source = ./i3status.conf; };
   };
+
+  nixpkgs.config.services.xserver.dpi = 166;
+  nixpkgs.config.fonts.fontconfig.dpi = 167;
 }
