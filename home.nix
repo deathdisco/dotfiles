@@ -231,7 +231,7 @@ in {
       pkgs.xfce.thunar
     ];
 
-    file = { };
+    file = { ".config/i3status/config".source = ./i3status.conf; };
   };
 }
 
