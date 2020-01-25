@@ -49,7 +49,8 @@ in {
         bars = [{
           mode = "dock";
           position = "top";
-          statusCommand = "/usr/bin/i3status";
+          statusCommand =
+            "${pkgs.i3status-rust}/bin/i3status-rs ${./i3/i3status-rust.toml}";
 
           extraConfig = ''
             binding_mode_indicator yes
@@ -236,7 +237,11 @@ in {
       # i3
       pkgs.i3
       pkgs.i3status
+      pkgs.i3status-rust
       pkgs.rofi
+
+      # sound
+      pkgs.pulsemixer
 
       # gui: file management
       pkgs.xfce.thunar
