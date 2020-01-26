@@ -14,15 +14,17 @@ let
   color--grey-light = "#d8dee8";
   color--red = "#900000";
 in {
+  # todo: check if this actually gets used...
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.services.xserver.dpi = 166;
+  nixpkgs.config.fonts.fontconfig.dpi = 167;
 
   programs = {
     home-manager.enable = true;
 
     rofi = {
       enable = true;
-      # font = "${font} 20";
-      theme = ".config/nixpkgs/rofi/themes/material.rasi";
+      theme = "${./rofi/themes/material.rasi}";
     };
 
     termite = {
@@ -236,7 +238,6 @@ in {
 
       # i3
       pkgs.i3
-      pkgs.i3status
       pkgs.i3status-rust
       pkgs.rofi
 
@@ -253,10 +254,5 @@ in {
       # dirty hax
       pkgs.glibcLocales
     ];
-
-    file = { ".config/i3status/config".source = ./i3status.conf; };
   };
-
-  nixpkgs.config.services.xserver.dpi = 166;
-  nixpkgs.config.fonts.fontconfig.dpi = 167;
 }
