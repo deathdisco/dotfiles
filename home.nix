@@ -47,6 +47,7 @@ in {
       enable = true;
       config = {
         modifier = "Mod1";
+        modes = { };
 
         bars = [{
           mode = "dock";
