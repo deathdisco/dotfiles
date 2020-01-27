@@ -1,7 +1,9 @@
 # https://github.com/greshake/i3status-rust/blob/master/blocks.md
 
-theme = "modern"
 icons = "awesome"
+
+[theme]
+name = "solarized-dark"
 
 [[block]]
 block = "custom"

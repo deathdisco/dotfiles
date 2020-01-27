@@ -164,12 +164,17 @@ in {
       pkgs.jq # jquery cli parser
 
       # dev
+      pkgs.vscodium
       pkgs.nixfmt # nix formatter
 
       # i3
       pkgs.i3
       pkgs.i3status-rust
       pkgs.rofi
+
+      # browsers
+      pkgs.chromium
+      pkgs.brave
 
       # sound
       pkgs.pulsemixer
