@@ -1,5 +1,12 @@
+# https://github.com/greshake/i3status-rust/blob/master/blocks.md
+
 theme = "modern"
 icons = "awesome"
+
+[[block]]
+block = "custom"
+command = "curl -s 'https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT' | jq -r .price | xargs printf \"%.*f\n\" \"$p\""
+interval = 100
 
 [[block]]
 block = "disk_space"
@@ -20,12 +27,12 @@ format_swap = "{SUp}%"
 [[block]]
 block = "cpu"
 interval = 1
-format = "{utilization}%"
+format = "{utilization}% {frequency}GHz"
 
-[[block]]
-block = "load"
-interval = 1
-format = "{1m}"
+# [[block]]
+# block = "load"
+# interval = 1
+# format = "{1m}"
 
 [[block]]
 block = "net"
