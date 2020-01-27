@@ -171,23 +171,29 @@ in {
           "${mod}+0" = "workspace 10";
 
           # move focused container to workspace
-          "${mod}+Shift+1" = "move container to workspace 1";
-          "${mod}+Shift+2" = "move container to workspace 2";
-          "${mod}+Shift+3" = "move container to workspace 3";
-          "${mod}+Shift+4" = "move container to workspace 4";
-          "${mod}+Shift+5" = "move container to workspace 5";
-          "${mod}+Shift+6" = "move container to workspace 6";
-          "${mod}+Shift+7" = "move container to workspace 7";
-          "${mod}+Shift+8" = "move container to workspace 8";
-          "${mod}+Shift+9" = "move container to workspace 9";
-          "${mod}+Shift+10" = "move container to workspace 10";
+          "${mod}+shift+1" = "move container to workspace 1";
+          "${mod}+shift+2" = "move container to workspace 2";
+          "${mod}+shift+3" = "move container to workspace 3";
+          "${mod}+shift+4" = "move container to workspace 4";
+          "${mod}+shift+5" = "move container to workspace 5";
+          "${mod}+shift+6" = "move container to workspace 6";
+          "${mod}+shift+7" = "move container to workspace 7";
+          "${mod}+shift+8" = "move container to workspace 8";
+          "${mod}+shift+9" = "move container to workspace 9";
+          "${mod}+shift+10" = "move container to workspace 10";
+
+          # move container
+          "${mod}+shift+left" = "move left";
+          "${mod}+shift+down" = "move down";
+          "${mod}+shift+up" = "move up";
+          "${mod}+shift+right" = "move right";
 
           # reload the configuration file
-          "Ctrl+Shift+c" = "reload";
+          "ctrl+shift+c" = "reload";
           # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-          "${mod}+Shift+r" = "restart";
+          "${mod}+shift+r" = "restart";
           # exit i3 (logs you out of your X session)
-          "${mod}+Shift+q" =
+          "${mod}+shift+q" =
             "exec i3-nagbar -t warning -m 'Do you really want to quit i3?' -b 'Yes, exit i3' 'i3-msg exit'";
 
           # media keys
