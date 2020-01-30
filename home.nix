@@ -31,7 +31,13 @@ in {
       enable = true;
       # font = "${font} 11";
       backgroundColor = "rgba(32, 39, 51, 0.3)";
+      dynamicTitle = true;
+      clickableUrl = true;
     };
+
+    # vscodium-with-extensions = {
+    #   enable = true;
+    # };
   };
 
   xsession = {
@@ -146,6 +152,13 @@ in {
     };
   };
 
+  home.file.".config/kitty/kitty.conf".text = ''
+    background #002B36
+    font_size 11.0
+    input_delay 0
+  '';
+  fonts.fontconfig.enable = true;
+
   home = {
     stateVersion = "19.09";
 
@@ -162,6 +175,11 @@ in {
       pkgs.broot # awesome file manager, sorter, finder
       pkgs.fzf # fuzzy finder and launcher
       pkgs.jq # jquery cli parser
+      pkgs.youtube-dl # video downloader
+
+      # terminal
+      # pkgs.alacritty
+      pkgs.termite
 
       # dev
       pkgs.vscodium
@@ -179,7 +197,7 @@ in {
       # sound
       pkgs.pulsemixer
 
-      # gui: file management
+      # file management
       pkgs.xfce.thunar
 
       # gui: chat

@@ -7,7 +7,7 @@
   "${mod}+d" = "exec dmenu_run";
   "${mod}+space" =
     "exec LOCALE_ARCHIVE=$HOME/.nix-profile/lib/locale/locale-archive rofi -show drun";
-  "Ctrl+space" = "exec deepin-terminal";
+  "Ctrl+space" = "exec terminator";
 
   # change focus
   "${mod}+j" = "focus left";
@@ -57,7 +57,7 @@
   "${mod}+Shift+Right" = "move right";
 
   # reload the configuration file
-  "Ctrl+Shift+r" = "reload";
+  "${mod}+Shift+e" = "reload";
   # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
   "${mod}+Shift+r" = "restart";
   # exit i3 (logs you out of your X session)

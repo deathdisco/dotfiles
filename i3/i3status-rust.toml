@@ -1,9 +1,11 @@
 # https://github.com/greshake/i3status-rust/blob/master/blocks.md
 
-icons = "awesome"
+icons = "awesome" # none | awesome | material
 
+# plain (default) | solarized-dark | solarized-light | slick | modern | bad-wolf
+# gruvbox-light | gruvbox-dark
 [theme]
-name = "solarized-dark"
+name = "modern"
 
 [[block]]
 block = "custom"
