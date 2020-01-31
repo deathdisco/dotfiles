@@ -166,46 +166,48 @@ in {
     # sessionVariables.LOCALE_ARCHIVE =
     #   "${pkgs.glibcLocales}/lib/locale/locale-archive";
 
-    packages = [
-      # cli
-      pkgs.htop # performance monitor
-      pkgs.ranger # file manager
-      # pkgs.hunter # rust based file manager
-      pkgs.vifm # vim file manager
-      pkgs.broot # awesome file manager, sorter, finder
-      pkgs.fzf # fuzzy finder and launcher
-      pkgs.jq # jquery cli parser
-      pkgs.youtube-dl # video downloader
+    packages = with pkgs; [
+      #cli
+      htop # performance monitor
+      ranger # file manager
+      # hunter # rust based file manager
+      vifm # vim file manager
+      broot # awesome file manager, sorter, finder
+      fzf # fuzzy finder and launcher
+      jq # jquery cli parser
+      youtube-dl # video downloader
 
-      # terminal
-      # pkgs.alacritty
-      pkgs.termite
+      # terminals
+      terminator
+      termite
+      # alacritty # not working
+      # kitty # not working
 
-      # dev
-      pkgs.vscodium
-      pkgs.nixfmt # nix formatter
+      # ide
+      vscodium
+      nixfmt
 
       # i3
-      pkgs.i3
-      pkgs.i3status-rust
-      pkgs.rofi
+      i3
+      i3status-rust
+      rofi
 
       # browsers
-      pkgs.chromium
-      pkgs.brave
+      brave
+      chromium
+
+      # chat
+      signal-desktop
+      tdesktop # telegram
 
       # sound
-      pkgs.pulsemixer
+      pulsemixer
 
       # file management
-      pkgs.xfce.thunar
-
-      # gui: chat
-      pkgs.signal-desktop # signal, secure private im
-      pkgs.tdesktop # telegram, also secure private im
+      xfce.thunar
 
       # dirty hax
-      pkgs.glibcLocales
+      glibcLocales
     ];
   };
 }
