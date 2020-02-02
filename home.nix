@@ -166,6 +166,8 @@ in {
     # sessionVariables.LOCALE_ARCHIVE =
     #   "${pkgs.glibcLocales}/lib/locale/locale-archive";
 
+    # packages = import ./packages.nix { pkgs = pkgs; };
+
     packages = with pkgs; [
       #cli
       htop # performance monitor
@@ -176,12 +178,16 @@ in {
       fzf # fuzzy finder and launcher
       jq # jquery cli parser
       youtube-dl # video downloader
+      bat # cat with syntax highlighting
 
       # terminals
       terminator
       termite
       # alacritty # not working
       # kitty # not working
+
+      # crypto
+      wasabiwallet
 
       # ide
       vscodium

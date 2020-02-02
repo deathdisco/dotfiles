@@ -1,0 +1,38 @@
+[global_config]
+  borderless = True
+  extra_styling = False
+  inactive_color_offset = 1.0
+  title_inactive_bg_color = "#000000"
+  title_inactive_fg_color = "#888a85"
+  title_transmit_bg_color = "#000000"
+[keybindings]
+  close_term = <Primary>w
+  close_window = <Primary>q
+  reset_clear = <Primary>k
+  split_horiz = <Primary>d
+  split_vert = <Primary><Shift>d
+  switch_to_tab_1 = <Primary>1
+  switch_to_tab_10 = <Primary>2
+  switch_to_tab_2 = <Primary>3
+  switch_to_tab_3 = <Primary>4
+  switch_to_tab_4 = <Primary>5
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      profile = default
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_darkness = 0.47
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    font = Monospace Bold 10
+    foreground_color = "#2edeff"
+    palette = "#073642:#e7227a:#00ff70:#b58900:#147bf4:#d33682:#f36afc:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    show_titlebar = False
+    use_system_font = False
