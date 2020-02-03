@@ -18,6 +18,7 @@ in {
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.services.xserver.dpi = 166;
   nixpkgs.config.fonts.fontconfig.dpi = 167;
+  # nixpkgs.config.size = 150;
 
   programs = {
     home-manager.enable = true;
@@ -179,6 +180,8 @@ in {
       jq # jquery cli parser
       youtube-dl # video downloader
       bat # cat with syntax highlighting
+      dust # du replacement
+      ripgrep # fast rust grepping tool
 
       # terminals
       terminator

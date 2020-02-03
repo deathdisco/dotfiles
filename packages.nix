@@ -10,6 +10,10 @@
       fzf # fuzzy finder and launcher
       jq # jquery cli parser
       youtube-dl # video downloader
+      bat # cat with syntax highlighting
+      dust # du replacement
+      ripgrep # fast rust grepping tool
+      bat # cat with syntax highlighting
 
       # terminals
       terminator

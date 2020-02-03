@@ -11,8 +11,9 @@
     };
 
   environment.variables = {
-    GDK_SCALE = "2";
+    _JAVA_AWT_WM_NONREPARTENTING = "1";
     GDK_DPI_SCALE = "0.5";
+    GDK_SCALE = "1";
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
   };
 
@@ -21,4 +22,29 @@
   allowUnfree = true;
   firefox.enableAdobeFlash = false;
   pulseaudio = true;
+
+  fonts = {
+    enableFontDir = true;
+    enableGhostscriptFonts = true;
+    fontconfig.dpi = 221;
+  };
+
+  xserver = {
+    enable = true;
+    dpi = 221;
+  };
+
+  compton = {
+    enable = true;
+    backend = "glx";
+    vSync = "opengl";
+    extraOptions = ''
+      paint-on-overlay = true;
+      glx-no-stencil = true;
+      glx-no-rebind-pixmap = true;
+      glx-swap-method = "buffer-age";
+      sw-opti = true;
+      xrender-sync-fence = true;
+    '';
+  };
 }
