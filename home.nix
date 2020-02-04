@@ -182,6 +182,8 @@ in {
       bat # cat with syntax highlighting
       dust # du replacement
       ripgrep # fast rust grepping tool
+      googler # search google from cli
+      haxor-news # hacker news cli
 
       # terminals
       terminator
@@ -211,6 +213,9 @@ in {
 
       # sound
       pulsemixer
+
+      # video
+      mpv
 
       # file management
       xfce.thunar
