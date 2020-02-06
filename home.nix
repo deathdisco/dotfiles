@@ -182,8 +182,12 @@ in {
       bat # cat with syntax highlighting
       dust # du replacement
       ripgrep # fast rust grepping tool
-      googler # search google from cli
+      megatools # mega.nz cli tools
+
+      # web services
+      googler # google cli
       haxor-news # hacker news cli
+      rtv # reddit cli
 
       # terminals
       terminator
