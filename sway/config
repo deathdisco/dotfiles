@@ -74,7 +74,7 @@ bar {
   mode dock
   hidden_state hide
   position top
-  status_command i3status-rs i3status-rust.toml
+  status_command i3status-rs ~/.config/i3/status.toml
   # i3bar_command i3bar
   workspace_buttons yes
   strip_workspace_numbers no

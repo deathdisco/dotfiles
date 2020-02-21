@@ -162,6 +162,8 @@ in {
       source = ./sway;
       recursive = true;
     };
+
+    ".config/i3/status.toml".source = ./i3/i3status-rust.toml;
   };
 
   home.file.".config/kitty/kitty.conf".text = ''
@@ -201,13 +203,13 @@ in {
       rtv # reddit cli
 
       # terminals
-      terminator
-      termite
-      alacritty # not working
-      kitty # not working
+      # terminator
+      # termite
+      alacritty
+      kitty
 
       # crypto
-      wasabiwallet
+      # wasabiwallet
 
       # ide
       vscodium
@@ -217,12 +219,14 @@ in {
       # i3
       # i3status-rust
       rofi
-      sway waybar
+      wofi
+      # sway waybar
       # wofi grim wl-clipboard imv slurp brightnessctl bemenu
 
       # browsers
       brave
       chromium
+      firefox-wayland
 
       # chat
       signal-desktop
