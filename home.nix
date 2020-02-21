@@ -50,6 +50,10 @@ in {
       size = 128;
     };
 
+    #windowManager.sway = rec {
+    #  enable = true;
+    #};
+
     windowManager.i3 = rec {
       enable = true;
       config = {
@@ -153,6 +157,13 @@ in {
     };
   };
 
+  home.file = {
+    ".config/sway" = {
+      source = ./sway;
+      recursive = true;
+    };
+  };
+
   home.file.".config/kitty/kitty.conf".text = ''
     background #002B36
     font_size 11.0
@@ -192,8 +203,8 @@ in {
       # terminals
       terminator
       termite
-      # alacritty # not working
-      # kitty # not working
+      alacritty # not working
+      kitty # not working
 
       # crypto
       wasabiwallet
@@ -203,9 +214,11 @@ in {
       nixfmt
 
       # i3
-      i3
-      i3status-rust
+      # i3
+      # i3status-rust
       rofi
+      sway waybar
+      # wofi grim wl-clipboard imv slurp brightnessctl bemenu
 
       # browsers
       brave
