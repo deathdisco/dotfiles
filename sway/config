@@ -77,7 +77,7 @@ bar {
   mode dock
   hidden_state hide
   position top
-  status_command waybar
+  swaybar_command waybar
   workspace_buttons yes
   strip_workspace_numbers no
   tray_output primary
