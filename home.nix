@@ -14,7 +14,7 @@ let
   color--grey-light = "#d8dee8";
   color--red = "#900000";
 in {
-  # todo: check if this actually gets used...
+
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.services.xserver.dpi = 166;
   nixpkgs.config.fonts.fontconfig.dpi = 167;
@@ -47,7 +47,7 @@ in {
     pointerCursor = {
       name = "Vanilla-DMZ";
       package = pkgs.vanilla-dmz;
-      size = 128;
+      size = 200;
     };
 
     #windowManager.sway = rec {
@@ -163,6 +163,11 @@ in {
       recursive = true;
     };
 
+    ".config/waybar" = {
+      source = ./waybar;
+      recursive = true;
+    };
+
     ".config/i3/status.toml".source = ./i3/i3status-rust.toml;
   };
 
@@ -214,18 +219,21 @@ in {
       # ide
       vscodium
       nixfmt
+      sublime3
+      sublime-merge
 
       # i3
       # i3
       # i3status-rust
       rofi
       wofi
-      # sway waybar
+      waybar
       # wofi grim wl-clipboard imv slurp brightnessctl bemenu
 
       # browsers
       brave
       chromium
+      vivaldi-ffmpeg-codecs
       firefox-wayland
 
       # chat

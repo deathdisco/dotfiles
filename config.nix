@@ -1,4 +1,5 @@
 {
+  imports = [ ./expressions/chromium-wayland.nix ];
   packageOverrides = pkgs:
     with pkgs; {
       myPackages = pkgs.polybar.override {

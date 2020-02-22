@@ -1,4 +1,4 @@
-font pango:monospace 8
+font pango:monospace 9
 floating_modifier Mod1
 default_border normal 0
 default_floating_border normal 0
@@ -8,7 +8,9 @@ focus_follows_mouse yes
 focus_on_window_activation smart
 mouse_warping output
 workspace_layout default
+
 output eDP-1 pos 1920 0 scale 1.5 res 2880x1800
+exec xrdb -load ~/.Xresources
 
 client.focused #000000 #000000 #FC0394 #888888 #888888
 client.focused_inactive #000000 #000000 #d8dee8 #000000 #000000
@@ -57,7 +59,8 @@ bindsym Mod1+n focus down
 bindsym Mod1+p focus up
 bindsym Mod1+q kill
 bindsym Mod1+r layout tabbed
-bindsym Mod1+space exec LOCALE_ARCHIVE=$HOME/.nix-profile/lib/locale/locale-archive rofi -show drun
+bindsym Mod1+space exec rofi -show drun
+bindsym Mod1+Shift+Space exec wofi -show drun
 bindsym Mod1+t layout toggle split
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
@@ -70,12 +73,11 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5
 
 bar {
-  font pango:monospace 8
+  font pango:monospace 9
   mode dock
   hidden_state hide
   position top
-  status_command i3status-rs ~/.config/i3/status.toml
-  # i3bar_command i3bar
+  status_command waybar
   workspace_buttons yes
   strip_workspace_numbers no
   tray_output primary
