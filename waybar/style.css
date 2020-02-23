@@ -24,9 +24,7 @@ window#waybar {
 }
 
 #workspaces,
-#clock.1,
-#clock.2,
-#clock.3,
+#clock,
 #pulseaudio,
 #memory,
 #cpu,
@@ -34,17 +32,25 @@ window#waybar {
 #disk,
 #tray {
 }
-
+#workspaces {
+    margin-right: 10px;
+}
 #workspaces button {
     padding: 0 12px;
     color: #fdf6e3;
     border-radius: 0;
+    animation: none;
+    border: none;
+    box-shadow: none;
 }
 #workspaces button.focused {
     background-color: #333;
 }
 #workspaces button:hover {
-    background-color: #444;
+    background: #555;
+    border: none;
+    animation: none;
+    box-shadow: none;
 }
 
 #pulseaudio {
@@ -60,6 +66,12 @@ window#waybar {
 }
 #battery.charging {
     color: rgb(0, 255, 98);
+}
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: black;
+    }
 }
 #battery.warning:not(.charging) {
     background: #f53c3c;
