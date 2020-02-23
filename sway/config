@@ -10,6 +10,7 @@ focus_follows_mouse yes
 focus_on_window_activation smart
 mouse_warping output
 workspace_layout default
+gaps inner 10
 
 # output eDP-1 pos 1920 0 scale 1.5 res 2880x1800
 output eDP-1 scale 1.5 bg $HOME/.config/nixpkgs/wallpapers/blacklines.png stretch
