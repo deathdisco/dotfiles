@@ -226,7 +226,6 @@ in {
       # i3
       # i3status-rust
       rofi
-      wofi
       waybar
       # wofi grim wl-clipboard imv slurp brightnessctl bemenu
 
@@ -251,6 +250,9 @@ in {
 
       # dirty hax
       glibcLocales
+
+      # gtk themes
+      hicolor-icon-theme # required by wofi
     ];
   };
 }

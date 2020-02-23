@@ -67,19 +67,18 @@
   programs.sway = {
     enable = true;
     extraPackages = with pkgs; [
-      grim
+      grim # screenshot util
       i3status-rust # status bar
-      imv
+      imv # image viewer for wayland
       kanshi
       mako
-      # redshift-wayland
+      # redshift # color temperature
       slurp
-      swaybg
+      swaybg # desktop background https://github.com/swaywm/swaybg
       swayidle
-      swaylock
-      # wdisplays
-      wl-clipboard
-      xwayland
+      swaylock # lock screen
+      wl-clipboard # cut copy paste support
+      xwayland # compatibility layer for x11 apps
     ];
   };
   fonts.fontconfig.dpi = 150;

@@ -1,10 +1,15 @@
+/*
+https://github.com/Alexays/Waybar/wiki/Styling
+env GTK_DEBUG=interactive waybar
+*/
 * {
     font-size: 11px;
     font-family: monospace;
+    font-weight: bold;
 }
 
 window#waybar {
-    background: #222;
+    background: rgba(22, 22, 22, 0.9);;
     color: #fdf6e3;
 }
 
@@ -43,16 +48,27 @@ window#waybar {
 }
 
 #pulseaudio {
-    color: #265bFF;
+    /* color: #265bFF; */
 }
 #memory {
-    color: #1aB198;
+    /* color: #1aB198; */
 }
 #cpu {
-    color: #98F;
+    /* color: #98F; */
 }
 #battery {
+}
+#battery.charging {
     color: #F59900;
+}
+#battery.warning:not(.charging) {
+    background: #f53c3c;
+    color: white;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 #disk {
     color: #FF2900;
@@ -70,4 +86,16 @@ window#waybar {
 #disk {
     padding: 0 12px;
     /*background-color: red;*/
+}
+
+window#waybar.termite #window,
+window#waybar.Firefox #window,
+window#waybar.Navigator #window,
+window#waybar.Brave #window {
+    color: blue;
+    background: red;
+}
+
+#idle_inhibitor.activated {
+    color: #F59900;
 }

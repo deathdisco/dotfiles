@@ -1,3 +1,5 @@
+# https://github.com/swaywm/sway/wiki
+
 font pango:monospace 9
 floating_modifier Mod1
 default_border normal 0
@@ -9,7 +11,8 @@ focus_on_window_activation smart
 mouse_warping output
 workspace_layout default
 
-output eDP-1 pos 1920 0 scale 1.5 res 2880x1800
+# output eDP-1 pos 1920 0 scale 1.5 res 2880x1800
+output eDP-1 scale 1.5 bg $HOME/.config/nixpkgs/wallpapers/space.jpg stretch
 exec xrdb -load ~/.Xresources
 
 client.focused #000000 #000000 #FC0394 #888888 #888888
@@ -60,7 +63,6 @@ bindsym Mod1+p focus up
 bindsym Mod1+q kill
 bindsym Mod1+r layout tabbed
 bindsym Mod1+space exec rofi -show drun
-bindsym Mod1+Shift+Space exec wofi -show drun
 bindsym Mod1+t layout toggle split
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
