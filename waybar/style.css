@@ -5,7 +5,7 @@ env GTK_DEBUG=interactive waybar
 * {
     font-size: 11px;
     font-family: monospace;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 
 window#waybar {
@@ -59,7 +59,7 @@ window#waybar {
 #battery {
 }
 #battery.charging {
-    color: #F59900;
+    color: rgb(0, 255, 98);
 }
 #battery.warning:not(.charging) {
     background: #f53c3c;
@@ -71,6 +71,9 @@ window#waybar {
     animation-direction: alternate;
 }
 #disk {
+    color: #FF2900;
+}
+#network.disconnected {
     color: #FF2900;
 }
 
@@ -86,6 +89,7 @@ window#waybar {
 #disk {
     padding: 0 12px;
     /*background-color: red;*/
+    font-weight: bold;
 }
 
 window#waybar.termite #window,

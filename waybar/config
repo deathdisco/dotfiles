@@ -116,7 +116,7 @@
         "format-wifi": " {signalStrength}%",
         "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
         "format-linked": " {ifname} (No IP)",
-        "format-disconnected": "⚠ Disconnected",
+        "format-disconnected": " Disconnected",
         "format-alt": " {essid} {ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
