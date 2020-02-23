@@ -12,12 +12,13 @@ mouse_warping output
 workspace_layout default
 
 # output eDP-1 pos 1920 0 scale 1.5 res 2880x1800
-output eDP-1 scale 1.5 bg $HOME/.config/nixpkgs/wallpapers/space.jpg stretch
+output eDP-1 scale 1.5 bg $HOME/.config/nixpkgs/wallpapers/blacklines.png stretch
 exec xrdb -load ~/.Xresources
 
-client.focused #000000 #000000 #FC0394 #888888 #888888
-client.focused_inactive #000000 #000000 #d8dee8 #000000 #000000
-client.unfocused #000000 #000000 #888888 #000000 #000000
+# <border> <background> <text> <indicator> <child_border>
+client.focused #222222AA #222222AA #FC0394 #888888 #888888
+client.focused_inactive #222222AA #222222AA #d8dee8 #000000 #000000
+client.unfocused #222222AA #222222AA #888888 #000000 #000000
 client.urgent #900000 #900000 #d8dee8 #000000 #000000
 client.placeholder #111111 #111111 #d8dee8 #000000 #000000
 client.background #000000

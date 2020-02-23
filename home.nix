@@ -173,6 +173,7 @@ in {
 
   home.file.".config/kitty/kitty.conf".text = ''
     background #002B36
+    background_opacity 0.8
     font_size 11.0
     input_delay 0
   '';
