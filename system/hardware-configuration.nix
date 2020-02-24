@@ -18,15 +18,23 @@
       fsType = "ext4";
     };
 
+  #fileSystems = {
+  #"/drives/Windows".device = "/dev/disk/by-label/Windows";
+  #"/drives/Data".device = "/dev/disk/by-label/Data";
+  #"/drives/External".device = "/dev/disk/by-uuid/42B64D06120CD207";
+  # };
+
   fileSystems."/boot" =
-    { device = "/dev/nvme0n1p1";
+    { device = "/dev/disk/by-label/BOOT";
       fsType = "vfat";
     };
 
-  swapDevices = [ ];
+  swapDevices = [
+    { device = "/dev/disk/by-label/swap"; }
+  ];
 
   nix.maxJobs = lib.mkDefault 8;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   # High-DPI console
-  i18n.consoleFont = lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
+  i18n.console.font = lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
 }

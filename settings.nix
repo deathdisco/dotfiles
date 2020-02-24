@@ -1,4 +1,6 @@
 {
+  	email = "rob@wearebrandnew.com";
+  	github-username = "robsaunders";
 	colors = {
 	    black = "#000000";
 	    white = "#FFFFFF";

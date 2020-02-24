@@ -4,17 +4,10 @@
 
 let
   # todo: extract to a separate file or environment vars
-  email = "rob@wearebrandnew.com";
-  github-username = "robsaunders";
   nixpkgs = (builtins.fetchTarball
     (builtins.fromJSON (builtins.readFile ./nixpkgs.lock.json)));
-  color--pink = "#FC0394";
-  color--black = "#000000";
-  color--white = "#FFFFFF";
-  color--grey-dark = "#111111";
-  color--grey-medium = "#888888";
-  color--grey-light = "#d8dee8";
-  color--red = "#900000";
+  settings = (import ./settings.nix);
+  colors = settings.colors;
 in {
 
   imports = [
@@ -81,7 +74,7 @@ in {
   };
 
   home.file.".config/kitty/kitty.conf".text = ''
-    background #002B36
+    background ${colors.grey-dark}
     background_opacity 0.8
     font_size 11.0
     input_delay 0
@@ -111,6 +104,13 @@ in {
       dust # du replacement
       ripgrep # fast rust grepping tool
       megatools # mega.nz cli tools
+
+      # disks
+      parted # disk partitioning
+      partimage # image cloning
+      # bashmount # removable disk mount/unmount https://github.com/jamielinux/bashmount
+      # diskrsync
+      # diskscan # scan disks for errors
 
       # web services
       googler # google cli
