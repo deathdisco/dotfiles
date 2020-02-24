@@ -6,7 +6,7 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode", "custom/media", "sway/window"],
     "modules-center": [],
-    "modules-right": ["idle_inhibitor", "network", "cpu", "memory", "backlight", "battery", "pulseaudio", "clock", "tray"],
+    "modules-right": ["custom/btc", "idle_inhibitor", "network", "cpu", "memory", "backlight", "battery", "pulseaudio", "clock", "tray"],
     // Modules configuration
     "sway/workspaces": {
         "disable-scroll": true,
@@ -58,6 +58,13 @@
     //     "tooltip-format-disconnected": "MPD (disconnected)"
     // },
     // 
+    "custom/btc": {
+        "format": " {}",
+        "return-type": "json",
+        "max-length": 40,
+        "interval": 100, // Remove this if your script is endless and write in loop
+        "exec": "curl -s 'https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT' | jq -r .price | xargs printf \"%.*f\n\" \"$p\"\nbtc\nbtc"
+    },
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
@@ -92,7 +99,7 @@
     "backlight": {
         // "device": "acpi_video1",
         "format": "{icon} {percent}%",
-        "format-icons": ["", ""]
+        "format-icons": ["", ""]
     },
     "battery": {
         "states": {
@@ -114,10 +121,11 @@
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": " {signalStrength}%",
-        "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
-        "format-linked": " {ifname} (No IP)",
+        "format-ethernet": "",
+        "format-linked": " {ifname}:(No IP)",
         "format-disconnected": " Disconnected",
-        "format-alt": " {essid} {ifname}: {ipaddr}/{cidr}"
+        "format-alt": "{essid} {ifname} {ipaddr}  {bandwidthUpBits}  {bandwidthDownBits}",
+        "tooltip-format": "{essid}:{ifname}:{ipaddr}"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
