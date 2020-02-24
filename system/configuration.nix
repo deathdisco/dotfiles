@@ -31,6 +31,12 @@
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
 
+  fileSystems = {
+    "/drives/Windows".device = "/dev/disk/by-label/Windows";
+    "/drives/Data".device = "/dev/disk/by-label/Data";
+  };
+
+  # FONTS
   fonts.fonts = with pkgs; [
     noto-fonts
     noto-fonts-cjk
@@ -43,6 +49,15 @@
     proggyfonts
     font-awesome
     dejavu_fonts
+  ];
+
+  # SYSTEM PACKAGES
+  environment.systemPackages = with pkgs; [
+    wget vim zsh git home-manager
+    diskus # fast alternative to du -sh
+    ncdu # ncurses disk usage
+    # gdmap dua # disk usage viewers
+    ntfs3g exfat-utils # windows compatibility
   ];
 
   # Configure network proxy if necessary
@@ -59,9 +74,6 @@
   # Set your time zone.
   time.timeZone = "Australia/Hobart";
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [ wget vim zsh git home-manager ];
 
   # desktop
   programs.sway = {
