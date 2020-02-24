@@ -107,7 +107,6 @@ in {
 
       # disks
       parted # disk partitioning
-      partimage # image cloning
       # bashmount # removable disk mount/unmount https://github.com/jamielinux/bashmount
       # diskrsync
       # diskscan # scan disks for errors
