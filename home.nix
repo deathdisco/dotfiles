@@ -1,3 +1,5 @@
+# check https://github.com/balsoft/nixos-config
+
 { config, pkgs, ... }:
 
 let
@@ -14,6 +16,10 @@ let
   color--grey-light = "#d8dee8";
   color--red = "#900000";
 in {
+
+  imports = [
+    ./i3/i3wm.nix
+  ];
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.services.xserver.dpi = 166;
@@ -47,114 +53,17 @@ in {
     pointerCursor = {
       name = "Vanilla-DMZ";
       package = pkgs.vanilla-dmz;
-      size = 200;
+      size = 150;
     };
 
-    #windowManager.sway = rec {
-    #  enable = true;
-    #};
+    # windowManager.sway = rec {
+    #   enable = true;
+    # };
 
-    windowManager.i3 = rec {
-      enable = true;
-      config = {
-        modifier = "Mod1";
-        modes = { };
-
-        bars = [{
-          mode = "dock";
-          position = "top";
-          statusCommand =
-            "${pkgs.i3status-rust}/bin/i3status-rs ${./i3/i3status-rust.toml}";
-
-          extraConfig = ''
-            binding_mode_indicator yes
-          '';
-
-          colors = {
-            background = "${color--black}";
-            focusedWorkspace = {
-              background = "${color--pink}";
-              border = "${color--pink}";
-              text = "${color--white}";
-            };
-            activeWorkspace = {
-              background = "${color--black}";
-              border = "${color--black}";
-              text = "${color--grey-light}";
-            };
-            inactiveWorkspace = {
-              background = "${color--black}";
-              border = "${color--black}";
-              text = "${color--grey-light}";
-            };
-            urgentWorkspace = {
-              background = "${color--red}";
-              border = "${color--red}";
-              text = "${color--black}";
-            };
-            # binding mode is when workspaces have different keybindings
-            bindingMode = {
-              background = "${color--black}";
-              border = "${color--black}";
-              text = "${color--pink}";
-            };
-          };
-        }];
-
-        window.border = 0;
-        # window.hideEdgeBorders = "smart";
-        floating.border = 0;
-
-        colors = {
-          background = "${color--black}";
-          focused = {
-            border = "${color--black}";
-            background = "${color--black}";
-            text = "${color--pink}";
-            indicator = "${color--grey-medium}";
-            childBorder = "${color--grey-medium}";
-          };
-          focusedInactive = {
-            border = "${color--black}";
-            background = "${color--black}";
-            text = "${color--grey-light}";
-            indicator = "${color--black}";
-            childBorder = "${color--black}";
-          };
-          unfocused = {
-            border = "${color--black}";
-            background = "${color--black}";
-            text = "${color--grey-medium}";
-            indicator = "${color--black}";
-            childBorder = "${color--black}";
-          };
-          urgent = {
-            border = "${color--red}";
-            background = "${color--red}";
-            text = "${color--grey-light}";
-            indicator = "${color--black}";
-            childBorder = "${color--black}";
-          };
-          placeholder = {
-            border = "${color--grey-dark}";
-            background = "${color--grey-dark}";
-            text = "${color--grey-light}";
-            indicator = "${color--black}";
-            childBorder = "${color--black}";
-          };
-        };
-
-        keybindings = import ./i3/keybindings.nix {
-          mod = config.modifier;
-          pkgs = pkgs;
-        };
-      };
-
-      extraConfig = ''
-        default_orientation vertical
-        workspace_layout stacking
-      '';
-    };
+    # windowManager.i3 = import ./i3/i3wm.nix {
+    #   mod = config.modifier;
+    #   pkgs = pkgs;
+    # };
   };
 
   home.file = {
