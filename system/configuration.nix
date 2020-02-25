@@ -4,7 +4,9 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   nixpkgs.config.allowUnfree = true;
 
@@ -30,12 +32,6 @@
   services.blueman.enable = true;
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
-
-  #fileSystems = {
-  #  "/drives/Windows".device = "/dev/disk/by-label/Windows";
-    #"/drives/Data".device = "/dev/disk/by-label/Data";
-    #"/drives/External".device = "/dev/disk/by-uuid/42B64D06120CD207";
- # };
 
   # FONTS
   fonts.fonts = with pkgs; [

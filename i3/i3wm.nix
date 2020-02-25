@@ -1,7 +1,9 @@
 { config, pkgs, ... }:
+
 let
 	settings = (import ../settings.nix);
 	colors = settings.colors;
+	
 in {
 	xsession = {
 	    # enable = true;
