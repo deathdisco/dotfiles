@@ -13,6 +13,11 @@ workspace_layout default
 gaps inner 10
 
 # output eDP-1 pos 1920 0 scale 1.5 res 2880x1800
+
+set $laptop eDP-1
+bindswitch --reload lid:on output $laptop disable
+bindswitch --reload lid:off output $laptop enable
+
 output eDP-1 scale 1.5 bg $HOME/.config/nixpkgs/wallpapers/space.jpg stretch
 exec xrdb -load ~/.Xresources
 

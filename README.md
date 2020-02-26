@@ -1,10 +1,20 @@
 # dotfiles
 
-Configuration for [home-manager](https://github.com/rycee/home-manager) using Nix.
+Configuration for NixOS and [home-manager](https://github.com/rycee/home-manager).
+
+I will eventually make nixos-rebuild load home manager for multiple users, but for now it is a manual step.
 
 ## Setup
 
+Link `configuration.nix` as root and rebuild nix.
 ```
-git clone https://github.com/robsaunders/dotfiles ~/.config/nixpkgs
+sudo ln ./system /etc/nixos
+sudo nixos-rebuild switch
+```
+
+Then set up user environment (without sudo).
+
+```
+ln . .config/nixpkgs
 home-manager switch
 ```

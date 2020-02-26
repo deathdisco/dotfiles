@@ -23,6 +23,7 @@ in { home.packages = with pkgs; [
       # bashmount # removable disk mount/unmount https://github.com/jamielinux/bashmount
       # diskrsync
       # diskscan # scan disks for errors
+      btrfs-progs # btrfs utilities
 
       # web services
       googler # google cli
@@ -53,6 +54,7 @@ in { home.packages = with pkgs; [
       rofi
       waybar
       # wofi grim wl-clipboard imv slurp brightnessctl bemenu
+      vanilla-dmz # scalable cursor
 
       # browsers
       brave
@@ -65,10 +67,15 @@ in { home.packages = with pkgs; [
       tdesktop # telegram
 
       # sound
-      pulsemixer
+      pulsemixer # ncurses pulseaudio mixer
+      spotify
+      # cmus
 
       # video
       mpv
+
+      # graphics
+      blender
 
       # file management
       xfce.thunar
@@ -78,4 +85,5 @@ in { home.packages = with pkgs; [
 
       # gtk themes
       hicolor-icon-theme # required by wofi
+      capitaine-cursors # mouse cursor
 ];}

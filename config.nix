@@ -14,8 +14,8 @@
   environment.variables = {
     _JAVA_AWT_WM_NONREPARTENTING = "1";
     GDK_DPI_SCALE = "0.5";
-    GDK_SCALE = "1";
-    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+    GDK_SCALE = "1.5";
+    QT_AUTO_SCREEN_SCALE_FACTOR = "1.5";
   };
 
   # services.xserver.dpi = 164;

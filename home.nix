@@ -41,12 +41,14 @@ in {
     # };
   };
 
+  home.file.".icons/default".source = "${pkgs.capitaine-cursors}/share/icons/capitaine-cursors"; 
+
   xsession = {
     enable = true;
 
     pointerCursor = {
-      name = "Vanilla-DMZ";
-      package = pkgs.vanilla-dmz;
+      name = "Capitaine";
+      package = pkgs.capitaine-cursors;
       size = 150;
     };
   };
