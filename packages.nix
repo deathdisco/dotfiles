@@ -55,7 +55,6 @@ in { home.packages = with pkgs; [
       waybar
       # wofi grim wl-clipboard imv slurp brightnessctl bemenu
       vanilla-dmz # scalable cursor
-      way-cooler
 
       # browsers
       brave
@@ -92,5 +91,7 @@ in { home.packages = with pkgs; [
 
       # gtk themes
       hicolor-icon-theme # required by wofi
+      deepin.deepin-gtk-theme
+      deepin.deepin-icon-theme
       capitaine-cursors # mouse cursor
 ];}
