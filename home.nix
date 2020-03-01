@@ -51,7 +51,7 @@ in {
     # };
   };
 
-  home.file.".icons/default".source = "${pkgs.capitaine-cursors}/share/icons/capitaine-cursors"; 
+  # home.file.".icons/default".source = "${pkgs.capitaine-cursors}/share/icons/capitaine-cursors"; 
 
   # xsession = {
   #   enable = true;

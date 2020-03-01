@@ -84,7 +84,8 @@ in { home.packages = with pkgs; [
       # screenshots
       slurp # selector
 
-      lxappearance # customise gtk appearance
+      # lxappearance # customise gtk2 appearance
+      lxappearance-gtk3 # gtk3 appearance
 
       # dirty hax
       glibcLocales
