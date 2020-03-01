@@ -8,6 +8,16 @@
     ./hardware-configuration.nix
   ];
 
+
+  # environment.variables = {
+  #   _JAVA_AWT_WM_NONREPARTENTING = "1";
+  #   GDK_SCALE = "1.5";
+  #   QT_AUTO_SCREEN_SCALE_FACTOR = "1.5";
+  #   XCURSOR_SIZE = "32";
+  #   GDK_DPI_SCALE = "1.4";
+  # };
+
+
   nixpkgs.config.allowUnfree = true;
 
   # Use the systemd-boot EFI boot loader.
@@ -51,6 +61,7 @@
   # SYSTEM PACKAGES
   environment.systemPackages = with pkgs; [
     wget vim zsh git home-manager
+    file # file identification
     diskus # fast alternative to du -sh
     ncdu # ncurses disk usage
     # gdmap dua # disk usage viewers
@@ -127,9 +138,24 @@
   # hardware.pulseaudio.enable = true;
 
   # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-  # services.xserver.layout = "us";
-  # services.xserver.xkbOptions = "eurosign:e";
+  services.xserver = {
+    enable = true;
+
+    desktopManager = {
+      default = "none";
+      xterm.enable = false;
+    };
+
+    windowManager.i3 = {
+      enable = true;
+      extraPackages = with pkgs; [
+        dmenu #application launcher most people use
+        i3status # gives you the default i3 status bar
+        i3lock #default i3 screen locker
+        i3blocks #if you are planning on using i3blocks over i3status
+      ];
+    };
+  };
 
   # Enable touchpad support.
   # services.xserver.libinput.enable = true;

@@ -11,14 +11,24 @@ let
 in {
 
   imports = [
+    ./hidpi.nix
     ./packages.nix
     ./i3/i3wm.nix
+    ./package-sets/development.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.services.xserver.dpi = 166;
-  nixpkgs.config.fonts.fontconfig.dpi = 167;
-  # nixpkgs.config.size = 150;
+  # nixpkgs.config.services.xserver.dpi = 166;
+  # nixpkgs.config.fonts.fontconfig.dpi = 167;
+  # # nixpkgs.config.size = 150;
+  
+  # nixpkgs.config.environment.variables = {
+  #   _JAVA_AWT_WM_NONREPARTENTING = "1";
+  #   GDK_DPI_SCALE = "0.5";
+  #   GDK_SCALE = "1.5";
+  #   QT_AUTO_SCREEN_SCALE_FACTOR = "1.5";
+  #   XCURSOR_SIZE = "32";
+  # };
 
   programs = {
     home-manager.enable = true;
@@ -43,15 +53,15 @@ in {
 
   home.file.".icons/default".source = "${pkgs.capitaine-cursors}/share/icons/capitaine-cursors"; 
 
-  xsession = {
-    enable = true;
+  # xsession = {
+  #   enable = true;
 
-    pointerCursor = {
-      name = "Capitaine";
-      package = pkgs.capitaine-cursors;
-      size = 150;
-    };
-  };
+  #   pointerCursor = {
+  #     name = "Capitaine";
+  #     package = pkgs.capitaine-cursors;
+  #     size = 96;
+  #   };
+  # };
 
   home.file = {
     ".config/sway" = {

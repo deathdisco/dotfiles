@@ -63,7 +63,7 @@
         "return-type": "json",
         "max-length": 40,
         "interval": 100, // Remove this if your script is endless and write in loop
-        "exec": "curl -s 'https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT' | jq -r .price | xargs printf \"%.*f\n\" \"$p\"\nbtc\nbtc"
+        "exec": "curl -s 'https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT' | jq -r .price | xargs printf \"%.*f\n\" \"$p\""
     },
     "idle_inhibitor": {
         "format": "{icon}",

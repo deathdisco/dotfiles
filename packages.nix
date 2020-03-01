@@ -55,12 +55,14 @@ in { home.packages = with pkgs; [
       waybar
       # wofi grim wl-clipboard imv slurp brightnessctl bemenu
       vanilla-dmz # scalable cursor
+      way-cooler
 
       # browsers
       brave
       chromium
       vivaldi-ffmpeg-codecs
       firefox-wayland
+      surf # suckless browser
 
       # chat
       signal-desktop
@@ -79,6 +81,11 @@ in { home.packages = with pkgs; [
 
       # file management
       xfce.thunar
+
+      # screenshots
+      slurp # selector
+
+      lxappearance # customise gtk appearance
 
       # dirty hax
       glibcLocales
