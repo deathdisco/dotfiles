@@ -4,6 +4,9 @@ let
       
 in { home.packages = with pkgs; [
 
+      # fzf # fuzzy file search
+      # autojump # z/j directory jump for zsh
+
       #cli
       htop # performance monitor
       ranger # file manager
@@ -11,12 +14,24 @@ in { home.packages = with pkgs; [
       vifm # vim file manager
       broot # awesome file manager, sorter, finder
       fzf # fuzzy finder and launcher
-      jq # jquery cli parser
       youtube-dl # video downloader
       bat # cat with syntax highlighting
       dust # du replacement
       ripgrep # fast rust grepping tool
       megatools # mega.nz cli tools
+
+      # web dev stuff
+      gron # json grepper
+      jq # json cli parser
+      http-prompt # interactive http api (built on httpie)
+
+      # archives
+      unzip
+      patchelf # patch elf binaries for nixos
+
+      # network
+      # nmap
+      httpie
 
       # disks
       parted # disk partitioning
@@ -80,6 +95,7 @@ in { home.packages = with pkgs; [
 
       # file management
       xfce.thunar
+      broot
 
       # screenshots
       slurp # selector
@@ -94,5 +110,6 @@ in { home.packages = with pkgs; [
       hicolor-icon-theme # required by wofi
       deepin.deepin-gtk-theme
       deepin.deepin-icon-theme
+      deepin.dde-launcher
       capitaine-cursors # mouse cursor
 ];}

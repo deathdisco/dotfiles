@@ -38,8 +38,11 @@
   networking.useDHCP = false;
   networking.interfaces.wlp0s20f3.useDHCP = true;
 
+  # BLUETOOTH
   hardware.bluetooth.enable = true;
+  hardware.bluetooth.package = pkgs.bluezFull;
   services.blueman.enable = true;
+
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
 

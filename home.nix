@@ -53,15 +53,15 @@ in {
 
   # home.file.".icons/default".source = "${pkgs.capitaine-cursors}/share/icons/capitaine-cursors"; 
 
-  # xsession = {
-  #   enable = true;
+  xsession = {
+    enable = true;
 
-  #   pointerCursor = {
-  #     name = "Capitaine";
-  #     package = pkgs.capitaine-cursors;
-  #     size = 96;
-  #   };
-  # };
+    pointerCursor = {
+      name = "deepin";
+      package = pkgs.deepin.deepin-gtk-theme;
+      size = 96;
+    };
+  };
 
   home.file = {
     ".config/sway" = {
@@ -74,6 +74,11 @@ in {
       recursive = true;
     };
 
+    ".config/ranger" = {
+      source = ./ranger;
+      recursive = true;
+    };
+
     ".config/i3/status.toml".source = ./i3/i3status-rust.toml;
   };
 
@@ -82,6 +87,15 @@ in {
     background_opacity 0.88
     font_size 11.0
     input_delay 0
+
+    clear_all_shortcuts yes
+    rectangle_select_modifiers no_op
+    map kitty_mod+shift+c copy_to_clipboard
+    map kitty_mod+v paste_from_clipboard
+    map kitty_mod+equals change_font_size all +1.0
+    map kitty_mod+minus change_font_size all -1.0
+    map kitty_mod+backspace change_font_size all 0
+    map kitty_mod+u input_unicode_character
   '';
   fonts.fontconfig.enable = true;
 

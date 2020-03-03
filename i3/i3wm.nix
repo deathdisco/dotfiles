@@ -6,17 +6,7 @@ let
 	
 in {
 	xsession = {
-	    # enable = true;
-
-	    # pointerCursor = {
-	    #   name = "Vanilla-DMZ";
-	    #   package = pkgs.vanilla-dmz;
-	    #   size = 150;
-	    # };
-
-	    # # windowManager.sway = rec {
-	    # #   enable = true;
-	    # # };
+	    enable = true;
 
 	    windowManager.i3 = {
 			enable = true;
