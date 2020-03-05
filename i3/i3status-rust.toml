@@ -4,6 +4,7 @@ icons = "awesome" # none | awesome | material
 
 # plain (default) | solarized-dark | solarized-light | slick | modern | bad-wolf
 # gruvbox-light | gruvbox-dark
+# Ƀ 
 [theme]
 name = "modern"
 

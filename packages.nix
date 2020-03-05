@@ -4,9 +4,6 @@ let
       
 in { home.packages = with pkgs; [
 
-      # fzf # fuzzy file search
-      # autojump # z/j directory jump for zsh
-
       #cli
       htop # performance monitor
       ranger # file manager
@@ -19,11 +16,21 @@ in { home.packages = with pkgs; [
       dust # du replacement
       ripgrep # fast rust grepping tool
       megatools # mega.nz cli tools
+      fzf # fuzzy file search
+      autojump # z/j directory jump for zsh
+      peco # output/list filtering
+      tealdeer # rust tldr client - man page summarising https://github.com/dbrgn/tealdeer
+      gitAndTools.tig # c-based curses git client https://github.com/jonas/tig
 
       # web dev stuff
       gron # json grepper
       jq # json cli parser
       http-prompt # interactive http api (built on httpie)
+      jid # drill down json (golang) https://github.com/simeji/jid
+
+      # re stuff
+      hexyl # hex editor
+      hecate # hex editor (golang) https://github.com/evanmiller/hecate
 
       # archives
       unzip
@@ -39,6 +46,7 @@ in { home.packages = with pkgs; [
       # diskrsync
       # diskscan # scan disks for errors
       btrfs-progs # btrfs utilities
+      # ncdu # disk usage
 
       # web services
       googler # google cli
@@ -62,6 +70,7 @@ in { home.packages = with pkgs; [
       nixfmt
       sublime3
       sublime-merge
+      emacs
 
       # i3
       # i3

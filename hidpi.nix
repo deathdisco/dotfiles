@@ -7,9 +7,6 @@ let
 in {
 
 
-
-
-
   nixpkgs.config = {
 
   	# none of this seems to work. investigate further.

@@ -17,6 +17,8 @@ in {
     ./package-sets/development.nix
   ];
 
+  nixpkgs.config.environment.variables.EDITOR = "vim";
+
   nixpkgs.config.allowUnfree = true;
   # nixpkgs.config.services.xserver.dpi = 166;
   # nixpkgs.config.fonts.fontconfig.dpi = 167;
@@ -76,6 +78,12 @@ in {
 
     ".config/ranger" = {
       source = ./ranger;
+      recursive = true;
+    };
+
+    # appimages
+    ".local/share/applications" = {
+      source = ./applications;
       recursive = true;
     };
 

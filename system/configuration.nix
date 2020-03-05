@@ -59,6 +59,7 @@
     proggyfonts
     font-awesome
     dejavu_fonts
+    source-code-pro
   ];
 
   # SYSTEM PACKAGES

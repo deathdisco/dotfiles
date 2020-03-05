@@ -9,5 +9,10 @@
 	    grey-dark = "#111111";
 	    grey-medium = "#888888";
 	    grey-light = "#d8dee8";
+
+	    sea-blue = "rgb(82, 157, 242)";
+
+	    neon-green = "rgb(60, 255, 136)";
+
 	};
 }
