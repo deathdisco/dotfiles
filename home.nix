@@ -87,6 +87,11 @@ in {
       recursive = true;
     };
 
+    ".config/Typora/themes" = {
+      source = ./typora/themes;
+      recursive = true;
+    };
+
     ".config/i3/status.toml".source = ./i3/i3status-rust.toml;
   };
 

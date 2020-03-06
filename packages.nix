@@ -72,6 +72,9 @@ in { home.packages = with pkgs; [
       sublime-merge
       emacs
 
+      # text / markdown
+      typora
+
       # i3
       # i3
       # i3status-rust

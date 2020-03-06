@@ -5,6 +5,9 @@ let
 	colors = settings.colors;
 	
 in {
+	home.packages = with pkgs; [
+		feh # image viewer, also for desktop wallpaper
+	];
 	xsession = {
 	    enable = true;
 
@@ -13,6 +16,13 @@ in {
 			config = {
 			modifier = "Mod1";
 			modes = { };
+
+	        startup = [
+	          { command = "${pkgs.feh}/bin/feh --bg-fill ${settings.wallpaper}";
+	            always = true;
+	            notification = false;
+	          }
+	        ];
 
 			bars = [{
 			  mode = "dock";

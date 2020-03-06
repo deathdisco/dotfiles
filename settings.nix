@@ -1,6 +1,7 @@
 {
   	email = "rob@wearebrandnew.com";
   	github-username = "robsaunders";
+  	wallpaper = "~/.config/nixpkgs/wallpapers/ascii-skull.png";
 	colors = {
 	    black = "#000000";
 	    white = "#FFFFFF";

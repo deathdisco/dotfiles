@@ -18,11 +18,10 @@
       fsType = "ext4";
     };
 
-  #fileSystems = {
-  #"/drives/Windows".device = "/dev/disk/by-label/Windows";
-  #"/drives/Data".device = "/dev/disk/by-label/Data";
-  #"/drives/External".device = "/dev/disk/by-uuid/42B64D06120CD207";
-  # };
+  fileSystems = {
+    "/drives/windows".device = "/dev/disk/by-label/Windows";
+    "/drives/data".device = "/dev/disk/by-label/data";
+  };
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-label/BOOT";
