@@ -351,7 +351,7 @@ table tr {
 }
 
 thead {
-    background-color: #324963;
+    /*background-color: #324963;*/
     color: #9dbbdd;
 }
 
@@ -588,10 +588,10 @@ code {
     font-family: 'Nunito';
 }
 
-.info-panel-tab-wrapper {
+/*.info-panel-tab-wrapper {
     background: #1a283d !important;
     border-color: #1a283d !imporant;
-}
+}*/
 
 #typora-sidebar .file-tree-node.file-library-file-node.active .file-node-background,
 #typora-sidebar .file-list-item.file-library-file-node.active {

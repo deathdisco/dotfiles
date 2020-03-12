@@ -21,6 +21,7 @@ in { home.packages = with pkgs; [
       peco # output/list filtering
       tealdeer # rust tldr client - man page summarising https://github.com/dbrgn/tealdeer
       gitAndTools.tig # c-based curses git client https://github.com/jonas/tig
+      ctodo # todo list
 
       # web dev stuff
       gron # json grepper

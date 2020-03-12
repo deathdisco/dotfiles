@@ -5,9 +5,38 @@ let
 	colors = settings.colors;
 	
 in {
+	programs = {
+		rofi = {
+			enable = true;
+			font = "Source Code Pro 18";
+			padding = 20;
+			colors = {
+				window = {
+					background = "#00000060";
+					border = "argb:582a373e";
+					separator = "#CCC";
+				};
+				rows = {
+					normal = {
+					  background = "#00000060";
+					  foreground = "#fafbfc";
+					  backgroundAlt = "#00000060";
+					  highlight = {
+					    background = "#00bcd4";
+					    foreground = "#fafbfc";
+					  };
+				};
+				};
+			};
+		};
+	};
 	home.packages = with pkgs; [
 		feh # image viewer, also for desktop wallpaper
+		flameshot # image capture x11 only
 	];
+	# home.file = {
+	# 	".config/rofi/themes.toml".source = ./i3/i3status-rust.toml;
+	# };
 	xsession = {
 	    enable = true;
 

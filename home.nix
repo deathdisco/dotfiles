@@ -35,10 +35,10 @@ in {
   programs = {
     home-manager.enable = true;
 
-    rofi = {
-      enable = true;
-      theme = "${./rofi/themes/material.rasi}";
-    };
+    # rofi = {
+    #   enable = true;
+    #   theme = "${./rofi/themes/material.rasi}";
+    # };
 
     termite = {
       enable = true;
@@ -102,13 +102,13 @@ in {
     input_delay 0
 
     clear_all_shortcuts yes
-    rectangle_select_modifiers no_op
-    map kitty_mod+shift+c copy_to_clipboard
-    map kitty_mod+v paste_from_clipboard
-    map kitty_mod+equals change_font_size all +1.0
-    map kitty_mod+minus change_font_size all -1.0
-    map kitty_mod+backspace change_font_size all 0
-    map kitty_mod+u input_unicode_character
+    rectangle_select_modifiers alt
+
+    map ctrl+shift+c copy_to_clipboard
+    map ctrl+v paste_from_clipboard
+    map ctrl+equal change_font_size all +1.0
+    map ctrl+minus change_font_size all -1.0
+    map ctrl+k clear_terminal scrollback active
   '';
   fonts.fontconfig.enable = true;
 
