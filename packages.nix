@@ -88,7 +88,7 @@ in { home.packages = with pkgs; [
 
       # browsers
       brave
-      qute
+      qutebrowser
       vivaldi-ffmpeg-codecs
       firefox-wayland
 

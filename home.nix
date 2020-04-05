@@ -19,37 +19,6 @@ in {
 
   programs.bash.sessionVariables.EDITOR = "vim";
 
-  programs.zsh = {
-    enable = true;
-    promptInit = "";
-    interactiveShellInit = ''
-      export ZSH=${pkgs.oh-my-zsh}/share/oh-my-zsh/
-
-      # Customize your oh-my-zsh options here
-      ZSH_THEME="robbyrussell"
-      plugins=(git docker)
-
-      bindkey '\e[5~' history-beginning-search-backward
-      bindkey '\e[6~' history-beginning-search-forward
-
-      HISTFILESIZE=500000
-      HISTSIZE=500000
-      setopt SHARE_HISTORY
-      setopt HIST_IGNORE_ALL_DUPS
-      setopt HIST_IGNORE_DUPS
-      setopt INC_APPEND_HISTORY
-      autoload -U compinit && compinit
-      unsetopt menu_complete
-      setopt completealiases
-
-      if [ -f ~/.aliases ]; then
-        source ~/.aliases
-      fi
-
-      source $ZSH/oh-my-zsh.sh
-    '';
-  };
-
   # users.extraUsers.USER = {
   #   shell = pkgs.zsh;
   # };
@@ -86,6 +55,7 @@ in {
       settings = { ignorecase = true; };
       extraConfig = ''
         set mouse=a
+        set nobackup
       '';
 
       # to see available plugins:
@@ -104,6 +74,9 @@ in {
 
           # Syntax checking / status
           syntastic
+
+          # coc
+          coc-nvim
         ];
     };
 
