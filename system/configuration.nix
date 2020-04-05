@@ -1,4 +1,4 @@
-# ln configuration.nix /etc/nixos/configuration.nix
+# configuration.nix /etc/nixos/configuration.nix
 # nixos-rebuild switch
 
 { config, pkgs, ... }:
@@ -59,6 +59,7 @@
     mplus-outline-fonts
     dina-font
     proggyfonts
+    nerdfonts
     font-awesome
     dejavu_fonts
     source-code-pro
@@ -144,15 +145,10 @@
   # Enable sound.
   # sound.enable = true;
   # hardware.pulseaudio.enable = true;
-
+  
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
-
-    desktopManager = {
-      default = "none";
-      xterm.enable = false;
-    };
 
     windowManager.i3 = {
       enable = true;

@@ -38,9 +38,6 @@ in {
     fonts.fontconfig.enable = true;
   };
 
-
-
-
   programs = {
     home-manager.enable = true;
 
@@ -56,27 +53,32 @@ in {
       extraConfig = ''
         set mouse=a
         set nobackup
+        let g:NERDTreeMouseMode=2
       '';
 
       # to see available plugins:
       # nix-env -f '<nixpkgs>' -qaP -A vimPlugins
       plugins = with pkgs.vimPlugins;
         [
-          # Writing
+          # writing
           goyo          # distraction-free writing; toggle with :Goyo
           vim-pencil    # better word-wrapping, markdown, etc.
           limelight-vim # highlight only current paragraph
 
+          # sidebar
           nerdtree
 
-          # Languages
+          # languages
           vim-nix
 
-          # Syntax checking / status
+          # syntax checking / status
           syntastic
 
-          # coc
-          coc-nvim
+          # typescript
+          coc-tslint
+          yats-vim
+
+          vim-devicons
         ];
     };
 
