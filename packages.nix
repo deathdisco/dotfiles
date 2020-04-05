@@ -5,7 +5,7 @@ let
 in { home.packages = with pkgs; [
 
       #cli
-      htop # performance monitor
+      htop ytop # performance monitor
       ranger # file manager
       # hunter # rust based file manager
       vifm # vim file manager
@@ -16,12 +16,15 @@ in { home.packages = with pkgs; [
       dust # du replacement
       ripgrep # fast rust grepping tool
       megatools # mega.nz cli tools
-      fzf # fuzzy file search
       autojump # z/j directory jump for zsh
       peco # output/list filtering
       tealdeer # rust tldr client - man page summarising https://github.com/dbrgn/tealdeer
       gitAndTools.tig # c-based curses git client https://github.com/jonas/tig
       ctodo # todo list
+      exa # ls replacement
+
+      # vm
+      virt-manager # qemu based graphical frontend
 
       # web dev stuff
       gron # json grepper
@@ -59,7 +62,6 @@ in { home.packages = with pkgs; [
 
       # terminals
       # terminator
-      # termite
       alacritty
       kitty
 
@@ -86,10 +88,9 @@ in { home.packages = with pkgs; [
 
       # browsers
       brave
-      chromium
+      qute
       vivaldi-ffmpeg-codecs
       firefox-wayland
-      surf # suckless browser
 
       # chat
       signal-desktop

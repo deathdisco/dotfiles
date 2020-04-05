@@ -8,7 +8,6 @@
     ./hardware-configuration.nix
   ];
 
-
   # environment.variables = {
   #   _JAVA_AWT_WM_NONREPARTENTING = "1";
   #   GDK_SCALE = "1.5";
@@ -17,6 +16,9 @@
   #   GDK_DPI_SCALE = "1.4";
   # };
 
+  environment.variables = {
+    EDITOR = "vim";
+  };
 
   nixpkgs.config.allowUnfree = true;
 
@@ -86,6 +88,8 @@
   # Set your time zone.
   time.timeZone = "Australia/Hobart";
 
+  # virtual machines with lxd
+  virtualisation.lxd.enable = true;
 
   # desktop
   programs.sway = {
@@ -120,7 +124,7 @@
   users.users.nom = {
     isNormalUser = true;
     home = "/home/nom";
-    extraGroups = [ "wheel" "networkmanager" "audio" ];
+    extraGroups = [ "wheel" "networkmanager" "audio" "lxd" ];
   };
 
   # List services that you want to enable:
@@ -167,12 +171,6 @@
   # Enable the KDE Desktop Environment.
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.jane = {
-  #   isNormalUser = true;
-  #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-  # };
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database

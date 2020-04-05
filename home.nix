@@ -17,20 +17,60 @@ in {
     ./package-sets/development.nix
   ];
 
-  nixpkgs.config.environment.variables.EDITOR = "vim";
+  programs.bash.sessionVariables.EDITOR = "vim";
 
-  nixpkgs.config.allowUnfree = true;
-  # nixpkgs.config.services.xserver.dpi = 166;
-  # nixpkgs.config.fonts.fontconfig.dpi = 167;
-  # # nixpkgs.config.size = 150;
-  
-  # nixpkgs.config.environment.variables = {
-  #   _JAVA_AWT_WM_NONREPARTENTING = "1";
-  #   GDK_DPI_SCALE = "0.5";
-  #   GDK_SCALE = "1.5";
-  #   QT_AUTO_SCREEN_SCALE_FACTOR = "1.5";
-  #   XCURSOR_SIZE = "32";
+  programs.zsh = {
+    enable = true;
+    promptInit = "";
+    interactiveShellInit = ''
+      export ZSH=${pkgs.oh-my-zsh}/share/oh-my-zsh/
+
+      # Customize your oh-my-zsh options here
+      ZSH_THEME="robbyrussell"
+      plugins=(git docker)
+
+      bindkey '\e[5~' history-beginning-search-backward
+      bindkey '\e[6~' history-beginning-search-forward
+
+      HISTFILESIZE=500000
+      HISTSIZE=500000
+      setopt SHARE_HISTORY
+      setopt HIST_IGNORE_ALL_DUPS
+      setopt HIST_IGNORE_DUPS
+      setopt INC_APPEND_HISTORY
+      autoload -U compinit && compinit
+      unsetopt menu_complete
+      setopt completealiases
+
+      if [ -f ~/.aliases ]; then
+        source ~/.aliases
+      fi
+
+      source $ZSH/oh-my-zsh.sh
+    '';
+  };
+
+  # users.extraUsers.USER = {
+  #   shell = pkgs.zsh;
   # };
+
+  nixpkgs.config = {
+    allowUnfree = true;
+
+    environment.variables = {
+      EDITOR = "vim";
+      PATH = "~/.cargo/bin:$PATH";
+    };
+
+    environment.profileVariables = (i:
+      { PATH = [ "${i}/cargo/bin" ];
+    });
+
+    fonts.fontconfig.enable = true;
+  };
+
+
+
 
   programs = {
     home-manager.enable = true;
@@ -40,12 +80,31 @@ in {
     #   theme = "${./rofi/themes/material.rasi}";
     # };
 
-    termite = {
+    vim = {
       enable = true;
-      # font = "${font} 11";
-      backgroundColor = "rgba(32, 39, 51, 0.3)";
-      dynamicTitle = true;
-      clickableUrl = true;
+      # plugins = [ "vim-airline" "goyo" ];
+      settings = { ignorecase = true; };
+      extraConfig = ''
+        set mouse=a
+      '';
+
+      # to see available plugins:
+      # nix-env -f '<nixpkgs>' -qaP -A vimPlugins
+      plugins = with pkgs.vimPlugins;
+        [
+          # Writing
+          goyo          # distraction-free writing; toggle with :Goyo
+          vim-pencil    # better word-wrapping, markdown, etc.
+          limelight-vim # highlight only current paragraph
+
+          nerdtree
+
+          # Languages
+          vim-nix
+
+          # Syntax checking / status
+          syntastic
+        ];
     };
 
     # vscodium-with-extensions = {
@@ -110,9 +169,14 @@ in {
     map ctrl+minus change_font_size all -1.0
     map ctrl+k clear_terminal scrollback active
   '';
-  fonts.fontconfig.enable = true;
 
   home = {
+    sessionVariables = {
+      EDITOR = "vim";
+      LANG = "en_US.UTF-8";
+      PATH = "~/.cargo/bin:$PATH";
+    };
+
     stateVersion = "19.09";
   };
 }
