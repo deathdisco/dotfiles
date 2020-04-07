@@ -1,5 +1,6 @@
 # check https://github.com/balsoft/nixos-config
 
+
 { config, pkgs, ... }:
 
 let
@@ -15,6 +16,7 @@ in {
     ./packages.nix
     ./i3/i3wm.nix
     ./package-sets/development.nix
+    ./applications/alacritty.nix
   ];
 
   programs.bash.sessionVariables.EDITOR = "vim";
@@ -53,6 +55,7 @@ in {
       extraConfig = ''
         set mouse=a
         set nobackup
+        set noswapfile
 
         let g:NERDTreeMouseMode=2
         let g:NERDTreeHijackNetrw=0
@@ -60,10 +63,20 @@ in {
         map <C-b> :NERDTreeToggle<CR>
         map <C-w> :close<CR>
         map <C-t> :tabnew<CR>
-        map <C-p> :tabprev<CR>
-        map <C-n> :tabnext<CR>
+        map <C-j> :tabprev<CR>
+        map <C-k> :tabnext<CR>
         map <C-s> :write<CR>
         map <C-q> :quit<CR>
+
+        nnoremap 1 1gt
+        nnoremap 2 2gt
+        nnoremap 3 3gt
+        nnoremap 4 4gt
+        nnoremap 5 5gt
+        nnoremap 6 6gt
+        nnoremap 7 7gt
+        nnoremap 8 8gt
+        nnoremap 9 9gt
       '';
 
       # to see available plugins:
@@ -129,9 +142,9 @@ in {
       recursive = true;
     };
 
-    # appimages
+    # .desktop files
     ".local/share/applications" = {
-      source = ./applications;
+      source = ./applications/desktopfiles;
       recursive = true;
     };
 
