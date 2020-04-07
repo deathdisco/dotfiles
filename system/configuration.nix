@@ -67,7 +67,7 @@
 
   # SYSTEM PACKAGES
   environment.systemPackages = with pkgs; [
-    wget vim zsh git home-manager
+    wget vim_configurable zsh git home-manager
     file # file identification
     diskus # fast alternative to du -sh
     ncdu # ncurses disk usage

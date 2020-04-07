@@ -53,7 +53,17 @@ in {
       extraConfig = ''
         set mouse=a
         set nobackup
+
         let g:NERDTreeMouseMode=2
+        let g:NERDTreeHijackNetrw=0
+
+        map <C-b> :NERDTreeToggle<CR>
+        map <C-w> :close<CR>
+        map <C-t> :tabnew<CR>
+        map <C-p> :tabprev<CR>
+        map <C-n> :tabnext<CR>
+        map <C-s> :write<CR>
+        map <C-q> :quit<CR>
       '';
 
       # to see available plugins:
@@ -64,6 +74,10 @@ in {
           goyo          # distraction-free writing; toggle with :Goyo
           vim-pencil    # better word-wrapping, markdown, etc.
           limelight-vim # highlight only current paragraph
+          vimwiki
+
+          # search
+          ctrlp
 
           # sidebar
           nerdtree
