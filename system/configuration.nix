@@ -2,10 +2,32 @@
 # nixos-rebuild switch
 
 { config, pkgs, ... }:
-
+let
+    nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
+        export __NV_PRIME_RENDER_OFFLOAD=1
+        export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
+        export __GLX_VENDOR_LIBRARY_NAME=nvidia
+        export __VK_LAYER_NV_optimus=NVIDIA_only
+        exec -a "$0" "$@"
+    '';
+in
 {
   imports = [
     ./hardware-configuration.nix
+  ];
+
+
+  # SYSTEM PACKAGES
+  environment.systemPackages = with pkgs; [
+    nvidia-offload
+    wget vim_configurable zsh git home-manager
+    file # file identification
+    diskus # fast alternative to du -sh
+    ncdu # ncurses disk usage
+    # gdmap dua # disk usage viewers
+    ntfs3g exfat-utils # windows compatibility
+    pciutils # lspci
+    glxinfo # opengl
   ];
 
   # environment.variables = {
@@ -22,13 +44,16 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  # remap caps lock to ctrl
+  # services.xserver.xkbOptions = "ctrl:swapcaps";
+
   # Use the systemd-boot EFI boot loader.
   # boot.loader.systemd-boot.enable = true;
   boot.loader.grub.device = "nodev";
   boot.loader.grub.efiSupport = true;
   boot.loader.efi.canTouchEfiVariables = true;
   # boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  boot.loader.grub.useOSProber = true;
+  # boot.loader.grub.useOSProber = true;
 
   # networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
@@ -39,6 +64,27 @@
   # replicates the default behaviour.
   networking.useDHCP = false;
   networking.interfaces.wlp0s20f3.useDHCP = true;
+  
+  # needed by i3-gaps
+  # environment.pathsToLink = [ "/libexec" ];
+
+  # DISPLAY
+
+  #hardware.bumblebee.enable = true;
+  #hardware.bumblebee.connectDisplay = true;
+  hardware.opengl.enable = true;
+  hardware.opengl.driSupport32Bit = true;
+  services.xserver.videoDrivers = [ "nvidia" ];
+
+  # services.xserver.videoDrivers = [ "nvidia" ];
+
+  hardware.nvidia.modesetting.enable = true;
+  hardware.nvidia.prime = {
+    # sync.enable = true;
+    offload.enable = true;
+    intelBusId = "PCI:0:2:0";
+    nvidiaBusId = "PCI:1:0:0";
+  };
 
   # BLUETOOTH
   hardware.bluetooth.enable = true;
@@ -63,16 +109,6 @@
     font-awesome
     dejavu_fonts
     source-code-pro
-  ];
-
-  # SYSTEM PACKAGES
-  environment.systemPackages = with pkgs; [
-    wget vim_configurable zsh git home-manager
-    file # file identification
-    diskus # fast alternative to du -sh
-    ncdu # ncurses disk usage
-    # gdmap dua # disk usage viewers
-    ntfs3g exfat-utils # windows compatibility
   ];
 
   # Configure network proxy if necessary
@@ -157,9 +193,12 @@
         i3status # gives you the default i3 status bar
         i3lock #default i3 screen locker
         i3blocks #if you are planning on using i3blocks over i3status
-      ];
+     ];
     };
   };
+
+  # text only prompt, no display manager
+  # services.xserver.displayManager.startx.enable = true;
 
   # Enable touchpad support.
   # services.xserver.libinput.enable = true;

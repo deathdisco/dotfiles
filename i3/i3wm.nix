@@ -41,8 +41,9 @@ in {
 	    enable = true;
 
 	    windowManager.i3 = {
-			enable = true;
-			config = {
+              enable = true;
+              package = pkgs.i3-gaps;
+	      config = {
 			modifier = "Mod1";
 			modes = { };
 

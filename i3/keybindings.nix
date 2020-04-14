@@ -7,7 +7,7 @@
   "${mod}+d" = "exec dmenu_run";
   "${mod}+space" =
     "exec LOCALE_ARCHIVE=$HOME/.nix-profile/lib/locale/locale-archive rofi -show drun";
-  "Ctrl+space" = "exec kitty";
+  "Ctrl+space" = "exec alacritty";
 
   # change focus
   "${mod}+j" = "focus left";

@@ -1,6 +1,4 @@
 # check https://github.com/balsoft/nixos-config
-
-
 { config, pkgs, ... }:
 
 let
@@ -67,6 +65,7 @@ in {
         map <C-k> :tabnext<CR>
         map <C-s> :write<CR>
         map <C-q> :quit<CR>
+        map <C-i> :VimwikiIndex<CR>
 
         nnoremap 1 1gt
         nnoremap 2 2gt
@@ -77,6 +76,8 @@ in {
         nnoremap 7 7gt
         nnoremap 8 8gt
         nnoremap 9 9gt
+
+        let g:vimwiki_list = [{'path': '~/Notes', 'path_html': '~/.config/wiki', 'ext': 'md', 'syntax': 'markdown'}]
       '';
 
       # to see available plugins:
@@ -97,6 +98,7 @@ in {
 
           # languages
           vim-nix
+          swift-vim
 
           # syntax checking / status
           syntastic
