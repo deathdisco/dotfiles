@@ -1,0 +1,53 @@
+{
+	"auto_match_enabled": false,
+	"caret_style": "solid",
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
+	"ensure_newline_at_eof_on_save": true,
+	"file_exclude_patterns":
+	[
+		"screenshot*.html",
+		"*.min.js",
+		"*.log",
+		"*.scssc",
+		"*.sassc",
+		"*.elmi",
+		"*.elmo"
+	],
+	"find_selected_text": true,
+	"folder_exclude_patterns":
+	[
+		"node_modules",
+		".*",
+		"bower_components",
+		"public/assets",
+		"html-report",
+		"lcov-report",
+		"tmp",
+		"dist",
+		"vendor",
+		"dist",
+		"log",
+		"elm-stuff"
+	],
+	"font_face": "Source Code Pro",
+	"font_size": 13,
+	"ignored_packages":
+	[
+		"Six",
+		"Vintage",
+		"Vintageous"
+	],
+	"rulers":
+	[
+		80
+	],
+	"save_on_focus_lost": false,
+	"show_full_path": true,
+	"tab_size": 2,
+	"theme": "Material-Theme-Darker.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
+	"use_tab_stops": true,
+	"vintageous_ignorecase": false,
+	"vintageous_use_sys_clipboard": true
+}

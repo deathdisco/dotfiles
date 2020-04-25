@@ -1,19 +1,18 @@
 # check https://github.com/balsoft/nixos-config
 { config, pkgs, ... }:
-
+with import ./settings.nix;
 let
-  # todo: extract to a separate file or environment vars
   nixpkgs = (builtins.fetchTarball
     (builtins.fromJSON (builtins.readFile ./nixpkgs.lock.json)));
-  settings = (import ./settings.nix);
-  colors = settings.colors;
+  # colors = settings.colors;
 in {
 
   imports = [
     ./hidpi.nix
     ./packages.nix
-    ./i3/i3wm.nix
-    ./package-sets/development.nix
+    ./desktop/i3/i3.nix
+    # ./desktop/sway/sway.nix
+    #./package-sets/development.nix
     ./applications/alacritty.nix
   ];
 
@@ -31,15 +30,15 @@ in {
       PATH = "~/.cargo/bin:$PATH";
     };
 
-    environment.profileVariables = (i:
-      { PATH = [ "${i}/cargo/bin" ];
-    });
+    environment.profileVariables = (i: { PATH = [ "${i}/cargo/bin" ]; });
 
     fonts.fontconfig.enable = true;
   };
 
   programs = {
     home-manager.enable = true;
+    # sway = ./desktop/sway/sway.nix;
+    # sway.enable = true;
 
     # rofi = {
     #   enable = true;
@@ -82,33 +81,32 @@ in {
 
       # to see available plugins:
       # nix-env -f '<nixpkgs>' -qaP -A vimPlugins
-      plugins = with pkgs.vimPlugins;
-        [
-          # writing
-          goyo          # distraction-free writing; toggle with :Goyo
-          vim-pencil    # better word-wrapping, markdown, etc.
-          limelight-vim # highlight only current paragraph
-          vimwiki
+      plugins = with pkgs.vimPlugins; [
+        # writing
+        goyo # distraction-free writing; toggle with :Goyo
+        vim-pencil # better word-wrapping, markdown, etc.
+        limelight-vim # highlight only current paragraph
+        vimwiki
 
-          # search
-          ctrlp
+        # search
+        ctrlp
 
-          # sidebar
-          nerdtree
+        # sidebar
+        nerdtree
 
-          # languages
-          vim-nix
-          swift-vim
+        # languages
+        vim-nix
+        swift-vim
 
-          # syntax checking / status
-          syntastic
+        # syntax checking / status
+        syntastic
 
-          # typescript
-          coc-tslint
-          yats-vim
+        # typescript
+        coc-tslint
+        yats-vim
 
-          vim-devicons
-        ];
+        vim-devicons
+      ];
     };
 
     # vscodium-with-extensions = {
@@ -121,44 +119,51 @@ in {
   xsession = {
     enable = true;
 
+    # note: this writes ~/.Xresources
     pointerCursor = {
       name = "deepin";
       package = pkgs.deepin.deepin-gtk-theme;
-      size = 96;
+      size = 97;
     };
+  };
+
+  xresources.properties = {
+    "Xcursor.theme" = "deepin";
+    "Xcursor.size" = "96";
+    "Xft.dpi" = "155";
   };
 
   home.file = {
     ".config/sway" = {
-      source = ./sway;
+      source = ./desktop/sway;
       recursive = true;
     };
 
     ".config/waybar" = {
-      source = ./waybar;
+      source = ./desktop/sway/waybar;
       recursive = true;
     };
 
     ".config/ranger" = {
-      source = ./ranger;
+      source = ./applications/ranger;
       recursive = true;
     };
 
     # .desktop files
-    ".local/share/applications" = {
-      source = ./applications/desktopfiles;
-      recursive = true;
-    };
+    #".local/share/applications" = {
+    #  source = ./applications/desktopfiles;
+    #  recursive = true;
+    #};
 
-    ".config/Typora/themes" = {
-      source = ./typora/themes;
-      recursive = true;
-    };
+    #".config/Typora/themes" = {
+    #  source = ./typora/themes;
+    #  recursive = true;
+    #};
 
-    ".config/i3/status.toml".source = ./i3/i3status-rust.toml;
+    ".config/i3/status.toml".source = ./desktop/i3/i3status-rust.toml;
   };
 
-  home.file.".config/kitty/kitty.conf".text = ''
+  home.file.".config/applications/kitty/kitty.conf".text = ''
     background ${colors.grey-dark}
     background_opacity 0.88
     font_size 11.0

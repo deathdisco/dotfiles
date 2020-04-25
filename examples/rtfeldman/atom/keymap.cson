@@ -1,0 +1,114 @@
+# Your keymap
+#
+# Atom keymaps work similarly to style sheets. Just as style sheets use
+# selectors to apply styles to elements, Atom keymaps use selectors to associate
+# keystrokes with events in specific contexts. Unlike style sheets however,
+# each selector can only be declared once.
+#
+# You can create a new keybinding in this file by typing "key" and then hitting
+# tab.
+#
+# Here's an example taken from Atom's built-in keymap:
+#
+# 'atom-text-editor':
+#   'enter': 'editor:newline'
+#
+# 'atom-workspace':
+#   'ctrl-shift-p': 'core:move-up'
+#   'ctrl-p': 'core:move-down'
+#
+# You can find more information about keymaps in these guides:
+# * https://atom.io/docs/latest/using-atom-basic-customization#customizing-key-bindings
+# * https://atom.io/docs/latest/behind-atom-keymaps-in-depth
+#
+# This file uses CoffeeScript Object Notation (CSON).
+# If you are unfamiliar with CSON, you can read more about it in the
+# Atom Flight Manual:
+# https://atom.io/docs/latest/using-atom-basic-customization#cson
+
+'atom-text-editor.vim-mode-plus':
+  # Unbind ctrl-t so it can work normally
+  'ctrl-t': 'unset!'
+
+  # Unbind all the ctrl-w bindings so closing tabs can work normally
+  'ctrl-w': 'unset!'
+  'ctrl-w ctrl-h': 'unset!'
+  'ctrl-w h': 'unset!'
+  'ctrl-w left': 'unset!'
+  'ctrl-w ctrl-l': 'unset!'
+  'ctrl-w l': 'unset!'
+  'ctrl-w right': 'unset!'
+  'ctrl-w ctrl-k': 'unset!'
+  'ctrl-w k': 'unset!'
+  'ctrl-w up': 'unset!'
+  'ctrl-w ctrl-j': 'unset!'
+  'ctrl-w j': 'unset!'
+  'ctrl-w down': 'unset!'
+  'ctrl-w ctrl-w': 'unset!'
+  'ctrl-w w': 'unset!'
+  'ctrl-w ctrl-p': 'unset!'
+  'ctrl-w p': 'unset!'
+
+  'ctrl-w ctrl-x': 'unset!'
+  'ctrl-w x': 'unset!'
+
+  'ctrl-w K': 'unset!'
+  'ctrl-w J': 'unset!'
+  'ctrl-w H': 'unset!'
+  'ctrl-w L': 'unset!'
+
+  'ctrl-w ctrl-v': 'unset!'
+  'ctrl-w v': 'unset!'
+  'ctrl-w ctrl-s': 'unset!'
+  'ctrl-w s': 'unset!'
+
+  'ctrl-w z': 'unset!'
+  'ctrl-w Z': 'unset!'
+
+  'ctrl-w =': 'unset!'
+
+  'ctrl-w ctrl-c': 'unset!'
+  'ctrl-w c': 'unset!'
+  'ctrl-w ctrl-q': 'unset!'
+  'ctrl-w q': 'unset!'
+
+'atom-text-editor.vim-mode-plus:not(.normal-mode)':
+  'escape': 'vim-mode-plus:activate-normal-mode'
+
+'atom-text-editor.vim-mode-plus.insert-mode':
+  'ctrl-y': 'vim-mode-plus:copy-from-line-above'
+  'ctrl-r': 'vim-mode-plus:insert-register'
+
+# Make macros work with vim-mode-plus via
+# https://github.com/JunSuzukiJapan/atom-keyboard-macros-vim/issues/5#issuecomment-212849566
+'atom-text-editor.vim-mode-plus:not(.insert-mode)':
+  'Q': 'atom-keyboard-macros-vim:call_last_kbd_macro'
+  ':': 'ex-mode:open'
+  # Use roughly the keybindings from https://github.com/tpope/vim-surround
+  'S': 'vim-mode-plus:surround-smart-word'
+
+# Esc exits Visual Block Mode
+'atom-text-editor.vim-mode-plus-input':
+  'escape': 'vim-mode-plus:input-cancel'
+
+'atom-text-editor.vim-mode-plus.normal-mode':
+  'd s': 'vim-mode-plus:delete-surround'
+  'c s': 'vim-mode-plus:change-surround'
+  'y s': 'vim-mode-plus:surround'
+  'y s w': 'vim-mode-plus:surround-word'
+  'y s m': 'vim-mode-plus:map-surround'
+  # via https://github.com/t9md/atom-vim-mode-plus/issues/303#issuecomment-229297375
+  'm m': 'bookmarks:toggle-bookmark'
+  'm n': 'bookmarks:jump-to-next-bookmark'
+  'm p': 'bookmarks:jump-to-previous-bookmark'
+  'm l': 'bookmarks:view-all'
+  'm c': 'bookmarks:clear-bookmarks'
+
+'atom-text-editor':
+  'ctrl-j': 'linter-ui-default:next'
+  'ctrl-k': 'linter-ui-default:previous'
+
+'atom-workspace':
+  'cmd-escape': 'linter-ui-default:toggle-panel'
+  'ctrl-escape': 'linter-ui-default:toggle-panel'
+  'ctrl-shift-o': 'advanced-open-file:toggle'

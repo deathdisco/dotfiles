@@ -1,9 +1,0 @@
-
-[ ] vim: auto show nerdtreetoggle
-[ ] huawei p30 pro
-[ ] swift rpc
-[ ] kotlin rpc
-[ ] vimwiki
-[ ] i3: login (text), logout (back to text)
-[ ] blender: 2d, video editing, animation, low poly 3d
-# version=1.3

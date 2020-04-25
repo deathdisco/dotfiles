@@ -5,7 +5,7 @@ let
 in { home.packages = with pkgs; [
 
       #cli
-      htop ytop # performance monitor
+      htop ytop gotop # performance monitor
       ranger # file manager
       # hunter # rust based file manager
       vifm # vim file manager
@@ -24,6 +24,7 @@ in { home.packages = with pkgs; [
       exa # ls replacement
 
       # vm
+      libvirt
       virt-manager # qemu based graphical frontend
 
       # web dev stuff
@@ -43,6 +44,7 @@ in { home.packages = with pkgs; [
       # network
       # nmap
       httpie
+      wavemon # wifi monitoring ncurses
 
       # disks
       parted # disk partitioning
@@ -64,6 +66,9 @@ in { home.packages = with pkgs; [
       # terminator
       alacritty
       kitty
+
+      # ncurses toys
+      cmatrix
 
       # crypto
       # wasabiwallet

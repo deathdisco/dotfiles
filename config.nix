@@ -1,5 +1,5 @@
 {
-  imports = [ ./packages/chromium-wayland.nix ];
+  # imports = [ ./packages/chromium-wayland.nix ];
   packageOverrides = pkgs:
     with pkgs; {
       myPackages = pkgs.polybar.override {
@@ -25,20 +25,28 @@
 
   xserver = {
     enable = true;
+    videoDrivers = [ "nvidia" ];
+    screenSection = ''
+      Option "metamodes" "nvidia-auto-select +0+0 { ForceCompositionPipeline = On }"
+    '';
     dpi = 221;
+    # displayManager.gdm.wayland = false;
   };
-
+  # environment.systemPackages = [ pkgs.nvtop ];
+  
   compton = {
     enable = true;
-    backend = "glx";
-    vSync = "opengl";
-    extraOptions = ''
-      paint-on-overlay = true;
-      glx-no-stencil = true;
-      glx-no-rebind-pixmap = true;
-      glx-swap-method = "buffer-age";
-      sw-opti = true;
-      xrender-sync-fence = true;
-    '';
+    fade = true;
+    shadow = true;
+    # backend = "glx";
+    # vSync = "opengl-swc";
+    # extraOptions = ''
+    #   paint-on-overlay = true;
+    #   glx-no-stencil = true;
+    #   glx-no-rebind-pixmap = true;
+    #   glx-swap-method = "buffer-age";
+    #   sw-opti = true;
+    #   xrender-sync-fence = true;
+    # '';
   };
 }

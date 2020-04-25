@@ -1,0 +1,43 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"AceJump",
+		"AdvancedNewFile",
+		"Alignment",
+		"AlignTab",
+		"Better CoffeeScript",
+		"CoffeeScriptHaml",
+		"Elm Language Support",
+		"Git",
+		"MarkdownPreview",
+		"Material Theme",
+		"NeoVintageous",
+		"Oceanic Color Scheme",
+		"Oceanic Next Color Scheme",
+		"Package Control",
+		"PackageDev",
+		"PackageResourceViewer",
+		"PureScript",
+		"Ruby Markers",
+		"Sass",
+		"SASS Build",
+		"Schemr",
+		"SCSS",
+		"Select Quoted",
+		"SmartMarkdown",
+		"Solarized Color Scheme",
+		"SublimeREPL",
+		"Surround",
+		"Theme - Autumn",
+		"Theme - Sodarized",
+		"Trailing Punctuation",
+		"VAlign"
+	],
+	"repositories":
+	[
+	]
+}

@@ -1,9 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Name=BoostNote
-Comment=Markdown Notes
-Exec=appimage-run ~/Applications/boost-note-linux.AppImage %F
-Type=Application
-Icon=~/.icons//boostnote.svg
-Categories=Game; 
-MimeType=application/x-iso9660-appimage;
