@@ -11,6 +11,7 @@ in {
     ./hidpi.nix
     ./packages.nix
     ./desktop/i3/i3.nix
+    ./desktop/awesome/awesome.nix
     # ./desktop/sway/sway.nix
     #./package-sets/development.nix
     ./applications/alacritty.nix

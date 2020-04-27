@@ -101,6 +101,8 @@ in { home.packages = with pkgs; [
       signal-desktop
       tdesktop # telegram
 
+      compton-git
+
       # sound
       pulsemixer # ncurses pulseaudio mixer
       spotify
