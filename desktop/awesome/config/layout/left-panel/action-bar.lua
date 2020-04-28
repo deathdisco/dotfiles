@@ -17,9 +17,13 @@ return function(screen, panel, action_bar_width)
   -- textclock.forced_height = 56
 
   local clock_widget = wibox.container.margin(textclock, dpi(13), dpi(13), dpi(8), dpi(8))
+
+  -- SYSTEM TRAY
   local systray = wibox.widget.systray()
   systray:set_horizontal(false)
-  systray:set_base_size(24)
+  systray:set_base_size(48)
+  -- margin (left right top bottom)
+  local tray_widget = wibox.container.margin(systray, dpi(12), dpi(12), dpi(10), dpi(10));
 
   local menu_icon =
     wibox.widget {
@@ -81,10 +85,14 @@ return function(screen, panel, action_bar_width)
     {
       -- Right widgets
       layout = wibox.layout.fixed.vertical,
-      wibox.container.margin(systray, dpi(10), dpi(10)),
-      require('widget.package-updater'),
+
+      -- System tray (widget, margin-left, margin-right)
+      tray_widget,
+
+      -- require('widget.package-updater'),
       require('widget.wifi'),
       require('widget.battery'),
+
       -- Clock
       clock_widget
     }

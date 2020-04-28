@@ -7,6 +7,8 @@ in {
   #   enable = true;
   # };
 
+  # NEEDS PACKAGE: acpi, xfce4-power-manager-settings
+
   home.file = {
     ".config/awesome" = {
       source = ./config;
