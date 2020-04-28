@@ -41,8 +41,10 @@ _G.tag.connect_signal(
 _G.client.connect_signal(
   'property::fullscreen',
   function(c)
-    c.first_tag.fullscreenMode = c.fullscreen
-    updateBarsVisibility()
+    if c.first_tag then -- note: this seems to be a bug in some desktops, passing nil as c
+      c.first_tag.fullscreenMode = c.fullscreen
+      updateBarsVisibility()
+    end
   end
 )
 

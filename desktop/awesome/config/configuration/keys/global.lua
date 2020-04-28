@@ -69,8 +69,8 @@ local globalKeys =
   ),
   -- Standard program
   awful.key(
-    {modkey},
-    'enter',
+    {'Control'},
+    'space',
     function()
       awful.spawn(apps.default.terminal)
     end,

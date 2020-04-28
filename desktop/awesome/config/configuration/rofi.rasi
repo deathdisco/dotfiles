@@ -11,9 +11,9 @@ configuration {
 }
 
 * {
-	background-color:            rgb(18, 30, 37);
+	background-color:            rgb(20, 20, 27);
 	text-color:                  #d3d7cf;
-	selbg:                       rgb(0, 86, 136);
+	selbg:                       rgb(44, 44, 50);
 	actbg:                       rgb(22, 37, 46);
 	urgbg:                       #e53935;
 	winbg:			     #26c6da;
