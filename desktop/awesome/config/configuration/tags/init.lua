@@ -6,31 +6,43 @@ local tags = {
   {
     icon = icons.chrome,
     type = 'chrome',
-    defaultApp = 'google-chrome-beta',
+    defaultApp = 'brave',
     screen = 1
   },
   {
     icon = icons.code,
     type = 'code',
-    defaultApp = 'code',
+    defaultApp = 'codium',
     screen = 1
   },
   {
     icon = icons.social,
     type = 'social',
-    defaultApp = 'station',
+    defaultApp = 'signal',
     screen = 1
   },
   {
     icon = icons.folder,
     type = 'files',
-    defaultApp = 'nautilus',
+    defaultApp = 'thunar',
+    screen = 1
+  },
+  {
+    icon = icons.folder,
+    type = 'files',
+    defaultApp = 'thunar',
+    screen = 1
+  },
+  {
+    icon = icons.folder,
+    type = 'files',
+    defaultApp = 'ranger',
     screen = 1
   },
   {
     icon = icons.music,
     type = 'music',
-    defaultApp = 'youtube-music',
+    defaultApp = 'spotify',
     screen = 1
   },
   {
