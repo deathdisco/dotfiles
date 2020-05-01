@@ -18,25 +18,25 @@ local tags = {
   {
     icon = icons.social,
     type = 'social',
-    defaultApp = 'signal',
+    defaultApp = 'signal-desktop',
     screen = 1
   },
   {
     icon = icons.folder,
     type = 'files',
-    defaultApp = 'thunar',
+    defaultApp = 'alacritty --command ranger',
     screen = 1
   },
   {
     icon = icons.folder,
     type = 'files',
-    defaultApp = 'thunar',
+    defaultApp = 'alacritty --command ranger',
     screen = 1
   },
   {
     icon = icons.folder,
     type = 'files',
-    defaultApp = 'ranger',
+    defaultApp = 'alacritty --command ranger',
     screen = 1
   },
   {

@@ -93,8 +93,9 @@ in { home.packages = with pkgs; [
 
       # browsers
       brave
+      opera
       qutebrowser
-      vivaldi-ffmpeg-codecs
+      # vivaldi-ffmpeg-codecs
       firefox-wayland
 
       # chat
