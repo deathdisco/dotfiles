@@ -2,8 +2,8 @@
 { config, pkgs, ... }:
 with import ./settings.nix;
 let
-  nixpkgs = (builtins.fetchTarball
-    (builtins.fromJSON (builtins.readFile ./nixpkgs.lock.json)));
+  # nixpkgs = (builtins.fetchTarball
+  #  (builtins.fromJSON (builtins.readFile ./nixpkgs.lock.json)));
   # colors = settings.colors;
 in {
 
@@ -155,6 +155,9 @@ in {
 
 
   home = {
+    packages = [
+      pkgs.brave
+    ];
     sessionVariables = {
       EDITOR = "vim";
       LANG = "en_US.UTF-8";

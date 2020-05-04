@@ -20,6 +20,7 @@ in
     ntfs3g exfat-utils # windows compatibility
     pciutils # lspci
     glxinfo # opengl
+    pmutils # power management, laptop suspend, lid close etc
   ];
 
   # environment.variables = {

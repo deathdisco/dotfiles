@@ -6,7 +6,14 @@ in { home.packages = with pkgs; [
 
       #cli
       htop ytop gotop # performance monitor
+
       ranger # file manager
+      ffmpegthumbnailer # video previews for ranger
+      python38Packages.pdf2image # pdf previews for ranger
+      dragon-drop # drag and drop for cli / x / ranger
+
+      sxiv # suckless image viewer
+
       # hunter # rust based file manager
       vifm # vim file manager
       broot # awesome file manager, sorter, finder
@@ -92,7 +99,7 @@ in { home.packages = with pkgs; [
       vanilla-dmz # scalable cursor
 
       # browsers
-      brave
+      # brave
       opera
       qutebrowser
       # vivaldi-ffmpeg-codecs
