@@ -77,6 +77,8 @@ in { home.packages = with pkgs; [
       # ncurses toys
       cmatrix
 
+      caffeine-ng # prevent sleep (gui)
+
       # crypto
       # wasabiwallet
 
