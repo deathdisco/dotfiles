@@ -87,6 +87,14 @@ local globalKeys =
     {description = 'increase master width factor', group = 'layout'}
   ),
   awful.key(
+    {altkey},
+    'p',
+    function()
+      awful.spawn('flameshot gui')
+    end,
+    {description = 'decrease master width factor', group = 'layout'}
+  ),
+  awful.key(
     {altkey, 'Shift'},
     'h',
     function()

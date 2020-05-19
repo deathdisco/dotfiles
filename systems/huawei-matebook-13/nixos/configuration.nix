@@ -140,25 +140,32 @@ in
   # sound.enable = true;
   # hardware.pulseaudio.enable = true;
   
-  # # Enable the X11 windowing system.
-  # services.xserver = {
-  #   enable = true;
-
-  #   windowManager.i3 = {
-  #     enable = true;
-  #     extraPackages = with pkgs; [
-  #       dmenu #application launcher most people use
-  #       i3status # gives you the default i3 status bar
-  #       i3lock #default i3 screen locker
-  #       i3blocks #if you are planning on using i3blocks over i3status
-  #    ];
-  #   };
-  # };
-
   # text only prompt, no display manager
   # services.xserver.displayManager.startx.enable = true;
 
   # Enable touchpad support.
+  services = {
+    xserver = {
+      synaptics = {
+        enable = true;
+        dev = "/dev/input/event*";
+        twoFingerScroll = true;
+        tapButtons = false;
+        accelFactor = "0.05";
+        buttonsMap = [ 1 3 2 ];
+        palmDetect = true;
+        additionalOptions = ''
+          Option "VertScrollDelta" "-180" # scroll sensitivity, the bigger the negative number = less sensitive
+          Option "HorizScrollDelta" "-180"
+          Option "FingerLow" "40"
+          Option "FingerHigh" "70"
+          Option "Resolution" "270" # Pointer sensitivity, this is for a retina screen, so you'll probably need to change this for an air
+          Option "RightButtonAreaLeft" "0"
+          Option "RightButtonAreaTop" "0"
+        '';
+      };
+    };
+  };
   # services.xserver.libinput.enable = true;
 
   # This value determines the NixOS release with which your system is to be

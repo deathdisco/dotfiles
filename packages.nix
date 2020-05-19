@@ -11,13 +11,18 @@ in { home.packages = with pkgs; [
       ffmpegthumbnailer # video previews for ranger
       python38Packages.pdf2image # pdf previews for ranger
       dragon-drop # drag and drop for cli / x / ranger
+      tmux # terminal multiplexer
+      byobu # alternative text multiplexer
 
       sxiv # suckless image viewer
+
+      atool # decompression
 
       # hunter # rust based file manager
       vifm # vim file manager
       broot # awesome file manager, sorter, finder
       fzf # fuzzy finder and launcher
+      fd # rust alternative to find
       youtube-dl # video downloader
       bat # cat with syntax highlighting
       dust # du replacement

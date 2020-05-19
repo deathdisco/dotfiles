@@ -32,7 +32,7 @@ in {
     dpi = 166;
     layout = "us";
     videoDrivers = [ "intel" ];
-    libinput.enable = true;
+    # libinput.enable = true;
     # desktopManager.default = "none"; # disable desktop manager
     # displayManager.startx.enable = true;
   };
