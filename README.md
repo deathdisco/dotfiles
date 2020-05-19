@@ -1,4 +1,5 @@
 # dotfiles
+[![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
 
 Configuration for NixOS and [home-manager](https://github.com/rycee/home-manager).
 

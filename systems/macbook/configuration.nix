@@ -1,7 +1,9 @@
 { config, pkgs, ... }:
 let
-in
-{
+  homeDir = builtins.getEnv("HOME");
+in {
+  local.darwin.machine = "nombook";
+
   imports = [
     # ./display.nix
     # ./hardware-configuration.nix
