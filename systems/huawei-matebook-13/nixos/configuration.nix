@@ -86,6 +86,7 @@ in
     dejavu_fonts
     source-code-pro
     virtmanager
+    powerline-fonts
   ];
 
   # Configure network proxy if necessary
