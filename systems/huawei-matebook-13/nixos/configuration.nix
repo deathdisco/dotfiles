@@ -85,6 +85,7 @@ in
     font-awesome
     dejavu_fonts
     source-code-pro
+    virtmanager
   ];
 
   # Configure network proxy if necessary
@@ -103,6 +104,8 @@ in
 
   # virtual machines with lxd
   virtualisation.lxd.enable = true;
+  virtualisation.libvirtd.enable = true;
+  # environment.systemPackages = [ pkgs.virtmanager ];
 
   fonts.fontconfig.dpi = 150;
   # services.xserver.dpi = 150;
@@ -116,16 +119,12 @@ in
   # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
 
   # Users
+  # users.defaultUserShell = pkgs.zsh;
   users.users.nom = {
     isNormalUser = true;
     home = "/home/nom";
     extraGroups = [ "wheel" "networkmanager" "audio" "lxd" ];
   };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -143,8 +142,11 @@ in
   # text only prompt, no display manager
   # services.xserver.displayManager.startx.enable = true;
 
-  # Enable touchpad support.
   services = {
+
+    openssh.enable = true;
+
+    # Enable touchpad support.
     xserver = {
       synaptics = {
         enable = true;
@@ -166,12 +168,10 @@ in
       };
     };
   };
-  # services.xserver.libinput.enable = true;
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.
   system.stateVersion = "19.09"; # Did you read the comment?
-
 }

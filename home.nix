@@ -11,18 +11,25 @@ in {
     ./hidpi.nix
     ./packages.nix
     ./desktop/i3/i3.nix
-    ./desktop/awesome/awesome.nix
+    # ./desktop/awesome/awesome.nix
     # ./desktop/sway/sway.nix
     #./package-sets/development.nix
     ./applications/alacritty.nix
     ./applications/kitty.nix
   ];
 
-  programs.bash.sessionVariables.EDITOR = "vim";
-
   # users.extraUsers.USER = {
   #   shell = pkgs.zsh;
   # };
+
+  # Enable zsh
+  programs.zsh.enable = true;
+
+  # Enable Oh-my-zsh
+  programs.zsh.oh-my-zsh = {
+    enable = true;
+    plugins = [ "git" "sudo" ];
+  };
 
   nixpkgs.config = {
     allowUnfree = true;
@@ -45,7 +52,21 @@ in {
     # rofi = {
     #   enable = true;
     #   theme = "${./rofi/themes/material.rasi}";
-    # };
+    # };A
+
+    bash = {
+      enable = true;
+
+      sessionVariables.EDITOR = "vim";
+
+      bashrcExtra = ''
+        UPTIME=`uptime | awk -F'( |,|:)+' '{print ":", $8,"h"}'`
+        GREEN=`tput setaf 2`
+        WHITE=`tput setaf 7`
+        PS1="$GREEN> $WHITE"
+        neofetch --disable gpu
+      '';
+    };
 
     vim = {
       enable = true;
