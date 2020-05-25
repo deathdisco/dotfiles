@@ -5,11 +5,11 @@ let
   colors = settings.colors;
 
 in {
-
+  # font_size doesn't work here....
   home.file.".config/applications/kitty/kitty.conf".text = ''
     background ${colors.grey-dark}
     background_opacity 0.88
-    font_size 11.0
+    font_size 20.0
     input_delay 0
 
     clear_all_shortcuts yes

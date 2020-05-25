@@ -86,10 +86,12 @@ in {
       sessionVariables.EDITOR = "vim";
       bashrcExtra = ''
         alias ls='exa'
-        UPTIME=`uptime | awk -F'( |,|:)+' '{print ":", $8,"h"}'`
+
+        # prompt
         GREEN=`tput setaf 2`
         WHITE=`tput setaf 7`
         PS1="$GREEN\w> $WHITE"
+
         neofetch --disable gpu
       '';
     };
@@ -182,6 +184,11 @@ in {
 
     ".config/ranger" = {
       source = ./applications/ranger;
+      recursive = true;
+    };
+
+    ".templates" = {
+      source = ./templates;
       recursive = true;
     };
 
