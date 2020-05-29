@@ -22,9 +22,14 @@ in { home.packages = with pkgs; [
 
       bspwm
 
+      unrar
+      neofetch
+
       # hunter # rust based file manager
-      vifm # vim file manager
+      # vifm # vim file manager
       broot # awesome file manager, sorter, finder
+      fff # fucking fast file manager
+
       fzf # fuzzy finder and launcher
       fd # rust alternative to find
       youtube-dl # video downloader
@@ -38,6 +43,12 @@ in { home.packages = with pkgs; [
       gitAndTools.tig # c-based curses git client https://github.com/jonas/tig
       ctodo # todo list
       exa # ls replacement
+
+      kakoune # terminal editor
+      ffmpeg
+
+      nox # better nix package manager frontend
+      # chafa # image to ascii converter
 
       # vm
       libvirt
@@ -109,7 +120,7 @@ in { home.packages = with pkgs; [
       opera
       qutebrowser
       # vivaldi-ffmpeg-codecs
-      firefox-wayland
+      # firefox-wayland
 
       # chat
       signal-desktop
@@ -125,6 +136,8 @@ in { home.packages = with pkgs; [
       # video
       mpv
 
+      etcher # usb iso
+
       # graphics
       blender
 
@@ -135,7 +148,6 @@ in { home.packages = with pkgs; [
       # screenshots
       slurp # selector
 
-      # lxappearance # customise gtk2 appearance
       lxappearance-gtk3 # gtk3 appearance
 
       # dirty hax

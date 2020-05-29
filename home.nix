@@ -2,8 +2,6 @@
 { config, pkgs, ... }:
 with import ./settings.nix;
 let
-  # nixpkgs = (builtins.fetchTarball
-  #  (builtins.fromJSON (builtins.readFile ./nixpkgs.lock.json)));
   # colors = settings.colors;
 in {
 
@@ -17,7 +15,12 @@ in {
     ./applications/kitty.nix
     ./applications/zsh.nix
     ./applications/tmux.nix
+
+    # editors
     ./applications/vim.nix
+
+    ./applications/graphics.nix
+
   ];
 
   nixpkgs.config = {
@@ -36,7 +39,6 @@ in {
   programs = {
     home-manager.enable = true;
 
-
     bash = {
       enable = true;
       sessionVariables.EDITOR = "vim";
@@ -49,12 +51,6 @@ in {
         neofetch --disable gpu
       '';
     };
-
-    
-
-    # vscodium-with-extensions = {
-    #   enable = true;
-    # };
   };
 
   xresources.properties = {
@@ -98,12 +94,11 @@ in {
     ".config/i3/status.toml".source = ./desktop/i3/i3status-rust.toml;
   };
 
-
-
   home = {
-    packages = [
-      pkgs.brave
-    ];
+    # packages = with pkgs [
+    #   brave
+    # ];
+
     sessionVariables = {
       EDITOR = "vim";
       LANG = "en_US.UTF-8";
