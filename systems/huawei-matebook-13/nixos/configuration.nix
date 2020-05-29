@@ -127,6 +127,12 @@ in
     extraGroups = [ "wheel" "networkmanager" "audio" "lxd" ];
   };
 
+  users.users.clean = {
+    isNormalUser = true;
+    home = "/home/clean";
+    extraGroups = [ "wheel" "networkmanager" "audio" ];
+  };
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
