@@ -144,7 +144,7 @@ in { home.packages = with pkgs; [
       # gtk themes
       hicolor-icon-theme # required by wofi
       # deepin.deepin-gtk-theme
-      deepin.deepin-icon-theme
-      deepin.dde-launcher
+      # deepin.deepin-icon-theme
+      # deepin.dde-launcher
       capitaine-cursors # mouse cursor
 ];}
