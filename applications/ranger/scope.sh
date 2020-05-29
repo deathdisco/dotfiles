@@ -108,6 +108,11 @@ handle_extension() {
             jq --color-output . "${FILE_PATH}" && exit 5
             python -m json.tool -- "${FILE_PATH}" && exit 5
             ;;
+        
+        ## markdown
+        md)
+            glow -s dark "${FILE_PATH}" && exit 5
+            ;;
 
         ## Direct Stream Digital/Transfer (DSDIFF) and wavpack aren't detected
         ## by file(1).
@@ -265,6 +270,7 @@ handle_image() {
 handle_mime() {
     local mimetype="${1}"
     case "${mimetype}" in
+
         ## RTF and DOC
         text/rtf|*msword)
             ## Preview as text conversion

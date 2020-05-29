@@ -8,7 +8,6 @@ let
 in {
 
   imports = [
-    ./hidpi.nix
     ./packages.nix
     ./desktop/i3/i3.nix
     # ./desktop/awesome/awesome.nix
@@ -17,11 +16,7 @@ in {
     ./applications/alacritty.nix
     ./applications/kitty.nix
   ];
-
-  # users.extraUsers.USER = {
-  #   shell = pkgs.zsh;
-  # };
-
+  
   # Enable zsh
   programs.zsh.enable = true;
 
@@ -88,9 +83,7 @@ in {
         alias ls='exa'
 
         # prompt
-        GREEN=`tput setaf 2`
-        WHITE=`tput setaf 7`
-        PS1="$GREEN\w> $WHITE"
+        PS1="\w> "
 
         neofetch --disable gpu
       '';

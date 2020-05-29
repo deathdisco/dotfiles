@@ -14,9 +14,13 @@ in { home.packages = with pkgs; [
       tmux # terminal multiplexer
       byobu # alternative text multiplexer
 
+      glow # markdown preview
+
       sxiv # suckless image viewer
 
       atool # decompression
+
+      bspwm
 
       # hunter # rust based file manager
       vifm # vim file manager
@@ -73,11 +77,6 @@ in { home.packages = with pkgs; [
 
       # system
       appimage-run
-
-      # terminals
-      # terminator
-      alacritty
-      kitty
 
       # ncurses toys
       cmatrix
@@ -144,7 +143,7 @@ in { home.packages = with pkgs; [
 
       # gtk themes
       hicolor-icon-theme # required by wofi
-      deepin.deepin-gtk-theme
+      # deepin.deepin-gtk-theme
       deepin.deepin-icon-theme
       deepin.dde-launcher
       capitaine-cursors # mouse cursor
