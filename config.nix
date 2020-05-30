@@ -34,19 +34,19 @@
   };
   # environment.systemPackages = [ pkgs.nvtop ];
   
-  compton = {
-    enable = true;
-    fade = true;
-    shadow = true;
-    # backend = "glx";
-    # vSync = "opengl-swc";
-    # extraOptions = ''
-    #   paint-on-overlay = true;
-    #   glx-no-stencil = true;
-    #   glx-no-rebind-pixmap = true;
-    #   glx-swap-method = "buffer-age";
-    #   sw-opti = true;
-    #   xrender-sync-fence = true;
-    # '';
-  };
+  # compton = {
+  #   enable = true;
+  #   fade = true;
+  #   shadow = true;
+  #   # backend = "glx";
+  #   # vSync = "opengl-swc";
+  #   # extraOptions = ''
+  #   #   paint-on-overlay = true;
+  #   #   glx-no-stencil = true;
+  #   #   glx-no-rebind-pixmap = true;
+  #   #   glx-swap-method = "buffer-age";
+  #   #   sw-opti = true;
+  #   #   xrender-sync-fence = true;
+  #   # '';
+  # };
 }

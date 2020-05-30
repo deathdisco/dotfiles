@@ -47,6 +47,8 @@ in { home.packages = with pkgs; [
       kakoune # terminal editor
       ffmpeg
 
+      brave
+
       nox # better nix package manager frontend
       # chafa # image to ascii converter
 

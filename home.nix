@@ -7,6 +7,7 @@ in {
 
   imports = [
     ./packages.nix
+    ./applications/picom.nix
     ./desktop/i3/i3.nix
     # ./desktop/awesome/awesome.nix
     # ./desktop/sway/sway.nix

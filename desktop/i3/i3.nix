@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 let
+  settings = (import ../../settings.nix);
 
   colors = {
     black = "#000000";
@@ -273,15 +274,15 @@ in {
       padding = 20;
       colors = {
         window = {
-          background = "#00000060";
+          background = "#FF0000AA";
           border = "argb:582a373e";
-          separator = "#CCC";
+          separator = "#00000000";
         };
         rows = {
           normal = {
-            background = "#00000060";
+            background = "#00FF0060";
             foreground = "#fafbfc";
-            backgroundAlt = "#00000060";
+            backgroundAlt = "#0000FFAA";
             highlight = {
               background = "#00bcd4";
               foreground = "#fafbfc";
@@ -315,12 +316,12 @@ in {
         modifier = "Mod1";
         modes = { };
 
-        #startup = [
-        #  { command = "${pkgs.feh}/bin/feh --bg-fill ${settings.wallpaper}";
-        #    always = true;
-        #    notification = false;
-        #  }
-        #];
+        startup = [
+         { command = "${pkgs.feh}/bin/feh --bg-fill ${settings.wallpaper}";
+           always = true;
+           notification = false;
+         }
+        ];
 
         bars = [{
           mode = "dock";
@@ -413,6 +414,7 @@ in {
       };
 
       extraConfig = ''
+        exec --no-startup-id "picom"
         default_orientation vertical
         workspace_layout stacking
         exec xmodmap -e "clear lock" #disable caps lock switch
