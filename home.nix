@@ -8,7 +8,7 @@ in {
   imports = [
     ./packages.nix
     ./applications/picom.nix
-    ./desktop/i3/i3.nix
+    #./desktop/i3/i3.nix
     # ./desktop/awesome/awesome.nix
     # ./desktop/sway/sway.nix
     # ./package-sets/development.nix
@@ -20,7 +20,9 @@ in {
     # editors
     ./applications/vim.nix
 
-    ./applications/graphics.nix
+    ./applications/rofi.nix
+
+    #./applications/graphics.nix
 
   ];
 
@@ -38,12 +40,14 @@ in {
   };
 
   programs = {
-    home-manager.enable = true;
+    #home-manager.enable = true;
 
     bash = {
       enable = true;
       sessionVariables.EDITOR = "vim";
       bashrcExtra = ''
+        source ~/.nix-profile/etc/profile.d/nix.sh
+        
         alias ls='exa'
 
         # prompt

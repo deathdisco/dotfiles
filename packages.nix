@@ -53,8 +53,8 @@ in { home.packages = with pkgs; [
       # chafa # image to ascii converter
 
       # vm
-      libvirt
-      virt-manager # qemu based graphical frontend
+      #libvirt
+      #virt-manager # qemu based graphical frontend
 
       # web dev stuff
       gron # json grepper
@@ -80,7 +80,7 @@ in { home.packages = with pkgs; [
       # bashmount # removable disk mount/unmount https://github.com/jamielinux/bashmount
       # diskrsync
       # diskscan # scan disks for errors
-      btrfs-progs # btrfs utilities
+      # btrfs-progs # btrfs utilities
       # ncdu # disk usage
 
       # web services
@@ -107,13 +107,13 @@ in { home.packages = with pkgs; [
       emacs
 
       # text / markdown
-      typora
+      # typora
 
       # i3
       # i3
       # i3status-rust
-      rofi
-      waybar
+      # rofi
+      #waybar
       # wofi grim wl-clipboard imv slurp brightnessctl bemenu
       vanilla-dmz # scalable cursor
 
@@ -128,10 +128,10 @@ in { home.packages = with pkgs; [
       signal-desktop
       tdesktop # telegram
 
-      compton-git
+      #compton-git
 
       # sound
-      pulsemixer # ncurses pulseaudio mixer
+      #pulsemixer # ncurses pulseaudio mixer
       spotify
       # cmus
 

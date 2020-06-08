@@ -13,7 +13,7 @@ in {
     enable = true;
 
     extraPackages = with pkgs; [
-      linuxPackages.nvidia_x11.out
+      # linuxPackages.nvidia_x11.out
       vaapiIntel
       vaapiVdpau
       libvdpau-va-gl
@@ -21,7 +21,7 @@ in {
     driSupport = true;
     driSupport32Bit = true;
 
-    extraPackages32 = with pkgs; [ linuxPackages.nvidia_x11.lib32 ];
+    # extraPackages32 = with pkgs; [ linuxPackages.nvidia_x11.lib32 ];
   };
 
   services.xserver = {
@@ -29,7 +29,6 @@ in {
 
     autorun = false;
     exportConfiguration = true;
-    dpi = 166;
     layout = "us";
     videoDrivers = [ "intel" ];
     # libinput.enable = true;
@@ -37,7 +36,6 @@ in {
     # displayManager.startx.enable = true;
   };
 
-  nixpkgs.config.fonts.fontconfig.dpi = 167;
   # nixpkgs.config.size = 150;
 
   environment.variables = {

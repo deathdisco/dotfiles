@@ -10,29 +10,41 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+  # boot.kernelParams = [ "intel_iommu=on" "iommu=1" "rd.driver.pre=vfio-pci" "vfio-pci.ids=10de:1d10,8086:3ea0" ]; # IOMMU is for PCIe passthrough on KVM/QEMU.
+  # boot.kernelParams = [ "intel_iommu=on" "iommu=1" "rd.driver.pre=vfio-pci" "i915.enable_gvt=1" ]; # IOMMU is for PCIe passthrough on KVM/QEMU.
+  boot.kernelParams = [ "intel_iommu=on" "iommu=1" ]; # IOMMU is for PCIe passthrough on KVM/QEMU.
+  boot.kernelModules = [ "kvm-intel" "vfio_virqfd" "vfio_pci" "vfio_iommu_type1" "vfio" ];
+  # boot.extraModulePackages = [ ];
+  # boot.extraModprobeConfig = ''
+  #   softdep nouveau             pre: vfio-pci
+  #   softdep nvidia              pre: vfio-pci
+  #   options vfio_pci            disable_vga=1
+  #   '';
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-label/nixos";
-      fsType = "ext4";
-    };
+  # https://github.com/dwe11er/nixos-configuration/blob/master/configuration.nix
 
-  fileSystems = {
-    "/drives/data".device = "/dev/disk/by-label/data";
-  };
+  # gvt:
+  # https://github.com/intel/gvt-linux/issues/32
+  # https://nixos.wiki/wiki/IGVT-g
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-label/BOOT";
-      fsType = "vfat";
-    };
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.initrd.preDeviceCommands = ''
+  #   DEVS="10de:1d10 8086:3ea0"
+  #   for DEV in $DEVS; do
+  #     echo "vfio-pci" > /sys/bus/pci/devices/$DEV/driver_override
+  #   done
+  #   modprobe -i vfio-pci
+  # '';
+  boot.blacklistedKernelModules = [ "nouveau" "nvidia" ];
 
-  swapDevices = [
-    { device = "/dev/disk/by-label/swap"; }
-  ];
+  # IOMMU DEVICES:
+  # IOMMU Group 12 01:00.0 3D controller [0302]: NVIDIA Corporation GP108M [GeForce MX150] [10de:1d10] (rev a1)
+  # IOMMU Group 11 00:1f.3 Audio device [0403]: Intel Corporation Cannon Point-LP High Definition Audio Controller [8086:9dc8] (rev 30)
+  # IOMMU Group 1 00:02.0 VGA compatible controller [0300]: Intel Corporation UHD Graphics 620 (Whiskey Lake) [8086:3ea0]
+
+
 
   nix.maxJobs = lib.mkDefault 8;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   # High-DPI console
-  console.font = lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
 }

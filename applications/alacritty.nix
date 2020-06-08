@@ -13,7 +13,7 @@ in {
 
         # env = { "TERM" = "xterm-256color"; };
 
-        background_opacity = 0.95;
+        background_opacity = 0.90;
 
         window = {
           padding.x = 10;
@@ -47,7 +47,7 @@ in {
 
           # Normal colors
           normal = {
-            black = "0x100e23";
+            black = "0x100e11";
             red = "0xff8080";
             green = "0x62d196";
             yellow = "0xffe9aa";

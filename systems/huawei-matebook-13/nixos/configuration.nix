@@ -1,42 +1,58 @@
 # link: sudo ln -s /../systems/huawei-matebook-13/nixos /etc/nixos # NOTE: USE FULL PATHS
 # nixos-rebuild switch
 
-{ config, pkgs, ... }:
-let
-in
-{
-  imports = [
-    ./display.nix
-    ./hardware-configuration.nix
-  ];
+{ config, pkgs, ... }: {
+  imports = [ ./display.nix ];
+  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowBroken = true;
 
+  # ----------------------------------------------------------------------------
+  # FILESYSTEM
+
+  fileSystems."/" = {
+    device = "/dev/disk/by-label/nixos";
+    fsType = "ext4";
+  };
+
+  fileSystems = { "/drives/data".device = "/dev/disk/by-label/data"; };
+
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-label/BOOT";
+    fsType = "vfat";
+  };
+
+  swapDevices = [{ device = "/dev/disk/by-label/swap"; }];
+
+  # ----------------------------------------------------------------------------
+  # USERS
+
+  # users.defaultUserShell = pkgs.zsh;
+  users.users.nom = {
+    isNormalUser = true;
+    home = "/home/nom";
+    extraGroups = [ "wheel" "networkmanager" "audio" "lxd" "libvirtd" ];
+  };
+
+  # ----------------------------------------------------------------------------
   # SYSTEM PACKAGES
+
   environment.systemPackages = with pkgs; [
-    wget vim_configurable zsh git home-manager
+    wget
+    vim_configurable
+    git
+    home-manager
     file # file identification
     diskus # fast alternative to du -sh
     ncdu # ncurses disk usage
-    # gdmap dua # disk usage viewers
-    ntfs3g exfat-utils # windows compatibility
-    pciutils # lspci
+    ntfs3g
+    exfat-utils # windows compatibility
+    pciutils # includes lspci
     glxinfo # opengl
     pmutils # power management, laptop suspend, lid close etc
+    virtmanager # is this necessary?
   ];
 
-  # environment.variables = {
-  #   _JAVA_AWT_WM_NONREPARTENTING = "1";
-  #   GDK_SCALE = "1.5";
-  #   QT_AUTO_SCREEN_SCALE_FACTOR = "1.5";
-  #   XCURSOR_SIZE = "32";
-  #   GDK_DPI_SCALE = "1.4";
-  # };
-
-  environment.variables = {
-    EDITOR = "vim";
-  };
-
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowBroken = true;
+  # programs.home-manager.enable = true;
 
   # remap caps lock to ctrl
   # services.xserver.xkbOptions = "ctrl:swapcaps";
@@ -49,105 +65,109 @@ in
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.loader.grub.useOSProber = true;
 
-  # networking.hostName = "nixos"; # Define your hostname.
-  networking.networkmanager.enable = true;
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # text only prompt, no display manager
+  # services.xserver.displayManager.startx.enable = true;
 
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.interfaces.wlp0s20f3.useDHCP = true;
-  
-  # needed by i3-gaps
-  # environment.pathsToLink = [ "/libexec" ];
+  # ----------------------------------------------------------------------------
+  # NETWORKING
 
+  # networking.proxy.default = "http://user:password@proxy:port/";
+  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+  networking = {
+    networkmanager.enable = true; # networkmanager
+    # wireless.enable = true; # wpa_supplicant
+
+    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    # wireless.iwd.enable = true;
+    # networkmanager.wifi.backend = "iwd";
+    # wireless.networks = {
+    # };
+
+    # networking.wireless.networks = {
+    #   echelon = {
+    #     pskRaw = "dca6d6ed41f4ab5a984c9f55f6f66d4efdc720ebf66959810f4329bb391c5435";
+    #   };
+    # }
+    # # wpa_passphrase ESSID PSK
+
+    useDHCP = false; # deprecated
+    interfaces.wlp0s20f3.useDHCP = true;
+  };
+
+  # ----------------------------------------------------------------------------
   # BLUETOOTH
+
   hardware.bluetooth.enable = true;
   hardware.bluetooth.package = pkgs.bluezFull;
   services.blueman.enable = true;
 
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.support32Bit = true;
+  # ----------------------------------------------------------------------------
+  # AUDIO
 
+  # hardware.pulseaudio.enable = true;
+  # hardware.pulseaudio.support32Bit = true;
+  # sound.enable = true;
+
+  # ----------------------------------------------------------------------------
   # FONTS
+
   fonts.fonts = with pkgs; [
+    dejavu_fonts
+    dina-font
+    fira-code
+    fira-code-symbols
+    font-awesome
+    liberation_ttf
+    mplus-outline-fonts
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
-    liberation_ttf
-    fira-code
-    fira-code-symbols
-    mplus-outline-fonts
-    dina-font
-    proggyfonts
-    nerdfonts
-    font-awesome
-    dejavu_fonts
-    source-code-pro
-    virtmanager
     powerline-fonts
+    proggyfonts
+    source-code-pro
+    terminus_font
+    virtmanager
   ];
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  console.font =
+    lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
 
-  # Select internationalisation properties.
-  # i18n = {
-  #   consoleFont = "Lat2-Terminus16";
-  #   consoleKeyMap = "us";
-  #   defaultLocale = "en_US.UTF-8";
-  # };
-
-  # Set your time zone.
-  time.timeZone = "Australia/Hobart";
-
-  # virtual machines with lxd
-  virtualisation.lxd.enable = true;
-  virtualisation.libvirtd.enable = true;
-  # environment.systemPackages = [ pkgs.virtmanager ];
+  # ----------------------------------------------------------------------------
+  # HIDPI
 
   fonts.fontconfig.dpi = 150;
   # services.xserver.dpi = 150;
+  services.xserver.dpi = 166;
 
-  #programs.home-manager.enable = true;
-  #programs.home-manager.path = https://github.com/rycee/home-manager/archive/release-18.03.tar.gz;
+  # ----------------------------------------------------------------------------
+  # VIRTUAL MACHINES
+  #
+  # https://gitlab.com/xaverdh/nixpkgs/blob/3e7bbe45e828301cca2eff578474eab5e6a889e3/nixos/modules/virtualisation/kvmgt.nix
+  # cat /sys/bus/pci/devices/0000:00:02.0/mdev_supported_types/i915-GVTg_V5_4/description 
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
+  virtualisation = {
+    # lxd.enable = true;
 
-  # Users
-  # users.defaultUserShell = pkgs.zsh;
-  users.users.nom = {
-    isNormalUser = true;
-    home = "/home/nom";
-    extraGroups = [ "wheel" "networkmanager" "audio" "lxd" ];
+    kvmgt.enable = true; # Intel IGVT-g
+    kvmgt.vgpus = {
+      "i915-GVTg_V5_8" = { uuid = "c8c7c576-a5f1-11ea-8ef9-934db6f9cef5"; };
+    };
+    libvirtd.enable = true;
+
+    # libvirtd = {
+    #   enable = true;
+    #   qemuOvmf = true;
+    #   qemuRunAsRoot = false;
+    #   onBoot = "ignore";
+    #   onShutdown = "shutdown";
+    # };
   };
 
-  users.users.clean = {
-    isNormalUser = true;
-    home = "/home/clean";
-    extraGroups = [ "wheel" "networkmanager" "audio" ];
-  };
+  # environment.systemPackages = [ pkgs.virtmanager ];
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
-  
-  # text only prompt, no display manager
-  # services.xserver.displayManager.startx.enable = true;
+  # ----------------------------------------------------------------------------
+  # SERVICES
 
   services = {
 
@@ -175,6 +195,22 @@ in
       };
     };
   };
+
+  # ----------------------------------------------------------------------------
+  # ENVIRONMENT/SHELL
+
+  # Set your time zone.
+  time.timeZone = "Australia/Hobart";
+
+  # environment.variables = {
+  #   _JAVA_AWT_WM_NONREPARTENTING = "1";
+  #   GDK_SCALE = "1.5";
+  #   QT_AUTO_SCREEN_SCALE_FACTOR = "1.5";
+  #   XCURSOR_SIZE = "32";
+  #   GDK_DPI_SCALE = "1.4";
+  # };
+
+  environment.variables = { EDITOR = "vim"; };
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
