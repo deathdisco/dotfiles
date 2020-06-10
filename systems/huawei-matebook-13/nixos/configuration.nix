@@ -2,7 +2,7 @@
 # nixos-rebuild switch
 
 { config, pkgs, ... }: {
-  imports = [ ./display.nix ];
+  # imports = [ ./display.nix ];
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowBroken = true;
 
@@ -139,6 +139,46 @@
   fonts.fontconfig.dpi = 150;
   # services.xserver.dpi = 150;
   services.xserver.dpi = 166;
+
+  environment.variables = {
+    GDK_DPI_SCALE = "1.5";
+    GDK_SCALE = "1.5";
+    QT_AUTO_SCREEN_SCALE_FACTOR = "1.5";
+    XCURSOR_SIZE = "64";
+  };
+
+  # ----------------------------------------------------------------------------
+  # X11
+  
+  services.xserver = {
+    enable = true;
+
+    autorun = false;
+    exportConfiguration = true;
+    layout = "us";
+    videoDrivers = [ "intel" ];
+    # libinput.enable = true;
+    # desktopManager.default = "none"; # disable desktop manager
+    # displayManager.startx.enable = true;
+  };
+
+  # ----------------------------------------------------------------------------
+  # DISPLAY / ACCELERATION
+
+  hardware.opengl = {
+    enable = true;
+
+    extraPackages = with pkgs; [
+      # linuxPackages.nvidia_x11.out
+      vaapiIntel
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
+    driSupport = true;
+    driSupport32Bit = true;
+
+    # extraPackages32 = with pkgs; [ linuxPackages.nvidia_x11.lib32 ];
+  };
 
   # ----------------------------------------------------------------------------
   # VIRTUAL MACHINES
