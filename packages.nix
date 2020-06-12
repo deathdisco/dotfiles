@@ -1,26 +1,24 @@
 { config, pkgs, ... }:
 
-let
-      
-in { home.packages = with pkgs; [
+{ home.packages = with pkgs; [
 
       #cli
       htop ytop gotop # performance monitor
 
       ranger # file manager
-      ffmpegthumbnailer # video previews for ranger
-      python38Packages.pdf2image # pdf previews for ranger
+      # ffmpegthumbnailer # video previews for ranger
+      # python38Packages.pdf2image # pdf previews for ranger
       dragon-drop # drag and drop for cli / x / ranger
       tmux # terminal multiplexer
       byobu # alternative text multiplexer
 
       glow # markdown preview
 
-      sxiv # suckless image viewer
+      # sxiv # suckless image viewer
 
       atool # decompression
 
-      bspwm
+      # bspwm
 
       unrar
       neofetch
@@ -45,9 +43,10 @@ in { home.packages = with pkgs; [
       exa # ls replacement
 
       kakoune # terminal editor
+      amp # rust based cli xi frontend
       ffmpeg
 
-      brave
+      # brave
 
       nox # better nix package manager frontend
       # chafa # image to ascii converter
@@ -68,7 +67,7 @@ in { home.packages = with pkgs; [
 
       # archives
       unzip
-      patchelf # patch elf binaries for nixos
+      # patchelf # patch elf binaries for nixos
 
       # network
       # nmap
@@ -76,7 +75,7 @@ in { home.packages = with pkgs; [
       wavemon # wifi monitoring ncurses
 
       # disks
-      parted # disk partitioning
+      # parted # disk partitioning
       # bashmount # removable disk mount/unmount https://github.com/jamielinux/bashmount
       # diskrsync
       # diskscan # scan disks for errors
@@ -89,22 +88,22 @@ in { home.packages = with pkgs; [
       rtv # reddit cli
 
       # system
-      appimage-run
+      # appimage-run
 
       # ncurses toys
       cmatrix
 
-      caffeine-ng # prevent sleep (gui)
+      # caffeine-ng # prevent sleep (gui)
 
       # crypto
       # wasabiwallet
 
       # ide
-      vscodium
+      # vscodium
       nixfmt
-      sublime3
-      sublime-merge
-      emacs
+      # sublime3
+      # sublime-merge
+      # emacs
 
       # text / markdown
       # typora
@@ -115,50 +114,50 @@ in { home.packages = with pkgs; [
       # rofi
       #waybar
       # wofi grim wl-clipboard imv slurp brightnessctl bemenu
-      vanilla-dmz # scalable cursor
+      # vanilla-dmz # scalable cursor
 
       # browsers
       # brave
-      opera
-      qutebrowser
+      # opera
+      # qutebrowser
       # vivaldi-ffmpeg-codecs
       # firefox-wayland
 
       # chat
-      signal-desktop
-      tdesktop # telegram
+      # signal-desktop
+      # tdesktop # telegram
 
       #compton-git
 
       # sound
       #pulsemixer # ncurses pulseaudio mixer
-      spotify
+      # spotify
       # cmus
 
       # video
-      mpv
+      # mpv
 
-      etcher # usb iso
+      # etcher # usb iso
 
       # graphics
-      blender
+      # blender
 
       # file management
-      xfce.thunar
+      # xfce.thunar
       broot
 
       # screenshots
       slurp # selector
 
-      lxappearance-gtk3 # gtk3 appearance
+      # lxappearance-gtk3 # gtk3 appearance
 
       # dirty hax
-      glibcLocales
+      # glibcLocales
 
       # gtk themes
-      hicolor-icon-theme # required by wofi
+      # hicolor-icon-theme # required by wofi
       # deepin.deepin-gtk-theme
       # deepin.deepin-icon-theme
       # deepin.dde-launcher
-      capitaine-cursors # mouse cursor
+      # capitaine-cursors # mouse cursor
 ];}
