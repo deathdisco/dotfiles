@@ -6,27 +6,38 @@
 { config, pkgs, ... }:
 let
 in {
-  imports = [ ../../applications/alacritty.nix ];
-
-  programs.bash.sessionVariables.EDITOR = "vim";
+  imports = [
+    # ../../applications/alacritty.nix
+    # ../../packages.nix
+  ];
 
   nixpkgs.config = {
     allowUnfree = true;
 
-    environment.variables = {
+    environment.sessionVariables = {
       EDITOR = "vim";
-      PATH = "~/.cargo/bin:$PATH";
+      PATH = "~/.bin:~/.cargo/bin:$PATH";
     };
   };
 
   home = {
-    packages = [
+    packages = with pkgs; [
       # NIX
-      pkgs.nixfmt
+      htop ytop gotop # performance monitor
+      ranger # file manager
+      dragon-drop # drag and drop for cli / x / ranger
+      tmux # terminal multiplexer
+      byobu # alternative text multiplexers
+      glow # markdown preview
+      atool # decompression
+      amp # rust based cli xi frontend
+      unrar
+      neofetch
+
+      nixfmt
 
       # CLI
-      pkgs.ranger
-      pkgs.gnupg1compat # gpg encryption
+      gnupg1compat # gpg encryption
 
       # GUI
     ];
