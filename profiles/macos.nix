@@ -1,21 +1,22 @@
 # macos home-manager configuration
 #
-#   home-manager switch --file ./home.nix
-#   brew install $(cat homebrew.txt)
+#   home-manager switch --file ./macos.nix
 #
 { config, pkgs, ... }:
 {
-  imports = [ ../applications/alacritty.nix ];
-
-  programs.bash.sessionVariables.EDITOR = "vim";
+  imports = [
+	    # ../packages.nix
+      ../applications/alacritty.nix
+      ../applications/zsh.nix
+  ];
 
   nixpkgs.config = {
     allowUnfree = true;
+  };
 
-    environment.variables = {
-      EDITOR = "vim";
-      PATH = "~/.cargo/bin:$PATH";
-    };
+  programs.zsh.sessionVariables = {
+    EDITOR = "amp";
+    PATH = "$HOME/.bin:$HOME/.cargo/bin:$PATH";
   };
 
   home = {

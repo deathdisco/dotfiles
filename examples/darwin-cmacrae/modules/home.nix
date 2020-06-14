@@ -182,7 +182,7 @@ in with pkgs.stdenv; with lib; {
         sessionVariables = { RPROMPT = ""; };
 
         shellAliases = {
-          k = "kubectl";
+          k  = "kubectl";
           kp = "kube-prompt";
           kc = "kubectx";
           kn = "kubens";
