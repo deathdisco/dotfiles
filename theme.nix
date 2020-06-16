@@ -1,8 +1,7 @@
-{ xcursorTheme xcursorPackage xcursorSize }:
-{
- xresources.properties = {
+{ xcursorTheme, xcursorPackage, xcursorSize }: {
+  xresources.properties = {
     "Xcursor.theme" = xcursorTheme;
-    "Xcursor.size"  = xcursorSize;
+    "Xcursor.size" = xcursorSize;
   };
   gtk.gtk2.extraConfig = ''
     gtk-cursor-theme-name="${xcursorTheme}"
@@ -14,6 +13,8 @@
   };
   xsession.initExtra = ''
     # ...other stuff...
-    xsetroot -xcf ${xcursorPackage}/share/icons/${xcursorTheme}/cursors/X_cursor ${toString xcursorSize}
+    xsetroot -xcf ${xcursorPackage}/share/icons/${xcursorTheme}/cursors/X_cursor ${
+      toString xcursorSize
+    }
   '';
 }
