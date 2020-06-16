@@ -1,4 +1,5 @@
-with import <nixpkgs> {};
+with import <nixpkgs> { };
+
 stdenv.mkDerivation rec {
   name = "hunter";
   buildInputs = [ makeWrapper ];
