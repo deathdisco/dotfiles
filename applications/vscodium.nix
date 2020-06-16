@@ -15,6 +15,12 @@ let
         sha256 = "04niirbkrzsm4wk22pr5dcfymnhqq4vn25xwkf5xvbpw32v1bpp3";
       }
       {
+        name = "Bookmarks";
+        publisher = "alefragnani";
+        version = "11.3.0";
+        sha256 = "1rw2xnbdrjsqy5jkkpydpipic49gy00w2266n6sgsv7fin8shb3n";
+      }
+      {
         name = "remote-ssh-edit";
         publisher = "ms-vscode-remote";
         version = "0.47.2";

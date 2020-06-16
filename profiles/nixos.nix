@@ -1,4 +1,3 @@
-# check https://github.com/balsoft/nixos-config
 { config, pkgs, ... }:
 with import ../settings.nix; {
   imports = [
@@ -12,14 +11,10 @@ with import ../settings.nix; {
     ../applications/kitty.nix
     ../applications/zsh.nix
     ../applications/tmux.nix
-
     # editors
     ../applications/vim.nix
-
     ../applications/rofi.nix
-
     #./applications/graphics.nix
-
     ../applications/vscodium.nix
   ];
 
