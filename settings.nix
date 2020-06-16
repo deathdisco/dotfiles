@@ -1,7 +1,7 @@
 {
   email = "deathdisco@tutanota.com";
   github-username = "monomadic";
-  wallpaper = "~/.config/nixpkgs/wallpapers/ascii-skull.png";
+  wallpaper = "~/.config/dotfiles/wallpapers/hexagons.jpg";
   colors = {
     black = "#000000";
     white = "#FFFFFF";

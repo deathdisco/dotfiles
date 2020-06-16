@@ -267,33 +267,8 @@ in {
     '';
   };
 
-  programs = {
-    rofi = {
-      enable = true;
-      font = "FuraCode Nerd Font 18";
-      padding = 20;
-      colors = {
-        window = {
-          background = "#FF0000AA";
-          border = "argb:582a373e";
-          separator = "#00000000";
-        };
-        rows = {
-          normal = {
-            background = "#00FF0060";
-            foreground = "#fafbfc";
-            backgroundAlt = "#0000FFAA";
-            highlight = {
-              background = "#00bcd4";
-              foreground = "#fafbfc";
-            };
-          };
-        };
-      };
-    };
-  };
-
   home.packages = with pkgs; [
+    glibcLocales # for rofi
     feh # image viewer, also for desktop wallpaper
     flameshot # image capture x11 only
     xorg.xauth
@@ -305,6 +280,12 @@ in {
   # home.file = {
   # 	".config/rofi/themes.toml".source = ./i3/i3status-rust.toml;
   # };
+
+  #xsession.pointerCursor = {
+  #  package = pkgs.capitaine-cursors;
+  #  name = "capitaine-cursors";
+  #  size = 16;
+  #};
 
   xsession = {
     enable = true;

@@ -1,31 +1,31 @@
 # check https://github.com/balsoft/nixos-config
 { config, pkgs, ... }:
-with import ./settings.nix;
-let
-  # colors = settings.colors;
-in {
-
+with import ../settings.nix; {
   imports = [
-    ./packages.nix
-    ./applications/picom.nix
-    #./desktop/i3/i3.nix
+    ../packages.nix
+    ../applications/picom.nix
+    ../desktop/i3/i3.nix
     # ./desktop/awesome/awesome.nix
     # ./desktop/sway/sway.nix
     # ./package-sets/development.nix
-    ./applications/alacritty.nix
-    ./applications/kitty.nix
-    ./applications/zsh.nix
-    ./applications/tmux.nix
+    ../applications/alacritty.nix
+    ../applications/kitty.nix
+    ../applications/zsh.nix
+    ../applications/tmux.nix
 
     # editors
-    ./applications/vim.nix
+    ../applications/vim.nix
 
-    ./applications/rofi.nix
+    ../applications/rofi.nix
 
     #./applications/graphics.nix
 
+    ../applications/vscodium.nix
   ];
 
+  nixpkgs.config.xsession.pointerCursor = nixpkgs.capitaine-cursors;
+
+  # should likely be in nixos config, not hm
   nixpkgs.config = {
     allowUnfree = true;
 
@@ -40,14 +40,14 @@ in {
   };
 
   programs = {
-    #home-manager.enable = true;
+    home-manager.enable = true; # required by home manager
 
     bash = {
       enable = true;
       sessionVariables.EDITOR = "vim";
       bashrcExtra = ''
         source ~/.nix-profile/etc/profile.d/nix.sh
-        
+
         alias ls='exa'
 
         # prompt
@@ -59,29 +59,29 @@ in {
   };
 
   xresources.properties = {
-    "Xcursor.theme" = "deepin";
-    "Xcursor.size" = "96";
-    "Xft.dpi" = "155";
+    "Xcursor.theme" = "capitaine-cursors";
+    "Xcursor.size" = "76";
+    "Xft.dpi" = "155"; # application dpi for most X11 apps
   };
 
   home.file = {
     ".config/sway" = {
-      source = ./desktop/sway;
+      source = ../desktop/sway;
       recursive = true;
     };
 
     ".config/waybar" = {
-      source = ./desktop/sway/waybar;
+      source = ../desktop/sway/waybar;
       recursive = true;
     };
 
     ".config/ranger" = {
-      source = ./applications/ranger;
+      source = ../applications/ranger;
       recursive = true;
     };
 
     ".templates" = {
-      source = ./templates;
+      source = ../templates;
       recursive = true;
     };
 
@@ -96,13 +96,11 @@ in {
     #  recursive = true;
     #};
 
-    ".config/i3/status.toml".source = ./desktop/i3/i3status-rust.toml;
+    ".config/i3/status.toml".source = ../desktop/i3/i3status-rust.toml;
   };
 
   home = {
-    # packages = with pkgs [
-    #   brave
-    # ];
+    packages = with pkgs; [ brave sublime3 capitaine-cursors ];
 
     sessionVariables = {
       EDITOR = "vim";

@@ -3,7 +3,7 @@
   programs = {
     rofi = {
       enable = true;
-      font = "FuraCode Nerd Font 18";
+      font = "Source Code Pro 18";
       padding = 20;
       colors = {
         window = {

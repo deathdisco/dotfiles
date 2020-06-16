@@ -6,22 +6,9 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowBroken = true;
 
-  # ----------------------------------------------------------------------------
-  # FILESYSTEM
-
-  fileSystems."/" = {
-    device = "/dev/disk/by-label/nixos";
-    fsType = "ext4";
-  };
-
-  fileSystems = { "/drives/data".device = "/dev/disk/by-label/data"; };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-label/BOOT";
-    fsType = "vfat";
-  };
-
-  swapDevices = [{ device = "/dev/disk/by-label/swap"; }];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # ----------------------------------------------------------------------------
   # USERS
@@ -58,11 +45,11 @@
   # services.xserver.xkbOptions = "ctrl:swapcaps";
 
   # Use the systemd-boot EFI boot loader.
-  # boot.loader.systemd-boot.enable = true;
-  boot.loader.grub.device = "nodev";
-  boot.loader.grub.efiSupport = true;
+  boot.loader.systemd-boot.enable = true;
+  #boot.loader.grub.device = "nodev";
+  #boot.loader.grub.efiSupport = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  #boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.loader.grub.useOSProber = true;
 
   # text only prompt, no display manager
@@ -130,37 +117,25 @@
     virtmanager
   ];
 
-  console.font =
-    lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
+  # console.font =
+  # lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
 
   # ----------------------------------------------------------------------------
   # HIDPI
 
-  fonts.fontconfig.dpi = 150;
+  #fonts.fontconfig.dpi = 150;
   # services.xserver.dpi = 150;
-  services.xserver.dpi = 166;
+  #services.xserver.dpi = 166;
 
-  environment.variables = {
-    GDK_DPI_SCALE = "1.5";
-    GDK_SCALE = "1.5";
-    QT_AUTO_SCREEN_SCALE_FACTOR = "1.5";
-    XCURSOR_SIZE = "64";
-  };
+  #environment.variables = {
+  #  GDK_DPI_SCALE = "0.5";
+  #  GDK_SCALE = "0.5";
+  #  QT_AUTO_SCREEN_SCALE_FACTOR = "1.5";
+  #  XCURSOR_SIZE = "64";
+  #};
 
   # ----------------------------------------------------------------------------
   # X11
-  
-  services.xserver = {
-    enable = true;
-
-    autorun = false;
-    exportConfiguration = true;
-    layout = "us";
-    videoDrivers = [ "intel" ];
-    # libinput.enable = true;
-    # desktopManager.default = "none"; # disable desktop manager
-    # displayManager.startx.enable = true;
-  };
 
   # ----------------------------------------------------------------------------
   # DISPLAY / ACCELERATION
@@ -184,7 +159,7 @@
   # VIRTUAL MACHINES
   #
   # https://gitlab.com/xaverdh/nixpkgs/blob/3e7bbe45e828301cca2eff578474eab5e6a889e3/nixos/modules/virtualisation/kvmgt.nix
-  # cat /sys/bus/pci/devices/0000:00:02.0/mdev_supported_types/i915-GVTg_V5_4/description 
+  # cat /sys/bus/pci/devices/0000:00:02.0/mdev_supported_types/i915-GVTg_V5_4/description
 
   virtualisation = {
     # lxd.enable = true;
@@ -215,6 +190,19 @@
 
     # Enable touchpad support.
     xserver = {
+
+      enable = true;
+
+      autorun = false;
+      exportConfiguration = true;
+      layout = "us";
+      videoDrivers = [ "intel" ];
+      # libinput.enable = true;
+      displayManager.defaultSession = "none+i3"; # disable desktop manager
+      desktopManager.xterm.enable = false;
+      displayManager.lightdm.enable = true;
+      windowManager.i3.enable = true;
+      displayManager.startx.enable = true;
       synaptics = {
         enable = true;
         dev = "/dev/input/event*";
@@ -242,19 +230,7 @@
   # Set your time zone.
   time.timeZone = "Australia/Hobart";
 
-  # environment.variables = {
-  #   _JAVA_AWT_WM_NONREPARTENTING = "1";
-  #   GDK_SCALE = "1.5";
-  #   QT_AUTO_SCREEN_SCALE_FACTOR = "1.5";
-  #   XCURSOR_SIZE = "32";
-  #   GDK_DPI_SCALE = "1.4";
-  # };
-
   environment.variables = { EDITOR = "vim"; };
 
-  # This value determines the NixOS release with which your system is to be
-  # compatible, in order to avoid breaking some software such as database
-  # servers. You should change this only after NixOS release notes say you
-  # should.
   system.stateVersion = "19.09"; # Did you read the comment?
 }

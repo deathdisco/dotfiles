@@ -25,9 +25,9 @@ in {
           size = 10.0;
           use_thin_strokes = true;
 
-          normal.family = "FuraCode Nerd Font";
-          bold.family = "FuraCode Nerd Font";
-          italic.family = "FuraCode Nerd Font";
+          #normal.family = "FuraCode Nerd Font";
+          #bold.family = "FuraCode Nerd Font";
+          #italic.family = "FuraCode Nerd Font";
         };
 
         # cursor.style = "Beam";
