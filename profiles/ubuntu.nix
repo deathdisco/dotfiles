@@ -10,6 +10,7 @@
 			sessionVariables = {
 				EDITOR = "vim";
 				MOZ_ENABLE_WAYLAND = "1";
+				QT_QPA_PLATFORM = "wayland";
 				XDG_DATA_DIRS = "$XDG_DATA_DIRS:$HOME/.nix-profile/share/";
 			};
 			bashrcExtra = ''
@@ -35,8 +36,7 @@
 	};
 
   	imports = [
-	    ../../../packages.nix
-	    # ../../../packages/zrs.nix
+	    ../packages.nix
 	    # ./applications/alacritty.nix
 	    # ./applications/kitty.nix
 	    # ./applications/tmux.nix
