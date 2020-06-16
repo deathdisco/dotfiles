@@ -8,7 +8,7 @@
       ranger # file manager
       # ffmpegthumbnailer # video previews for ranger
       # python38Packages.pdf2image # pdf previews for ranger
-      dragon-drop # drag and drop for cli / x / ranger
+      # dragon-drop # drag and drop for cli / x / ranger
       tmux # terminal multiplexer
       byobu # alternative text multiplexer
 
@@ -35,7 +35,7 @@
       dust # du replacement
       ripgrep # fast rust grepping tool
       megatools # mega.nz cli tools
-      autojump # z/j directory jump for zsh
+      # autojump # z/j directory jump for zsh
       peco # output/list filtering
       tealdeer # rust tldr client - man page summarising https://github.com/dbrgn/tealdeer
       gitAndTools.tig # c-based curses git client https://github.com/jonas/tig
@@ -72,7 +72,7 @@
       # network
       # nmap
       httpie
-      wavemon # wifi monitoring ncurses
+      # wavemon # wifi monitoring ncurses
 
       # disks
       # parted # disk partitioning
