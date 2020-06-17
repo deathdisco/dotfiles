@@ -13,4 +13,7 @@
     sea-blue = "rgb(82, 157, 242)";
     neon-green = "rgb(60, 255, 136)";
   };
+  fonts = {
+    mono = "Mono Sans";
+  };
 }

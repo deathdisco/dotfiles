@@ -10,23 +10,24 @@
   "Ctrl+space" = "exec alacritty";
 
   # change focus
-  "${mod}+j" = "focus left";
   "${mod}+n" = "focus down";
-  "${mod}+p" = "focus up";
-  "${mod}+Semicolon" = "focus right";
+  # "${mod}+p" = "focus up";
+  # "${mod}+bracketleft" = "focus left";
+  # "${mod}+bracketright" = "focus right";
 
   # change container layout (stacked, tabbed, toggle split)
   "${mod}+e" = "layout stacking";
   "${mod}+r" = "layout tabbed";
   "${mod}+t" = "layout toggle split";
+  "${mod}+w" = "floating toggle";
 
   # window management
   "${mod}+q" = "kill";
   "${mod}+Return" = "fullscreen toggle";
 
   # switch to workspace
-  "${mod}+Tab" = "workspace next";
-  "${mod}+Shift+Tab" = "workspace prev";
+  # "${mod}+Tab" = "workspace next";
+  # "${mod}+Shift+Tab" = "workspace prev";
   "${mod}+1" = "workspace 1";
   "${mod}+2" = "workspace 2";
   "${mod}+3" = "workspace 3";
