@@ -397,14 +397,13 @@ in {
       extraConfig = ''
         exec --no-startup-id picom --config ~/.picom.conf
         default_orientation vertical
+        focus_follows_mouse no
         workspace_layout tabbed
         for_window [class="[.]*"] floating enable
         exec xmodmap -e "clear lock" #disable caps lock switch
         exec xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
-        bindcode Mod1+34 focus left
-        bindcode Mod1+35 focus right
-        bindcode Mod1+shift+34 workspace prev
-        bindcode Mod1+shift+35 workspace next
+        bindcode Mod1+34 workspace prev
+        bindcode Mod1+35 workspace next
       '';
     };
   };

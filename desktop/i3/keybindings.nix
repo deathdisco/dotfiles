@@ -12,8 +12,8 @@
   # change focus
   "${mod}+n" = "focus down";
   # "${mod}+p" = "focus up";
-  # "${mod}+bracketleft" = "focus left";
-  # "${mod}+bracketright" = "focus right";
+  "${mod}+shift+tab" = "focus left";
+  "${mod}+tab" = "focus right";
 
   # change container layout (stacked, tabbed, toggle split)
   "${mod}+e" = "layout stacking";
