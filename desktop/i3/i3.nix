@@ -3,6 +3,10 @@
 let
   settings = (import ../../settings.nix);
 
+  imports = [
+    ../applications/picom.nix
+  ];
+
   colors = {
     black = "#000000";
     white = "#FFFFFF";
@@ -300,7 +304,7 @@ in {
 
         bars = [{
           mode = "dock";
-          position = "top";
+          position = "bottom";
           statusCommand =
             "${pkgs.i3status-rust}/bin/i3status-rs ${./i3status-rust.toml}";
 
@@ -388,10 +392,13 @@ in {
         };
       };
 
+      # exec --no-startup-id "picom"
+
       extraConfig = ''
-        exec --no-startup-id "picom"
+        exec --no-startup-id picom --config ~/.picom.conf
         default_orientation vertical
         workspace_layout tabbed
+        for_window [class="[.]*"] floating enable
         exec xmodmap -e "clear lock" #disable caps lock switch
         exec xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
         bindcode Mod1+34 focus left

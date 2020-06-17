@@ -2,7 +2,6 @@
 with import ../settings.nix; {
   imports = [
     ../packages.nix
-    ../applications/picom.nix
     ../desktop/i3/i3.nix
     # ./desktop/awesome/awesome.nix
     # ./desktop/sway/sway.nix
@@ -32,6 +31,28 @@ with import ../settings.nix; {
     environment.profileVariables = (i: { PATH = [ "${i}/cargo/bin" ]; });
 
     fonts.fontconfig.enable = true;
+  };
+
+  services.picom = {
+    enable = true;
+    experimentalBackends = true;
+    
+    blur = true;
+    blurExclude = [ "window_type = 'dock'" "window_type = 'desktop'" ];
+
+    shadow = false;
+    shadowOffsets = [ (-3) (-3) ];
+    shadowOpacity = "0.75";
+    noDockShadow = true;
+    noDNDShadow = true;
+
+    activeOpacity = "1.0";
+    inactiveOpacity = "1.0";
+    menuOpacity = "1.0";
+
+    backend = "glx";
+
+    vSync = true;
   };
 
   programs = {
@@ -80,6 +101,10 @@ with import ../settings.nix; {
       recursive = true;
     };
 
+    ".picom.conf" = {
+      source = ../desktop/i3/picom.conf;
+    };
+
     # .desktop files
     #".local/share/applications" = {
     #  source = ./applications/desktopfiles;
@@ -95,7 +120,13 @@ with import ../settings.nix; {
   };
 
   home = {
-    packages = with pkgs; [ brave sublime3 capitaine-cursors tdesktop signal-desktop ];
+    packages = with pkgs; [
+      brave
+      sublime3
+      capitaine-cursors
+      tdesktop
+      signal-desktop
+    ];
 
     sessionVariables = {
       EDITOR = "vim";

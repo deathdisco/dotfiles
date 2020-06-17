@@ -1,10 +1,26 @@
 { pkgs, ... }:
 {
-  services.picom = {
-    enable = true;
-    experimentalBackends = true;
-    blur = true;
-  };
+  # services.picom = {
+  #   enable = true;
+  #   experimentalBackends = true;
+    
+  #   blur = true;
+  #   blurExclude = [ "window_type = 'dock'" "window_type = 'desktop'" ];
+
+  #   shadow = true;
+  #   shadowOffsets = [ (-3) (-3) ];
+  #   shadowOpacity = "0.75";
+  #   noDockShadow = true;
+  #   noDNDShadow = true;
+
+  #   activeOpacity = "1.0";
+  #   inactiveOpacity = "0.8";
+  #   menuOpacity = "0.8";
+
+  #   # backend = "glx";
+
+  #   vSync = true;
+  # };
 }
 
 # { 
