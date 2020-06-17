@@ -95,7 +95,7 @@ with import ../settings.nix; {
   };
 
   home = {
-    packages = with pkgs; [ brave sublime3 capitaine-cursors ];
+    packages = with pkgs; [ brave sublime3 capitaine-cursors tdesktop signal-desktop ];
 
     sessionVariables = {
       EDITOR = "vim";

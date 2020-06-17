@@ -13,8 +13,6 @@ stdenv.mkDerivation rec {
 
   installPhase = ''
     mkdir -p $out/bin
-    echo "ok" $PWD
-    find .
     cp ./3mux $out/bin/3mux
     chmod +x $out/bin/3mux
   '';
