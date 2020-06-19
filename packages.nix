@@ -23,6 +23,8 @@
       unrar
       neofetch
 
+      # buku # bookmark manager
+
       # hunter # rust based file manager
       # vifm # vim file manager
       broot # awesome file manager, sorter, finder

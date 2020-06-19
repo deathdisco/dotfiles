@@ -7,6 +7,8 @@
   "${mod}+d" = "exec dmenu_run";
   "${mod}+space" =
     "exec LOCALE_ARCHIVE=$HOME/.nix-profile/lib/locale/locale-archive rofi -show drun";
+  "${mod}+shift+space" =
+    "exec rofi -show fb -modi fb:$HOME/.config/rofi/shortcuts.sh";
   "Ctrl+space" = "exec alacritty";
 
   # change focus

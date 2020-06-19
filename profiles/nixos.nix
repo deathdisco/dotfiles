@@ -2,10 +2,7 @@
 with import ../settings.nix; {
   imports = [
     ../packages.nix
-    ../desktop/i3/i3.nix
-    # ./desktop/awesome/awesome.nix
-    # ./desktop/sway/sway.nix
-    # ./package-sets/development.nix
+    ../window-managers/i3/i3.nix
     ../applications/alacritty.nix
     ../applications/kitty.nix
     ../applications/zsh.nix
@@ -13,7 +10,6 @@ with import ../settings.nix; {
     # editors
     ../applications/vim.nix
     ../applications/rofi.nix
-    #./applications/graphics.nix
     ../applications/vscodium.nix
   ];
 
@@ -63,8 +59,8 @@ with import ../settings.nix; {
       sessionVariables.EDITOR = "vim";
       bashrcExtra = ''
         alias ls='exa'
-
-        # prompt
+        alias j='zrs'
+        alias z='zrs'
         PS1="\w> "
       '';
     };
@@ -78,12 +74,12 @@ with import ../settings.nix; {
 
   home.file = {
     ".config/sway" = {
-      source = ../desktop/sway;
+      source = ../window-managers/sway;
       recursive = true;
     };
 
     ".config/waybar" = {
-      source = ../desktop/sway/waybar;
+      source = ../window-managers/sway/waybar;
       recursive = true;
     };
 
@@ -98,7 +94,7 @@ with import ../settings.nix; {
     };
 
     ".picom.conf" = {
-      source = ../desktop/i3/picom.conf;
+      source = ../window-managers/i3/picom.conf;
     };
 
     # .desktop files
@@ -112,7 +108,7 @@ with import ../settings.nix; {
     #  recursive = true;
     #};
 
-    ".config/i3/status.toml".source = ../desktop/i3/i3status-rust.toml;
+    ".config/i3/status.toml".source = ../window-managers/i3/i3status-rust.toml;
   };
 
   home = {

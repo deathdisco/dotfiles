@@ -320,9 +320,9 @@ in {
               text = "${colors.white}";
             };
             activeWorkspace = {
-              background = "${colors.black}";
-              border = "${colors.black}";
-              text = "${colors.grey-light}";
+              background = "${colors.white}";
+              border = "${colors.white}";
+              text = "${colors.black}";
             };
             inactiveWorkspace = {
               background = "${colors.black}";
@@ -350,9 +350,9 @@ in {
         colors = {
           background = "${colors.black}";
           focused = {
-            border = "${colors.black}";
-            background = "${colors.grey-dark}";
-            text = "${colors.white}";
+            border = "${colors.grey-medium}";
+            background = "${colors.grey-medium}";
+            text = "${colors.black}";
             indicator = "${colors.grey-medium}";
             childBorder = "${colors.grey-medium}";
           };
