@@ -62,14 +62,10 @@ with import ../settings.nix; {
       enable = true;
       sessionVariables.EDITOR = "vim";
       bashrcExtra = ''
-        source ~/.nix-profile/etc/profile.d/nix.sh
-
         alias ls='exa'
 
         # prompt
         PS1="\w> "
-
-        neofetch --disable gpu
       '';
     };
   };
