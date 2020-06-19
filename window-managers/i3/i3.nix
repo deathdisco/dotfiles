@@ -402,6 +402,7 @@ in {
         for_window [class="[.]*"] floating enable
         exec xmodmap -e "clear lock" #disable caps lock switch
         exec xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
+        # xev -event keyboard
         bindcode Mod1+34 workspace prev
         bindcode Mod1+35 workspace next
       '';

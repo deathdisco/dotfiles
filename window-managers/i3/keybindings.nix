@@ -10,12 +10,13 @@
   "${mod}+shift+space" =
     "exec rofi -show fb -modi fb:$HOME/.config/rofi/shortcuts.sh";
   "Ctrl+space" = "exec alacritty";
+  "${mod}+s" = "exec rofi -show windowcd";
 
   # change focus
   "${mod}+n" = "focus down";
   # "${mod}+p" = "focus up";
-  "${mod}+shift+tab" = "focus left";
-  "${mod}+tab" = "focus right";
+  "${mod}+shift+Tab" = "focus right";
+  "${mod}+Tab" = "focus left";
 
   # change container layout (stacked, tabbed, toggle split)
   "${mod}+e" = "layout stacking";
