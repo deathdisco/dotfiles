@@ -82,15 +82,24 @@ in {
     extensions = extensions;
     userSettings = {
       "update.channel" = "none";
+      "files.insertFinalNewline": true,
       "workbench.colorTheme" = "NorthernLights";
       "workbench.editor.showIcons" = false;
-      "git.enableSmartCommit" = true;
+
+      "git.enableSmartCommit" = false;
+      "github.gitAuthentication" = false; # otherwise errors occur
+      "git.terminalAuthentication" = true;
+
       "extensions.autoCheckUpdates" = false;
       "extensions.autoUpdate" = false;
       "window.zoomLevel" = 0;
       "update.mode" = "none";
       "rust-client.autoStartRls" = false;
       "rust.rustfmt_path" = "/home/nom/.nix-profile/bin/rustfmt";
+      "files.exclude": {
+          ".yarn": true,
+          "**/*.pyc": true
+      },
     };
   };
 }
