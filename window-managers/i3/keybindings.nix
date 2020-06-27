@@ -11,6 +11,7 @@
     "exec rofi -show fb -modi fb:$HOME/.config/rofi/shortcuts.sh";
   "Ctrl+space" = "exec alacritty";
   "${mod}+s" = "exec rofi -show windowcd";
+  "Super_L" = "exec skippy-xd";
 
   # change focus
   "${mod}+n" = "focus down";

@@ -8,10 +8,19 @@ icons = "awesome" # none | awesome | material
 [theme]
 name = "modern"
 
+[theme.overrides]
+idle_bg = "#123456"
+idle_fg = "#abcdef"
+
 [[block]]
 block = "custom"
 command = "curl -s 'https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT' | jq -r .price | xargs printf \" %.*f\n\" \"$p\""
 interval = 100
+
+[[block]]
+block = "custom"
+on_click = "skippy-xd"
+command = "echo 'hello'"
 
 [[block]]
 block = "disk_space"

@@ -2,15 +2,14 @@
 {
   # common tasks launcher script
   # run with: rofi -show fb -modi fb:$HOME/.config/rofi/shortcuts.sh
+  # place shortcuts in a ~/.shortcuts text file
   home.file.".config/rofi/shortcuts.sh" = {
     executable = true;
     text = ''
       #!/usr/bin/env bash
 
       if [[ -z "$@" ]]; then
-          echo "codium $HOME/.config/dotfiles/"
-          echo "codium $HOME/Notes"
-          echo "home-manager switch --file $HOME/.config/dotfiles/profiles/nixos.nix"
+        cat "$HOME/.shortcuts"
       else
           $@
       fi

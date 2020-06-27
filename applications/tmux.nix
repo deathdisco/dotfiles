@@ -2,6 +2,7 @@
   programs = {
     tmux = {
       enable = true;
+      keyMode = "emacs";
       extraConfig = ''
         set -g status-interval 2
         set -g status-left "#S #[fg=green,bg=black]#(tmux-mem-cpu-load --colors --interval 2)#[default]"

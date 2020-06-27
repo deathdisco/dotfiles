@@ -7,6 +7,7 @@ with import ../settings.nix; {
     ../applications/kitty.nix
     ../applications/zsh.nix
     ../applications/tmux.nix
+    ../applications/skippy.nix
     # editors
     ../applications/vim.nix
     ../applications/rofi.nix
@@ -61,6 +62,7 @@ with import ../settings.nix; {
         alias ls='exa'
         alias j='zrs'
         alias z='zrs'
+        source /home/nom/.local/share/zrs/z.sh
         PS1="\w> "
       '';
     };
