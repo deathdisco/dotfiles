@@ -81,25 +81,28 @@ in {
     package = pkgs.vscodium;
     extensions = extensions;
     userSettings = {
-      "update.channel" = "none";
-      "files.insertFinalNewline": true,
-      "workbench.colorTheme" = "NorthernLights";
-      "workbench.editor.showIcons" = false;
-
-      "git.enableSmartCommit" = false;
-      "github.gitAuthentication" = false; # otherwise errors occur
-      "git.terminalAuthentication" = true;
-
       "extensions.autoCheckUpdates" = false;
       "extensions.autoUpdate" = false;
-      "window.zoomLevel" = 0;
-      "update.mode" = "none";
+
+      "files.insertFinalNewline" = true;
+      "files.exclude" = {
+          ".yarn" = true;
+          "**/*.pyc" = true;
+      };
+
+      "git.enableSmartCommit" = false;
+      "git.terminalAuthentication" = true;
+      "github.gitAuthentication" = false; # otherwise errors occur
+
       "rust-client.autoStartRls" = false;
       "rust.rustfmt_path" = "/home/nom/.nix-profile/bin/rustfmt";
-      "files.exclude": {
-          ".yarn": true,
-          "**/*.pyc": true
-      },
+      
+      "update.channel" = "none";
+      "update.mode" = "none";
+      "window.zoomLevel" = 0;
+
+      "workbench.colorTheme" = "NorthernLights";
+      "workbench.editor.showIcons" = false;
     };
   };
 }
