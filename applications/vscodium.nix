@@ -75,12 +75,16 @@ let
       }
     ];
 in {
-  home.packages = [ pkgs.rustfmt pkgs.cargo ];
+  home.packages = [ pkgs.rustfmt pkgs.cargo pkgs.llvm ];
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
     extensions = extensions;
     userSettings = {
+      "debug.allowBreakpointsEverywhere" = true;
+      "debug.showBreakpointsInOverviewRuler" = true;
+      "debug.showInlineBreakpointCandidates" = true;
+
       "editor.fontSize" = 14;
       "editor.tabSize" = 2;
       "[rust]" = {
@@ -89,6 +93,7 @@ in {
 
       "extensions.autoCheckUpdates" = false;
       "extensions.autoUpdate" = false;
+      "extensions.ignoreRecommendations" = false; # don't show popups
 
       "files.insertFinalNewline" = true;
       "files.exclude" = {
@@ -102,6 +107,11 @@ in {
 
       "rust-client.autoStartRls" = false;
       "rust.rustfmt_path" = "/home/nom/.nix-profile/bin/rustfmt";
+
+      "search.exclude" = {
+          "**/build" = true;
+          "**/target" = true;
+      };
       
       "update.mode" = "none";
       "window.zoomLevel" = 0;
