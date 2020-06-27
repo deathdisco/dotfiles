@@ -66,6 +66,12 @@ with import ../settings.nix; {
         PS1="\w> "
       '';
     };
+
+    git = {
+      enable = true;
+      userName = "monomadic";
+      userEmail = "deathdisco@protonmail.com";
+    };
   };
 
   xresources.properties = {
