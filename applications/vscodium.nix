@@ -81,6 +81,12 @@ in {
     package = pkgs.vscodium;
     extensions = extensions;
     userSettings = {
+      "editor.fontSize" = 14;
+      "editor.tabSize" = 2;
+      "[rust]" = {
+          "editor.tabSize" = 4;
+      };
+
       "extensions.autoCheckUpdates" = false;
       "extensions.autoUpdate" = false;
 
@@ -90,19 +96,20 @@ in {
           "**/*.pyc" = true;
       };
 
-      "git.enableSmartCommit" = false;
+      "git.enableSmartCommit" = true;
       "git.terminalAuthentication" = true;
       "github.gitAuthentication" = false; # otherwise errors occur
 
       "rust-client.autoStartRls" = false;
       "rust.rustfmt_path" = "/home/nom/.nix-profile/bin/rustfmt";
       
-      "update.channel" = "none";
       "update.mode" = "none";
       "window.zoomLevel" = 0;
 
       "workbench.colorTheme" = "NorthernLights";
+      # "workbench.iconTheme" = "material-icon-theme";
       "workbench.editor.showIcons" = false;
+      # "workbench.fontAliasing" = "antialiased";
     };
   };
 }
