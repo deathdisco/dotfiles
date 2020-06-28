@@ -1,7 +1,11 @@
 { config, pkgs, ... }:
 let
   extensions =
-    (with pkgs.vscode-extensions; [ bbenoist.Nix matklad.rust-analyzer ])
+    (with pkgs.vscode-extensions; [
+      bbenoist.Nix
+      matklad.rust-analyzer
+      # llvm-org.lldb-vscode
+    ])
     ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       # nix
       {
@@ -11,12 +15,18 @@ let
         sha256 = "07w35c69vk1l6vipnq3qfack36qcszqxn8j3v332bl0w6m02aa7k";
       }
       # rust
-      {
-        name = "debug";
-        publisher = "webfreak";
-        version = "0.25.0";
-        sha256 = "0qm2jgkj17a0ca5z21xbqzfjpi0hzxw4h8y2hm8c4kk2bnw02sh1";
-      }
+      # {
+      #   name = "debug";
+      #   publisher = "webfreak";
+      #   version = "0.25.0";
+      #   sha256 = "0qm2jgkj17a0ca5z21xbqzfjpi0hzxw4h8y2hm8c4kk2bnw02sh1";
+      # }
+      # {
+      #   name = "vscode-lldb";
+      #   publisher = "vadimcn";
+      #   version = "1.5.3";
+      #   sha256 = "128zh6m7vazg8pn7457a40pzv0n8lms2zm7h9w34k46szwhy5lq6";
+      # }
       {
         name = "rust";
         publisher = "rust-lang";
@@ -75,7 +85,14 @@ let
       }
     ];
 in {
-  home.packages = [ pkgs.rustfmt pkgs.cargo pkgs.llvm ];
+  home.packages = [
+      pkgs.rustfmt
+      pkgs.cargo
+      pkgs.llvm
+      pkgs.rustc
+      pkgs.lldb_10
+  ];
+
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
@@ -84,6 +101,12 @@ in {
       "debug.allowBreakpointsEverywhere" = true;
       "debug.showBreakpointsInOverviewRuler" = true;
       "debug.showInlineBreakpointCandidates" = true;
+      "debug.toolBarLocation" = "docked";
+
+      "lldb.adapterEnv" = {
+        "PATH" = "/home/nom/.nix-profile/bin/cargo";
+      };
+      "lldb.libpython" = "${pkgs.python3}/lib/libpython3.8.so";
 
       "editor.fontSize" = 14;
       "editor.tabSize" = 2;
@@ -104,6 +127,8 @@ in {
       "git.enableSmartCommit" = true;
       "git.terminalAuthentication" = true;
       "github.gitAuthentication" = false; # otherwise errors occur
+
+      "lldb.verboseLogging" = true;
 
       "rust-client.autoStartRls" = false;
       "rust.rustfmt_path" = "/home/nom/.nix-profile/bin/rustfmt";
