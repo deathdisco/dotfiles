@@ -52,6 +52,7 @@ in {
     xterm
     skippy-xd
     hack-font
+    font-awesome
   ];
 
   # home.file = {

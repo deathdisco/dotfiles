@@ -161,23 +161,25 @@
   # https://gitlab.com/xaverdh/nixpkgs/blob/3e7bbe45e828301cca2eff578474eab5e6a889e3/nixos/modules/virtualisation/kvmgt.nix
   # cat /sys/bus/pci/devices/0000:00:02.0/mdev_supported_types/i915-GVTg_V5_4/description
 
-  virtualisation = {
-    # lxd.enable = true;
+  # virtualisation = {
+  #   lxd.enable = true;
 
-    kvmgt.enable = true; # Intel IGVT-g
-    kvmgt.vgpus = {
-      "i915-GVTg_V5_8" = { uuid = "c8c7c576-a5f1-11ea-8ef9-934db6f9cef5"; };
-    };
-    libvirtd.enable = true;
+  #   # Intel IGVT-g
+  #   kvmgt.enable = true;
+  #   # kvmgt.vgpus = {
+  #   #   "i915-GVTg_V5_8" = { uuid = "c8c7c576-a5f1-11ea-8ef9-934db6f9cef5"; };
+  #   # };
 
-    # libvirtd = {
-    #   enable = true;
-    #   qemuOvmf = true;
-    #   qemuRunAsRoot = false;
-    #   onBoot = "ignore";
-    #   onShutdown = "shutdown";
-    # };
-  };
+  #   libvirtd.enable = true;
+
+  #   # libvirtd = {
+  #   #   enable = true;
+  #   #   qemuOvmf = true;
+  #   #   qemuRunAsRoot = false;
+  #   #   onBoot = "ignore";
+  #   #   onShutdown = "shutdown";
+  #   # };
+  # };
 
   # environment.systemPackages = [ pkgs.virtmanager ];
 
@@ -223,6 +225,24 @@
       };
     };
   };
+
+  # ----------------------------------------------------------------------------
+  # EVILPATCH
+  # This links loaders in a very non-nix-like way.
+  # Allows you to run unpatched binaries.
+  # Evil.
+
+  # /lib64
+  environment.extraInit = let loader = "ld-linux-x86-64.so.2"; in ''
+    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/run/current-system/sw/lib:${pkgs.stdenv.cc.cc.lib}/lib"
+    ln -fs ${pkgs.stdenv.cc.libc.out}/lib/${loader} /lib64/${loader}
+  '';
+
+  # /lib
+  # environment.extraInit = with pkgs; let loader = "ld-linux-x86-64.so.2"; in ''
+  #   export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/run/current-system/sw/lib"
+  #   ln -fs ${pkgs.glibc}/lib/${loader} /lib/${loader}
+  # '';
 
   # ----------------------------------------------------------------------------
   # ENVIRONMENT/SHELL

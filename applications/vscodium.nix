@@ -104,9 +104,10 @@ in {
       "debug.toolBarLocation" = "docked";
 
       "lldb.adapterEnv" = {
-        "PATH" = "/home/nom/.nix-profile/bin/cargo";
+        "PATH" = "${pkgs.cargo}/bin/cargo";
       };
       "lldb.libpython" = "${pkgs.python3}/lib/libpython3.8.so";
+      "lldb.showDisassembly" = "never";
 
       "editor.fontSize" = 14;
       "editor.tabSize" = 2;

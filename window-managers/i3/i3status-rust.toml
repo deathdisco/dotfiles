@@ -9,7 +9,7 @@ icons = "awesome" # none | awesome | material
 name = "modern"
 
 [theme.overrides]
-idle_bg = "#123456"
+idle_bg = "#00000033"
 idle_fg = "#abcdef"
 
 [[block]]
@@ -22,15 +22,15 @@ block = "custom"
 on_click = "skippy-xd"
 command = "echo 'hello'"
 
-[[block]]
-block = "disk_space"
-path = "/"
-alias = "/"
-info_type = "available"
-unit = "GB"
-interval = 20
-warning = 20.0
-alert = 10.0
+#[[block]]
+#block = "disk_space"
+#path = "/"
+#alias = "/"
+#info_type = "available"
+#unit = "GB"
+#interval = 20
+#warning = 20.0
+#alert = 10.0
 
 [[block]]
 block = "memory"
@@ -70,4 +70,4 @@ block = "battery"
 [[block]]
 block = "time"
 interval = 60
-format = "%a %I:%M"
+format = "%I:%M"
