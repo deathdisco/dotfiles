@@ -1,14 +1,12 @@
-{ config, pkgs, ... }:
+# TODO move this and clean it up
 
+{ config, pkgs, ... }:
 { home.packages = with pkgs; [
 
       #cli
       htop ytop gotop # performance monitor
 
       ranger # file manager
-      # ffmpegthumbnailer # video previews for ranger
-      # python38Packages.pdf2image # pdf previews for ranger
-      # dragon-drop # drag and drop for cli / x / ranger
       tmux # terminal multiplexer
       byobu # alternative text multiplexer
 
@@ -23,10 +21,6 @@
       unrar
       neofetch
 
-      # buku # bookmark manager
-
-      # hunter # rust based file manager
-      # vifm # vim file manager
       broot # awesome file manager, sorter, finder
       fff # fucking fast file manager
 
@@ -48,14 +42,8 @@
       amp # rust based cli xi frontend
       ffmpeg
 
-      # brave
-
       nox # better nix package manager frontend
       # chafa # image to ascii converter
-
-      # vm
-      #libvirt
-      #virt-manager # qemu based graphical frontend
 
       # web dev stuff
       gron # json grepper
@@ -89,77 +77,12 @@
       haxor-news # hacker news cli
       rtv # reddit cli
 
-      # system
-      # appimage-run
-
       # ncurses toys
       cmatrix
 
-      # caffeine-ng # prevent sleep (gui)
-
-      # crypto
-      # wasabiwallet
-
-      # ide
-      # vscodium
-      nixfmt
-      # sublime3
-      # sublime-merge
-      # emacs
-
-      # text / markdown
-      # typora
-
-      # i3
-      # i3
-      # i3status-rust
-      # rofi
-      #waybar
-      # wofi grim wl-clipboard imv slurp brightnessctl bemenu
-      # vanilla-dmz # scalable cursor
-
-      # browsers
-      # brave
-      # opera
-      # qutebrowser
-      # vivaldi-ffmpeg-codecs
-      # firefox-wayland
-
-      # chat
-      # signal-desktop
-      # tdesktop # telegram
-
-      #compton-git
-
-      # sound
-      #pulsemixer # ncurses pulseaudio mixer
-      # spotify
-      # cmus
-
-      # video
-      # mpv
-
-      # etcher # usb iso
-
-      # graphics
-      # blender
-
       # file management
-      # xfce.thunar
       broot
 
       # screenshots
       slurp # selector
-
-      # lxappearance-gtk3 # gtk3 appearance
-
-      # dirty hax
-      # glibcLocales
-
-      # gtk themes
-      # hicolor-icon-theme # required by wofi
-      # deepin.deepin-gtk-theme
-      # deepin.deepin-icon-theme
-      # deepin.dde-launcher
-      # capitaine-cursors # mouse cursor
 ];}

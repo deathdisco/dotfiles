@@ -1,7 +1,7 @@
 {
   email = "deathdisco@tutanota.com";
   github-username = "monomadic";
-  wallpaper = "~/.config/dotfiles/wallpapers/oefner--nature2.jpg";
+  wallpaper = "~/.config/dotfiles/wallpapers/mirroring.jpg";
   colors = {
     black = "#000000";
     white = "#FFFFFF";

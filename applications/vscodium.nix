@@ -4,7 +4,6 @@ let
     (with pkgs.vscode-extensions; [
       bbenoist.Nix
       matklad.rust-analyzer
-      # llvm-org.lldb-vscode
     ])
     ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       # nix
@@ -14,19 +13,25 @@ let
         version = "0.0.1";
         sha256 = "07w35c69vk1l6vipnq3qfack36qcszqxn8j3v332bl0w6m02aa7k";
       }
+      {
+        name = "darwin";
+        publisher = "chriskseidel";
+        version = "1.5.1";
+        sha256 = "025vh14pr7pj91q2hvs59kgv0596sfzzclym8qc1qssfjs2f7dcv";
+      }
+      {
+        name = "todo-tree";
+        publisher = "Gruntfuggly";
+        version = "0.0.177";
+        sha256 = "1j3vgyimc4gamp3dnym9wfk445q5hipjq3cimvpqqa22pk4g0224";
+      }
       # rust
-      # {
-      #   name = "debug";
-      #   publisher = "webfreak";
-      #   version = "0.25.0";
-      #   sha256 = "0qm2jgkj17a0ca5z21xbqzfjpi0hzxw4h8y2hm8c4kk2bnw02sh1";
-      # }
-      # {
-      #   name = "vscode-lldb";
-      #   publisher = "vadimcn";
-      #   version = "1.5.3";
-      #   sha256 = "128zh6m7vazg8pn7457a40pzv0n8lms2zm7h9w34k46szwhy5lq6";
-      # }
+      {
+        name = "debug";
+        publisher = "webfreak";
+        version = "0.25.0";
+        sha256 = "0qm2jgkj17a0ca5z21xbqzfjpi0hzxw4h8y2hm8c4kk2bnw02sh1";
+      }
       {
         name = "rust";
         publisher = "rust-lang";
@@ -83,15 +88,45 @@ let
         version = "1.0.1";
         sha256 = "1wdxixmdvkabwsq8ydmyyky5yqqvrdwb0c64l22x99viavq6azsb";
       }
+      {
+        name = "overnight";
+        publisher = "cev";
+        version = "1.7.3";
+        sha256 = "095bmwh8p9nz2y9br8jpxhkyliyxqfs8lsvv1v6qh6jdsdza0n4p";
+      }
     ];
 in {
-  home.packages = [
-      pkgs.rustfmt
-      pkgs.cargo
-      pkgs.llvm
-      pkgs.rustc
-      pkgs.lldb_10
+  home.packages = with pkgs; [
+      rustfmt cargo rustc
+      cmake pkgconfig
   ];
+
+  home.file.".config/VSCodium/User/keybindings.json".text = ''[
+    {
+      "key": "ctrl+r",
+      "command": "workbench.action.debug.run"
+    },{
+      "key": "ctrl+f5",
+      "command": "-workbench.action.debug.run"
+    },{
+      "key": "ctrl+shift+r",
+      "command": "workbench.action.debug.start",
+      "when": "!inDebugMode"
+    },{
+      "key": "f5",
+      "command": "-workbench.action.debug.start",
+      "when": "!inDebugMode"
+    },{
+      "key": "ctrl+u",
+      "command": "editor.action.deleteLines"
+    },{
+      "key": "ctrl+p",
+      "command": "cursorUp",
+    },{
+      "key": "ctrl+n",
+      "command": "cursorDown",
+    }
+  ]'';
 
   programs.vscode = {
     enable = true;
@@ -103,11 +138,14 @@ in {
       "debug.showInlineBreakpointCandidates" = true;
       "debug.toolBarLocation" = "docked";
 
-      "lldb.adapterEnv" = {
-        "PATH" = "${pkgs.cargo}/bin/cargo";
-      };
-      "lldb.libpython" = "${pkgs.python3}/lib/libpython3.8.so";
+      # "lldb.adapterEnv" = {
+      #   "PATH" = "${pkgs.cargo}/bin/cargo";
+      # };
+      "lldb.libpython" = "${pkgs.python3}/lib/libpython3.so";
       "lldb.showDisassembly" = "never";
+      # "lldb.executable" = "${pkgs.lldb_10}/bin/lldb";
+      # "lldb.library": "${pkgs.lldb_10}/lib/";
+      "lldb.verboseLogging" = true;
 
       "editor.fontSize" = 14;
       "editor.tabSize" = 2;
@@ -129,7 +167,6 @@ in {
       "git.terminalAuthentication" = true;
       "github.gitAuthentication" = false; # otherwise errors occur
 
-      "lldb.verboseLogging" = true;
 
       "rust-client.autoStartRls" = false;
       "rust.rustfmt_path" = "/home/nom/.nix-profile/bin/rustfmt";
@@ -142,7 +179,7 @@ in {
       "update.mode" = "none";
       "window.zoomLevel" = 0;
 
-      "workbench.colorTheme" = "NorthernLights";
+      "workbench.colorTheme" = "Tomorrow Night Blue";
       # "workbench.iconTheme" = "material-icon-theme";
       "workbench.editor.showIcons" = false;
       # "workbench.fontAliasing" = "antialiased";
