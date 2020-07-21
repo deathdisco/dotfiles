@@ -2,6 +2,8 @@
 
 { config, pkgs, ... }:
 { home.packages = with pkgs; [
+      nixfmt
+      killall
 
       #cli
       htop ytop gotop # performance monitor

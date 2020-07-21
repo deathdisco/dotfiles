@@ -28,6 +28,7 @@
   # window management
   "${mod}+q" = "kill";
   "${mod}+Return" = "fullscreen toggle";
+  "${mod}+b" = "border toggle";
 
   # switch to workspace
   # "${mod}+Tab" = "workspace next";

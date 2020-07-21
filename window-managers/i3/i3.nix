@@ -124,16 +124,16 @@ in {
 
         window.border = 0;
         # window.hideEdgeBorders = "smart";
-        floating.border = 0;
+        floating.border = 1;
 
         colors = {
           background = "#FF401100";
           focused = {
-            border = "${colors.grey-medium}";
-            background = "${colors.grey-medium}";
-            text = "${colors.black}";
-            indicator = "${colors.grey-medium}";
-            childBorder = "${colors.grey-medium}";
+            border = "${colors.black}";
+            background = "${colors.black}";
+            text = "${colors.white}";
+            indicator = "${colors.black}";
+            childBorder = "${colors.black}";
           };
           focusedInactive = {
             border = "${colors.black}";
