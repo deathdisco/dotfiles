@@ -20,7 +20,12 @@ interval = 100
 [[block]]
 block = "custom"
 on_click = "skippy-xd"
-command = "echo 'hello'"
+command = "echo '[]'"
+
+[[block]]
+block = "custom"
+on_click = "betterlockscreen --suspend"
+command = "echo 'lock'"
 
 #[[block]]
 #block = "disk_space"
