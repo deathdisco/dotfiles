@@ -61,6 +61,12 @@ let
       # }
       # general
       {
+        name = "simple-dark";
+        publisher = "travis";
+        version = "0.2.2";
+        sha256 = "1jkahqi623win64m5mbx75ni3b0qd38k1knn56vrmgw95q5gcbj5";
+      }
+      {
         name = "remote-ssh";
         publisher = "ms-vscode-remote";
         version = "0.47.2";
@@ -187,7 +193,9 @@ in {
       "update.mode" = "none";
       "window.zoomLevel" = 0;
 
-      "workbench.colorTheme" = "Solarized Dark";
+      "window.menuBarVisibility" = "toggle";
+
+      "workbench.colorTheme" = "Simple Dark";
       "workbench.iconTheme" = null;
       "workbench.editor.showIcons" = false;
       # "workbench.fontAliasing" = "antialiased";

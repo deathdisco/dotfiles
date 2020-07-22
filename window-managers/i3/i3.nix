@@ -122,7 +122,7 @@ in {
           };
         }];
 
-        window.border = 0;
+        # window.border = 10;
         # window.hideEdgeBorders = "smart";
         floating.border = 1;
 
@@ -176,6 +176,7 @@ in {
       extraConfig = ''
         exec --no-startup-id picom --config ~/.picom.conf
         default_orientation vertical
+        default_border pixel 1
         focus_follows_mouse no
         workspace_layout tabbed
         for_window [class="[.]*"] floating enable
