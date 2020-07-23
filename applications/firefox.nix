@@ -1,20 +1,45 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, callPackage, ... }:
 
 let
   settings = (import ../settings.nix);
   colors = settings.colors;
-
+  addons = callPackage ./firefox-addons.nix { callPackage = callPackage; };
+#   firefox-addons = super.callPackage ./firefox-addons-generated.nix {
+#     inherit buildFirefoxXpiAddon;
+#   };
 in {
+#   home.packages = [ addons ];
+
   programs = {
     firefox = {
       enable = true;
       profiles.nom = {
         # path = "$HOME/.config/firefox";
         settings = {
-          "browser.startup.homepage" = "https://nixos.org";
+          "browser.startup.homepage" = "about:home";
+          "browser.newtabpage.activity-stream.showSearch" = false;
+          "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
+          "browser.newtabpage.activity-stream.feeds.snippets" = false;
+          "browser.newtabpage.activity-stream.topSitesRows" = 3;
+          "browser.newtabpage.pinned" = ''
+            [
+                            {"url":"https://app.uniswap.org/#/swap","label":" "},
+                            {"url":"https://1inch.exchange/#/","label":" "},
+                            {"url":"https://cryptopanic.com/","label":" "},
+                            {"url":"https://coinmarketcap.com/","label":" "},
+                            {"url":"https://coingecko.com/","label":" "},
+                            {"url":"https://lobste.rs/","label":" "},
+                            {"url":"https://reddit.com/","label":" "},
+                            {"url":"https://twitter.com/","label":" "}
+                        ]'';
+
           "browser.urlbar.placeholderName" = "DuckDuckGo";
+          "browser.startup.firstrunSkipsHomepage" = true;
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           "general.smoothScroll" = false;
+          "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
+          # "widget.content.allow-gtk-dark-theme" = false;
+          # "webgl.enable-draft-extensions" = true;
         };
         userChrome = ''
 
@@ -61,7 +86,7 @@ in {
           /*
           *  Hide all the clutter in the navbar
           */
-          
+
           #main-window :-moz-any(#back-button,
                     #forward-button,
                     #stop-reload-button,
@@ -99,7 +124,7 @@ in {
           }
 
           .tab-line[selected=true] {
-              background-color: ${ colors.ui.background } !important;
+              background-color: ${colors.ui.background} !important;
           }
 
           #navigator-toolbox #urlbar-container {
@@ -147,7 +172,7 @@ in {
 
           // extension area
           #navigator-toolbox #nav-bar-customization-target {
-              background: ${ colors.firefox.background } !important;
+              background: ${colors.firefox.background} !important;
           }
 
           #navigator-toolbox .toolbarbutton-1 {
@@ -155,18 +180,18 @@ in {
           }
 
           #navigator-toolbox #downloads-button {
-              color: ${ colors.firefox.text } ;
-              background: ${ colors.firefox.background } !important;
+              color: ${colors.firefox.text} ;
+              background: ${colors.firefox.background} !important;
           }
 
           #navigator-toolbox #PanelUI-button {
               opacity: 1 !important;
-              background: ${ colors.firefox.background } !important;
+              background: ${colors.firefox.background} !important;
           }
 
           #navigator-toolbox #PanelUI-menu-button {
-              background: ${ colors.firefox.background } !important;
-              color: ${ colors.firefox.menu-icon } !important;
+              background: ${colors.firefox.background} !important;
+              color: ${colors.firefox.menu-icon} !important;
           }
 
           #navigator-toolbox .tabbrowser-tab {
@@ -174,21 +199,21 @@ in {
           }
 
           #navigator-toolbox .tab-background {
-              background: ${ colors.firefox.background } !important;
+              background: ${colors.firefox.background} !important;
               box-shadow: none!important;
               border: none !important;
           }
 
           #navigator-toolbox .tabbrowser-tab .tab-label {
-              color: ${ colors.firefox.text } !important;
+              color: ${colors.firefox.text} !important;
           }
 
           #navigator-toolbox .tab-background[selected="true"] {
-              background: ${ colors.firefox.selected-tab-background } !important;
+              background: ${colors.firefox.selected-tab-background} !important;
           }
 
           #navigator-toolbox .tabbrowser-tab[selected="true"] .tab-label {
-              color: ${ colors.firefox.selected-tab-text } !important;
+              color: ${colors.firefox.selected-tab-text} !important;
           }
 
           #navigator-toolbox .tabbrowser-tab::after {
@@ -282,27 +307,6 @@ in {
           #customization-panelWrapper > .panel-arrowbox > .panel-arrow{ margin-inline-end: initial !important; }
         '';
       };
-      extensions = [ ];
     };
   };
 }
-
-# "1password-x-password-manager" = buildFirefoxXpiAddon {
-#   pname = "1password-x-password-manager";
-#   version = "1.20.0";
-#   addonId = "{d634138d-c276-4fc8-924b-40a0ea21d284}";
-#   url = "https://addons.mozilla.org/firefox/downloads/file/3597753/1password_x_password_manager-1.20.0-fx.xpi?src=";
-#   sha256 = "ec3c46d4c1f4a7a7be8055a7327e207cf037f8ca579af9cd9930499732632569";
-#   meta = with stdenv.lib;
-#   {
-#     homepage = "https://1password.com";
-#     description = "The best way to experience 1Password in your browser. Easily sign in to sites, generate passwords, and store secure information, including logins, credit cards, notes, and more.";
-#     license = {
-#       shortName = "1pwd";
-#       fullName = "Service Agreement for 1Password users and customers";
-#       url = "https://1password.com/legal/terms-of-service/";
-#       free = false;
-#       };
-#     platforms = platforms.all;
-#     };
-#   };

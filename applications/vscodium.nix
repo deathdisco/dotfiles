@@ -109,6 +109,12 @@ let
         version = "4.2.0";
         sha256 = "1in8lj5gim3jdy33harib9z8qayp5jn8pz6j0zpicbzxx87g2hm1";
       }
+      {
+        name = "theme-karyfoundation-themes";
+        publisher = "karyfoundation";
+        version = "20.0.3";
+        sha256 = "1yd3ixbnssm1kjv0wn109wp6szjlc27k33b2cz1l3bkndmjzf69b";
+      }
     ];
 in {
   home.packages = with pkgs; [ rustfmt cargo rustc cmake pkgconfig ];
