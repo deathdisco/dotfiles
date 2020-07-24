@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, home, ... }:
 {
   # common tasks launcher script
   # run with: rofi -show fb -modi fb:$HOME/.config/rofi/shortcuts.sh

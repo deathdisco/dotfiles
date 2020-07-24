@@ -28,7 +28,7 @@
       fd # rust alternative to find
       youtube-dl # video downloader
       bat # cat with syntax highlighting
-      dust # du replacement
+      # dust # du replacement
       ripgrep # fast rust grepping tool
       megatools # mega.nz cli tools
       # autojump # z/j directory jump for zsh
