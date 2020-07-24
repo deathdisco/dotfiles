@@ -1,10 +1,7 @@
 { config, pkgs, ... }:
 let
   extensions =
-    (with pkgs.vscode-extensions; [
-      bbenoist.Nix
-      matklad.rust-analyzer
-    ])
+    (with pkgs.vscode-extensions; [ bbenoist.Nix matklad.rust-analyzer ])
     ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       # nix
       {
@@ -50,6 +47,12 @@ let
         version = "1.2.1";
         sha256 = "1nqlm76kgzmvpbh1dis010z1yga4yz9ia3hphqph9gpsf4wghq9b";
       }
+      {
+        name = "crates";
+        publisher = "serayuzgur";
+        version = "0.5.2";
+        sha256 = "1ibpfkncd2xjxlhp1a92mjz2xpbr2660lc4jrk2lcs0gw8i3iizc";
+      }
       # {
       #   name = "EditorConfig";
       #   publisher = "EditorConfig";
@@ -57,6 +60,12 @@ let
       #   sha256 = "18r19dn1an81l2nw1h8iwh9x3sy71d4ab0s5fvng5y7dcg32zajd";
       # }
       # general
+      {
+        name = "simple-dark";
+        publisher = "travis";
+        version = "0.2.2";
+        sha256 = "1jkahqi623win64m5mbx75ni3b0qd38k1knn56vrmgw95q5gcbj5";
+      }
       {
         name = "remote-ssh";
         publisher = "ms-vscode-remote";
@@ -94,39 +103,53 @@ let
         version = "1.7.3";
         sha256 = "095bmwh8p9nz2y9br8jpxhkyliyxqfs8lsvv1v6qh6jdsdza0n4p";
       }
+      {
+        name = "material-icon-theme";
+        publisher = "PKief";
+        version = "4.2.0";
+        sha256 = "1in8lj5gim3jdy33harib9z8qayp5jn8pz6j0zpicbzxx87g2hm1";
+      }
+      {
+        name = "theme-karyfoundation-themes";
+        publisher = "karyfoundation";
+        version = "20.0.3";
+        sha256 = "1yd3ixbnssm1kjv0wn109wp6szjlc27k33b2cz1l3bkndmjzf69b";
+      }
     ];
 in {
-  home.packages = with pkgs; [
-      rustfmt cargo rustc
-      cmake pkgconfig
-  ];
+  home.packages = with pkgs; [ rustfmt cargo rustc cmake pkgconfig ];
 
-  home.file.".config/VSCodium/User/keybindings.json".text = ''[
-    {
-      "key": "ctrl+r",
-      "command": "workbench.action.debug.run"
-    },{
-      "key": "ctrl+f5",
-      "command": "-workbench.action.debug.run"
-    },{
-      "key": "ctrl+shift+r",
-      "command": "workbench.action.debug.start",
-      "when": "!inDebugMode"
-    },{
-      "key": "f5",
-      "command": "-workbench.action.debug.start",
-      "when": "!inDebugMode"
-    },{
-      "key": "ctrl+u",
-      "command": "editor.action.deleteLines"
-    },{
-      "key": "ctrl+p",
-      "command": "cursorUp",
-    },{
-      "key": "ctrl+n",
-      "command": "cursorDown",
-    }
-  ]'';
+  home.file.".config/VSCodium/User/keybindings.json".text = ''
+    [
+        {
+          "key": "ctrl+t",
+          "command": "workbench.action.quickOpen"
+        }
+        {
+          "key": "ctrl+r",
+          "command": "workbench.action.debug.run"
+        },{
+          "key": "ctrl+f5",
+          "command": "-workbench.action.debug.run"
+        },{
+          "key": "ctrl+shift+r",
+          "command": "workbench.action.debug.start",
+          "when": "!inDebugMode"
+        },{
+          "key": "f5",
+          "command": "-workbench.action.debug.start",
+          "when": "!inDebugMode"
+        },{
+          "key": "ctrl+u",
+          "command": "editor.action.deleteLines"
+        },{
+          "key": "ctrl+p",
+          "command": "cursorUp",
+        },{
+          "key": "ctrl+n",
+          "command": "cursorDown",
+        }
+      ]'';
 
   programs.vscode = {
     enable = true;
@@ -149,9 +172,7 @@ in {
 
       "editor.fontSize" = 14;
       "editor.tabSize" = 2;
-      "[rust]" = {
-          "editor.tabSize" = 4;
-      };
+      "[rust]" = { "editor.tabSize" = 4; };
 
       "extensions.autoCheckUpdates" = false;
       "extensions.autoUpdate" = false;
@@ -159,28 +180,29 @@ in {
 
       "files.insertFinalNewline" = true;
       "files.exclude" = {
-          ".yarn" = true;
-          "**/*.pyc" = true;
+        ".yarn" = true;
+        "**/*.pyc" = true;
       };
 
       "git.enableSmartCommit" = true;
       "git.terminalAuthentication" = true;
       "github.gitAuthentication" = false; # otherwise errors occur
 
-
       "rust-client.autoStartRls" = false;
       "rust.rustfmt_path" = "/home/nom/.nix-profile/bin/rustfmt";
 
       "search.exclude" = {
-          "**/build" = true;
-          "**/target" = true;
+        "**/build" = true;
+        "**/target" = true;
       };
-      
+
       "update.mode" = "none";
       "window.zoomLevel" = 0;
 
-      "workbench.colorTheme" = "Tomorrow Night Blue";
-      # "workbench.iconTheme" = "material-icon-theme";
+      "window.menuBarVisibility" = "toggle";
+
+      "workbench.colorTheme" = "Simple Dark";
+      "workbench.iconTheme" = null;
       "workbench.editor.showIcons" = false;
       # "workbench.fontAliasing" = "antialiased";
     };
