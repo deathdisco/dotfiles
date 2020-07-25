@@ -234,8 +234,8 @@
 
   # /lib64
   environment.extraInit = let loader = "ld-linux-x86-64.so.2"; in ''
-    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/run/current-system/sw/lib:${pkgs.stdenv.cc.cc.lib}/lib"
-    ln -fs ${pkgs.stdenv.cc.libc.out}/lib/${loader} /lib64/${loader}
+    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/run/current-system/sw/lib:${pkgs.glibc}/lib"
+    ln -fs ${pkgs.glibc}/lib/${loader} /lib64/${loader}
   '';
 
   # /lib

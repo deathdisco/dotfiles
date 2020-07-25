@@ -97,10 +97,11 @@ with import ../settings.nix; {
       recursive = true;
     };
 
-    ".templates" = {
-      source = ../templates;
-      recursive = true;
-    };
+    # (manually do this instead)
+    # ".templates" = {
+    #   source = ../templates;
+    #   recursive = true;
+    # };
 
     ".picom.conf" = {
       source = ../window-managers/i3/picom.conf;

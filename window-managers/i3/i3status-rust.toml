@@ -76,3 +76,8 @@ block = "battery"
 block = "time"
 interval = 60
 format = "%I:%M"
+
+[[block]]
+block = "custom"
+command = "deno run ~/.config/internet-time.ts"
+interval = 100
