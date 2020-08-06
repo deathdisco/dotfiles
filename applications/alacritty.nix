@@ -36,9 +36,9 @@ in {
           size = 10.0;
           use_thin_strokes = true;
 
-          #normal.family = "FuraCode Nerd Font";
-          #bold.family = "FuraCode Nerd Font";
-          #italic.family = "FuraCode Nerd Font";
+          normal.family = "${settings.fonts.mono}";
+          bold.family = "${settings.fonts.mono}";
+          italic.family = "${settings.fonts.mono}";
         };
 
         # cursor.style = "Beam";

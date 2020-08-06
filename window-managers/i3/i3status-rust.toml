@@ -48,6 +48,13 @@ block = "cpu"
 interval = 10
 format = "{utilization}%"
 
+[[block]]
+block = "nvidia_gpu"
+label = "GT 1030"
+show_memory = false
+show_clocks = true
+interval = 1
+
 # [[block]]
 # block = "load"
 # interval = 1

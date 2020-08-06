@@ -1,9 +1,5 @@
-{ config, pkgs, ... }:
-
-let
-	
-in {
-	# sway = {
+{ config, pkgs, ... }: {
+	programs.sway = {
 		enable = true;
 		extraPackages = with pkgs; [
 			grim # screenshot util
@@ -20,5 +16,5 @@ in {
 			wl-clipboard # cut copy paste support
 			xwayland # compatibility layer for x11 apps
 		];
-	# };
+	};
 }
