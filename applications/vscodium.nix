@@ -1,7 +1,8 @@
 { config, pkgs, ... }:
 let
   extensions =
-    (with pkgs.vscode-extensions; [ bbenoist.Nix matklad.rust-analyzer ])
+    # (with pkgs.vscode-extensions; [ bbenoist.Nix matklad.rust-analyzer ])
+    (with pkgs.vscode-extensions; [ bbenoist.Nix ])
     ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       # nix
       {

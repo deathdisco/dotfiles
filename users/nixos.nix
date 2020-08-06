@@ -3,7 +3,7 @@ with import ../settings.nix; {
   imports = [
     ../packages.nix
     ../window-managers/i3/i3.nix
-    #../window-managers/sway/sway.nix
+    ../window-managers/sway/sway.nix
     ../applications/alacritty.nix
     ../applications/kitty.nix
     ../applications/zsh.nix
