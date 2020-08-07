@@ -1,0 +1,109 @@
+# https://github.com/greshake/i3status-rust/blob/master/blocks.md
+
+icons = "awesome5" # none | awesome | material | awesome5
+
+# plain (default) | solarized-dark | solarized-light | slick | modern | bad-wolf
+# gruvbox-light | gruvbox-dark
+# Ƀ 
+[theme]
+name = "modern"
+
+[theme.overrides]
+alternating_tint_bg = "#00000000"
+#alternating_tint_fg
+#critical_bg
+#critical_fg
+good_bg = "#00000000"
+#good_fg
+idle_bg = "#00000000"
+#idle_fg
+info_bg = "#00000000"
+#info_fg
+separator_bg = "#00000000"
+#separator_fg
+#separator
+#warning_bg
+#warning_fg
+
+#[icons.overrides]
+#bat = " | | "
+#bat_full = " |X| "
+#bat_charging = " |^| "
+#bat_discharging = " |v| "
+
+[[block]]
+block = "custom"
+command = "curl -s 'https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT' | jq -r .price | xargs printf \" %.*f\n\" \"$p\""
+interval = 100
+
+#[[block]]
+#block = "custom"
+#on_click = "skippy-xd"
+#command = "echo '[]'"
+
+[[block]]
+block = "custom"
+on_click = "betterlockscreen --suspend"
+command = "echo 'lock'"
+
+#[[block]]
+#block = "disk_space"
+#path = "/"
+#alias = "/"
+#info_type = "available"
+#unit = "GB"
+#interval = 20
+#warning = 20.0
+#alert = 10.0
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{Mup}%"
+format_swap = "{SUp}%"
+
+[[block]]
+block = "cpu"
+interval = 10
+format = "{utilization}%"
+
+#[[block]]
+#block = "nvidia_gpu"
+#label = "GT 1030"
+#show_memory = false
+#show_clocks = true
+#interval = 1
+
+# [[block]]
+# block = "load"
+# interval = 1
+# format = "{1m}"
+
+[[block]]
+block = "sound"
+on_click = "pulsemixer --toggle-mute"
+
+# [[block]]
+# block = "net"
+# device = "wlp0s20f3"
+# ssid = false
+# ip = false
+# speed_up = false
+# graph_up = false
+# interval = 5
+
+[[block]]
+block = "backlight"
+
+[[block]]
+block = "battery"
+
+[[block]]
+block = "time"
+interval = 60
+format = "%I:%M"
+
+[[block]]
+block = "custom"
+command = "deno run ~/.config/internet-time.ts"
+interval = 100

@@ -36,7 +36,7 @@
     pciutils # includes lspci
     glxinfo # opengl
     pmutils # power management, laptop suspend, lid close etc
-    virtmanager # is this necessary?
+    mesa mesa_drivers
   ];
 
   # programs.home-manager.enable = true;

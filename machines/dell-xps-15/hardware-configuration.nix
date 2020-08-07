@@ -5,11 +5,26 @@
 
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
+  boot.extraModprobeConfig = "options nvidia-drm modeset=1";
+  boot.initrd.kernelModules =
+    [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
   boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  environment.variables = {
+    MESA_LOADER_DRIVER_OVERRIDE = "iris";
+  };
   hardware.opengl.enable = true;
+  hardware.opengl.package = (pkgs.mesa.override {
+    galliumDrivers = [ "nouveau" "virgl" "swrast" "iris" ];
+  }).drivers;
+
+  hardware.nvidia.modesetting.enable = true;
+  # hardware.nvidia.prime = {
+  #   enable = true;
+  #   intelBusId = "PCI:0:2:0";
+  #   nvidiaBusId = "PCI:1:0:0";
+  # };
 
   # ----------------------------------------------------------------------------
   # FILESYSTEM

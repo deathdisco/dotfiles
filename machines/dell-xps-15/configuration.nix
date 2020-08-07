@@ -7,19 +7,7 @@
   nixpkgs.config.allowUnfree = true;
   # nixpkgs.config.allowBroken = true;
 
-  imports = [ <nixos-hardware/dell/xps/15-9500> ./hardware-configuration.nix ];
-
-  # nixpkgs.overlays = [
-  #   (import ../../overlays/mesa.nix)
-  # ];
-
-  # nixpkgs.overlays = [
-  #   (self: super: {
-  #     mesa_drivers = mesa_patch.mesa_drivers;
-  #   })
-  # ];
-
-  # nixpkgs.overlays = [ old_nix ];
+  imports = [ <nixos-hardware/dell/xps/15-9500/nvidia> ./hardware-configuration.nix ];
 
   # ----------------------------------------------------------------------------
   # USERS
@@ -29,6 +17,12 @@
     isNormalUser = true;
     home = "/home/nom";
     extraGroups = [ "wheel" "networkmanager" "audio" "lxd" "libvirtd" ];
+  };
+
+  users.users.sway = {
+    isNormalUser = true;
+    home = "/home/sway";
+    extraGroups = [ "wheel" "networkmanager" "audio" ];
   };
 
   # ----------------------------------------------------------------------------
@@ -51,7 +45,15 @@
     # virtmanager
     mesa
     mesa_drivers
+    source-code-pro
   ];
+
+  programs.sway = {
+    enable = true;
+    extraPackages = with pkgs; [
+      waybar swayidle xwayland
+    ];
+  };
 
   # programs.home-manager.enable = true;
 
@@ -65,7 +67,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   #boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.loader.grub.useOSProber = true;
-  boot.blacklistedKernelModules = [ "nouveau" ];
+  # boot.blacklistedKernelModules = [ "nouveau" ];
 
   # text only prompt, no display manager
   # services.xserver.displayManager.startx.enable = true;
@@ -155,8 +157,7 @@
   # ----------------------------------------------------------------------------
   # DISPLAY / ACCELERATION
 
-  # services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.modesettings.enable = true;
+  # hardware.nvidia.modesettings.enable = true;
   hardware.opengl = {
     enable = true;
 
@@ -215,7 +216,7 @@
       autorun = false;
       exportConfiguration = true;
       layout = "us";
-      # videoDrivers = [ "intel" ];
+      #videoDrivers = [ "intel" ];
       # libinput.enable = true;
       displayManager.defaultSession = "none+i3"; # disable desktop manager
       desktopManager.xterm.enable = false;
