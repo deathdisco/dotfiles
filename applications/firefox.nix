@@ -13,6 +13,7 @@ in {
   programs = {
     firefox = {
       enable = true;
+      package = pkgs.firefox-wayland;
       profiles.nom = {
         # path = "$HOME/.config/firefox";
         settings = {

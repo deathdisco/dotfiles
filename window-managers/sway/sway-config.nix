@@ -27,6 +27,8 @@
     # mouse_warping output
     # workspace_layout default
     # gaps inner 10
+    
+    seat seat0 xcursor_theme "capitaine-cursors"
 
     # output eDP-1 pos 1920 0 scale 1.5 res 3840x2400
 

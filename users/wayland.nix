@@ -13,7 +13,8 @@ with import ../settings.nix; {
     #../applications/vim.nix
     #../applications/rofi.nix
     ../applications/vscodium.nix
-    #../applications/firefox.nix
+    ../applications/firefox.nix
+    ../applications/wayland.nix
   ];
 
   nixpkgs.config.xsession.pointerCursor = nixpkgs.capitaine-cursors;

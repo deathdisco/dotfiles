@@ -12,18 +12,18 @@ name = "modern"
 alternating_tint_bg = "#00000000"
 #alternating_tint_fg
 #critical_bg
-#critical_fg
+critical_fg = "#FFFFFF"
 good_bg = "#00000000"
-#good_fg
+good_fg = "#FFFFFF"
 idle_bg = "#00000000"
 #idle_fg
 info_bg = "#00000000"
-#info_fg
+info_fg = "#FFFFFF"
 separator_bg = "#00000000"
 #separator_fg
 #separator
 #warning_bg
-#warning_fg
+warning_fg = "#FFFFFF"
 
 #[icons.overrides]
 #bat = " | | "
@@ -43,8 +43,8 @@ interval = 100
 
 [[block]]
 block = "custom"
-on_click = "betterlockscreen --suspend"
-command = "echo 'lock'"
+on_click = "swaylock"
+command = "echo ''"
 
 #[[block]]
 #block = "disk_space"
