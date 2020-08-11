@@ -15,7 +15,9 @@
     default_orientation vertical
     focus_follows_mouse no
     workspace_layout tabbed
-    for_window [class="[.]*"] floating enable
+    for_window [class=".*"] floating enable
+    for_window [title="[.]*"] floating enable
+    for_window [app_id=".*"] floating enable
     exec xmodmap -e "clear lock" #disable caps lock switch
     exec xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
     bindcode Mod1+34 workspace prev
@@ -37,7 +39,7 @@
     # bindswitch --reload lid:off output $laptop enable
 
     output eDP-1 scale 2.0 bg ${settings.wallpaper} stretch
-    # exec xrdb -load ~/.Xresources
+    exec xrdb -load ~/.Xresources
 
     # <border> <background> <text> <indicator> <child_border>
     client.focused #000000DD #000000DD #d8dee8 #888888 #888888

@@ -2,8 +2,9 @@
 with import ../settings.nix; {
   imports = [
     ../packages.nix
-    #../window-managers/i3/i3.nix
+    ../window-managers/i3/i3.nix
     ../window-managers/sway/sway.nix
+    ../window-managers/hidpi.nix
     ../applications/alacritty.nix
     ../applications/kitty.nix
     #../applications/zsh.nix
@@ -14,7 +15,7 @@ with import ../settings.nix; {
     #../applications/rofi.nix
     ../applications/vscodium.nix
     ../applications/firefox.nix
-    ../applications/wayland.nix
+    #../applications/wayland.nix
   ];
 
   nixpkgs.config.xsession.pointerCursor = nixpkgs.capitaine-cursors;
@@ -43,7 +44,7 @@ with import ../settings.nix; {
         alias ls='exa'
         alias j='zrs'
         alias z='zrs'
-        source /home/nom/.local/share/zrs/z.sh
+        # source /home/nom/.local/share/zrs/z.sh
         PS1="\w> "
       '';
     };
@@ -53,12 +54,6 @@ with import ../settings.nix; {
       userName = "monomadic";
       userEmail = "deathdisco@protonmail.com";
     };
-  };
-
-  xresources.properties = {
-    "Xcursor.theme" = "capitaine-cursors";
-    "Xcursor.size" = "76";
-    "Xft.dpi" = "155"; # application dpi for most X11 apps
   };
 
   home.file = {
@@ -72,6 +67,12 @@ with import ../settings.nix; {
       source = ../applications/ranger;
       recursive = true;
     };
+
+    ".xinitrc".text = ''
+      xrdb ~/.Xresources
+      exec i3
+      # picom -b --config ~/.config/picom.conf
+    '';
 
     # (manually do this instead)
     # ".templates" = {

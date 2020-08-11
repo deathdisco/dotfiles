@@ -33,7 +33,7 @@ in {
         };
 
         font = {
-          size = 10.0;
+          size = 12.0;
           use_thin_strokes = true;
 
           normal.family = "${settings.fonts.mono}";
@@ -52,7 +52,7 @@ in {
         colors = {
           # Default colors
           primary = {
-            background = "0x09071c";
+            background = "${settings.colors.terminal.background}";
             foreground = "0xcbe3e7";
           };
 

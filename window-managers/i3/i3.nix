@@ -15,10 +15,7 @@ let
   };
 
 in {
-  imports = [
-    ../../applications/picom.nix
-    ../../applications/polybar.nix
-  ];
+  imports = [ ../../applications/picom.nix ../../applications/polybar.nix ];
 
   # Enable the X11 windowing system.
   nixpkgs.config.services.xserver = { enable = true; };
@@ -40,7 +37,7 @@ in {
   # i3
   # config.services.xserver.windowManager.i3.enable = true;
 
-
+  home.file.".config/picom.conf".text = (builtins.readFile ./picom.conf);
 
   home.packages = with pkgs; [
     glibcLocales # for rofi
@@ -53,6 +50,7 @@ in {
     skippy-xd
     hack-font
     font-awesome
+    picom
   ];
 
   # home.file = {
@@ -65,6 +63,23 @@ in {
   #  size = 16;
   #};
 
+  gtk.gtk2.extraConfig = ''
+    gtk-cursor-theme-name="capitaine-cursors"
+    gtk-cursor-theme-size=1.5
+  '';
+
+  gtk.gtk3.extraConfig = {
+    "gtk-cursor-theme-name" = "capitaine-cursors";
+    "gtk-cursor-theme-size" = 1.5;
+  };
+  
+  # xsession.initExtra = ''
+  #   # ...other stuff...
+  #   xsetroot -xcf ${xcursorPackage}/share/icons/${xcursorTheme}/cursors/X_cursor ${
+  #     toString xcursorSize
+  #   }
+  # '';
+
   xsession = {
     enable = true;
 
@@ -76,7 +91,8 @@ in {
         modes = { };
 
         startup = [{
-          command = "${pkgs.feh}/bin/feh --bg-max --bg-fill ${settings.wallpaper}";
+          command =
+            "${pkgs.feh}/bin/feh --bg-max --bg-fill ${settings.wallpaper}";
           always = true;
           notification = false;
         }];

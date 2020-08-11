@@ -2,6 +2,7 @@
 
 { config, pkgs, ... }:
 { home.packages = with pkgs; [
+      scim # ncurses spreadsheet
       nixfmt
       killall
 

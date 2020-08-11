@@ -18,6 +18,10 @@
       text = white;
     };
 
+    terminal = {
+      background = "0x090703";
+    };
+
     firefox = {
       background = black;
       text = white;

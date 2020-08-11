@@ -1,6 +1,6 @@
 # https://github.com/greshake/i3status-rust/blob/master/blocks.md
 
-icons = "awesome" # none | awesome | material
+icons = "awesome5" # none | awesome | material | awesome5
 
 # plain (default) | solarized-dark | solarized-light | slick | modern | bad-wolf
 # gruvbox-light | gruvbox-dark
@@ -9,23 +9,42 @@ icons = "awesome" # none | awesome | material
 name = "modern"
 
 [theme.overrides]
-idle_bg = "#00000033"
-idle_fg = "#abcdef"
+alternating_tint_bg = "#00000000"
+#alternating_tint_fg
+#critical_bg
+critical_fg = "#FFFFFF"
+good_bg = "#00000000"
+good_fg = "#FFFFFF"
+idle_bg = "#00000000"
+#idle_fg
+info_bg = "#00000000"
+info_fg = "#FFFFFF"
+separator_bg = "#00000000"
+#separator_fg
+#separator
+#warning_bg
+warning_fg = "#FFFFFF"
+
+#[icons.overrides]
+#bat = " | | "
+#bat_full = " |X| "
+#bat_charging = " |^| "
+#bat_discharging = " |v| "
 
 [[block]]
 block = "custom"
 command = "curl -s 'https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT' | jq -r .price | xargs printf \" %.*f\n\" \"$p\""
 interval = 100
 
-[[block]]
-block = "custom"
-on_click = "skippy-xd"
-command = "echo '[]'"
+#[[block]]
+#block = "custom"
+#on_click = "skippy-xd"
+#command = "echo '[]'"
 
 [[block]]
 block = "custom"
-on_click = "betterlockscreen --suspend"
-command = "echo 'lock'"
+on_click = "swaylock"
+command = "echo ''"
 
 #[[block]]
 #block = "disk_space"
@@ -48,12 +67,12 @@ block = "cpu"
 interval = 10
 format = "{utilization}%"
 
-[[block]]
-block = "nvidia_gpu"
-label = "GT 1030"
-show_memory = false
-show_clocks = true
-interval = 1
+#[[block]]
+#block = "nvidia_gpu"
+#label = "GT 1030"
+#show_memory = false
+#show_clocks = true
+#interval = 1
 
 # [[block]]
 # block = "load"
