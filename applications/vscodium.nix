@@ -12,6 +12,12 @@ let
         sha256 = "07w35c69vk1l6vipnq3qfack36qcszqxn8j3v332bl0w6m02aa7k";
       }
       {
+        name = "elm-ls-vscode";
+        publisher = "Elmtooling";
+        version = "1.2.0";
+        sha256 = "0sp2nb2awb332hbmccljhwspv78lq2zfh63dkva29sh6ylzw9la5";
+      }
+      {
         name = "darwin";
         publisher = "chriskseidel";
         version = "1.5.1";
@@ -35,6 +41,12 @@ let
         publisher = "rust-lang";
         version = "0.7.8";
         sha256 = "039ns854v1k4jb9xqknrjkj8lf62nfcpfn0716ancmjc4f0xlzb3";
+      }
+      {
+        name = "rust-analyzer";
+        publisher = "matklad";
+        version = "0.2.273";
+        sha256 = "10gm823yh61js0kpbpqfy0r08j8jhgw5wbx4a01m83yz3n0csg15";
       }
       # {
       #   name = "vscode-rust-test-adapter";
@@ -127,13 +139,25 @@ in {
           "command": "workbench.action.quickOpen"
         }
         {
+          "key": "",
+          "command": "workbench.action.files.openFile"
+        }
+        {
+          "key": "",
+          "command": "workbench.action.files.openLocalFile"
+        }
+        {
+          "key": "ctrl+o",
+          "command": "workbench.action.quickOpenRecent"
+        }
+        {
           "key": "ctrl+r",
           "command": "workbench.action.debug.run"
         },{
           "key": "ctrl+f5",
           "command": "-workbench.action.debug.run"
         },{
-          "key": "ctrl+shift+r",
+          "key": "ctrl+shiftquick open recent+r",
           "command": "workbench.action.debug.start",
           "when": "!inDebugMode"
         },{

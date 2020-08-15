@@ -7,7 +7,7 @@
   nixpkgs.config.allowUnfree = true;
   # nixpkgs.config.allowBroken = true;
 
-  imports = [ <nixos-hardware/dell/xps/15-9500/nvidia> ./hardware-configuration.nix ];
+  imports = [ <nixos-hardware/dell/xps/15-9500> ./hardware-configuration.nix ];
 
   # ----------------------------------------------------------------------------
   # USERS

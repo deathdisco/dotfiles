@@ -13,6 +13,7 @@
   "Ctrl+space" = "exec alacritty";
   "${mod}+s" = "exec rofi -show windowcd";
   "Super_L" = "exec skippy-xd";
+  "${mod}+shift+0" = "exec i3lock  --c \"#000000\" -i ~/dotfiles/wallpapers/ascii-skull.png";
 
   # change focus
   "${mod}+n" = "focus down";

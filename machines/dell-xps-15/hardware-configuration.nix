@@ -14,12 +14,13 @@
   environment.variables = {
     MESA_LOADER_DRIVER_OVERRIDE = "iris";
   };
+
   hardware.opengl.enable = true;
   hardware.opengl.package = (pkgs.mesa.override {
     galliumDrivers = [ "nouveau" "virgl" "swrast" "iris" ];
   }).drivers;
 
-  hardware.nvidia.modesetting.enable = true;
+  #hardware.nvidia.modesetting.enable = true;
   # hardware.nvidia.prime = {
   #   enable = true;
   #   intelBusId = "PCI:0:2:0";

@@ -9,6 +9,9 @@
       #cli
       htop ytop gotop # performance monitor
 
+      gnupg # used by ripasso
+      apg # password gen
+
       ranger # file manager
       tmux # terminal multiplexer
       byobu # alternative text multiplexer
