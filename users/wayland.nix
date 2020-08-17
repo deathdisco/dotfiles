@@ -12,7 +12,7 @@ with import ../settings.nix; {
     #../applications/skippy.nix
     # editors
     #../applications/vim.nix
-    #../applications/rofi.nix
+    ../applications/rofi.nix
     ../applications/vscodium.nix
     ../applications/firefox.nix
     #../applications/wayland.nix

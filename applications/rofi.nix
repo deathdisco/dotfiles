@@ -19,11 +19,11 @@
   programs = {
     rofi = {
       enable = true;
-      font = "Source Code Pro 18";
-      padding = 20;
+      font = "Source Code Pro 30";
+      padding = 60;
       colors = {
         window = {
-          background = "#FF0000AA";
+          background = "#000000AA";
           border = "argb:582a373e";
           separator = "#00000000";
         };

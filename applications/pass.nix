@@ -13,7 +13,12 @@ in {
     apg # password gen
 
     pinentry-curses # needed for PIN entry on cli
+
+    browserpass # daemon for the pass chrome extension
   ];
+
+  # not sure if working
+  # programs.gnupg.agent.pinentryFlavor = "curses";
 
   # pinentry
   services.gpg-agent = {
