@@ -17,6 +17,8 @@ with import ../settings.nix; {
     ../applications/firefox.nix
     #../applications/wayland.nix
     ../applications/pass.nix
+
+    ../collections/audio.nix
   ];
 
   nixpkgs.config.xsession.pointerCursor = nixpkgs.capitaine-cursors;
@@ -56,7 +58,7 @@ with import ../settings.nix; {
       userEmail = "deathdisco@protonmail.com";
     };
   };
-  
+
   home.file = {
 
     ".config/waybar" = {

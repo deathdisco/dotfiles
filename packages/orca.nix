@@ -1,6 +1,8 @@
 # https://git.sr.ht/~rabbits/orca
 
-with import <nixpkgs> { };
+{ pkgs ? import <nixpkgs> { } }:
+
+with pkgs;
 
 stdenv.mkDerivation rec {
   name = "orca";
@@ -9,7 +11,6 @@ stdenv.mkDerivation rec {
   buildInputs = [ ncurses portmidi ];
 
   buildPhase = ''
-    find .
     bash ./tool build --portmidi orca
   '';
 

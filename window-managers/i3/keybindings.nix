@@ -15,8 +15,11 @@
   "Super_L" = "exec skippy-xd";
   "${mod}+shift+0" = "exec i3lock  --c \"#000000\" -i ~/dotfiles/wallpapers/ascii-skull.png";
 
+  # scripts
+  "${mod}+n" = "exec bash ${./rename-workspace.sh}";
+
   # change focus
-  "${mod}+n" = "focus down";
+  # "${mod}+n" = "focus down";
   # "${mod}+p" = "focus up";
   "${mod}+shift+Tab" = "focus right";
   "${mod}+Tab" = "focus left";
