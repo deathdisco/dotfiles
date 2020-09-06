@@ -77,6 +77,24 @@ with import ../settings.nix; {
       # picom -b --config ~/.config/picom.conf
     '';
 
+    ".config/mimeapps.list".text = ''
+      [Default Applications]
+      inode/directory=ranger.desktop
+    '';
+
+    ".local/share/applications/ranger.desktop".text = ''
+      [Desktop Entry]
+      Type=Application
+      Name=ranger
+      Comment=Launches the ranger file manager
+      Icon=utilities-terminal
+      Terminal=false
+      Exec=alacritty -e ranger
+      Categories=ConsoleOnly;System;FileTools;FileManager
+      MimeType=inode/directory;
+      Keywords=File;Manager;Browser;Explorer;Launcher;Vi;Vim;Python
+    '';
+
     # (manually do this instead)
     # ".templates" = {
     #   source = ../templates;
@@ -97,6 +115,27 @@ with import ../settings.nix; {
     # ".config/i3/status.toml".source = ../window-managers/i3/i3status-rust.toml;
   };
 
+  # xdg.mimeApps = pkgs.lib.mkIf config.lib.gui.enable {
+  #   enable = true;
+  #   associations.added = {
+  #     "inode/directory" = [ "ranger.desktop" ];
+  #     # "text/html" = [ "firefox.desktop" ];
+  #     # "x-scheme-handler/chrome" = [ "firefox.desktop" ];
+  #     # "x-scheme-handler/http" = [ "firefox.desktop" ];
+  #     # "x-scheme-handler/https" = [ "firefox.desktop" ];
+  #   };
+  #   defaultApplications = {
+  #     # "application/pdf" = [ "org.kde.okular.desktop" ];
+  #     # "image/jpeg" = [ "org.kde.gwenview.desktop" ];
+  #     # "image/png" = [ "org.kde.gwenview.desktop" ];
+  #     "inode/directory" = [ "ranger.desktop" ];
+  #     # "text/html" = [ "chromium.desktop" ];
+  #     # "x-scheme-handler/chrome" = [ "firefox.desktop" ];
+  #     # "x-scheme-handler/http" = [ "firefox.desktop" ];
+  #     # "x-scheme-handler/https" = [ "firefox.desktop" ];
+  #   };
+  # };
+
   home = {
     packages = with pkgs; [
       brave
@@ -104,6 +143,8 @@ with import ../settings.nix; {
       capitaine-cursors
       tdesktop
       signal-desktop
+      ffmpegthumbnailer # todo: add to ranger.nix
+      ueberzug # todo: add to ranger.nix
     ];
 
     sessionVariables = {
