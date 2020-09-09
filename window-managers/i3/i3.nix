@@ -108,7 +108,7 @@ in {
           '';
 
           colors = {
-            background = "#FF401111";
+            background = "#11111111";
             focusedWorkspace = {
               background = "${colors.pink}";
               border = "${colors.pink}";
