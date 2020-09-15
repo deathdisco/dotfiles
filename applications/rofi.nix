@@ -11,7 +11,7 @@
       if [[ -z "$@" ]]; then
         cat "$HOME/.shortcuts"
       else
-          $@
+        $@
       fi
     '';
   };

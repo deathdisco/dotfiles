@@ -34,7 +34,7 @@ with import ../settings.nix; {
 
     environment.profileVariables = (i: { PATH = [ "${i}/cargo/bin" ]; });
 
-    fonts.fontconfig.enable = true;
+    # fonts.fontconfig.enable = true;
   };
 
   programs = {
@@ -139,12 +139,13 @@ with import ../settings.nix; {
   home = {
     packages = with pkgs; [
       brave
-      sublime3
+      # sublime3
       capitaine-cursors
       tdesktop
       signal-desktop
       ffmpegthumbnailer # todo: add to ranger.nix
       ueberzug # todo: add to ranger.nix
+      source-code-pro
     ];
 
     sessionVariables = {

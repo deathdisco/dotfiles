@@ -8,12 +8,11 @@
   boot.extraModprobeConfig = "options nvidia-drm modeset=1";
   boot.initrd.kernelModules =
     [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [ "kvm-intel" ]; # "kvmgt"
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelParams = [ "i915.enable_gvt=1" ];
 
-  environment.variables = {
-    MESA_LOADER_DRIVER_OVERRIDE = "iris";
-  };
+  environment.variables = { MESA_LOADER_DRIVER_OVERRIDE = "iris"; };
 
   hardware.opengl.enable = true;
   hardware.opengl.package = (pkgs.mesa.override {

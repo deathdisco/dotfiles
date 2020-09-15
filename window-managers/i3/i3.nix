@@ -15,7 +15,7 @@ let
   };
 
 in {
-  imports = [ ../../applications/picom.nix ../../applications/polybar.nix ];
+  imports = [ ../../applications/picom.nix ];
 
   # Enable the X11 windowing system.
   nixpkgs.config.services.xserver = { enable = true; };
@@ -72,7 +72,7 @@ in {
     "gtk-cursor-theme-name" = "capitaine-cursors";
     "gtk-cursor-theme-size" = 1.5;
   };
-  
+
   # xsession.initExtra = ''
   #   # ...other stuff...
   #   xsetroot -xcf ${xcursorPackage}/share/icons/${xcursorTheme}/cursors/X_cursor ${

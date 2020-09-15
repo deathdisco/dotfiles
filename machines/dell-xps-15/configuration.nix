@@ -1,13 +1,16 @@
 # link: sudo ln -s /../systems/huawei-matebook-13/nixos /etc/nixos # NOTE: USE FULL PATHS
 # nixos-rebuild switch
 
-{ config, pkgs, ... }:
- {
+{ config, pkgs, ... }: {
   # imports = [ ./display.nix ];
   nixpkgs.config.allowUnfree = true;
   # nixpkgs.config.allowBroken = true;
 
-  imports = [ <nixos-hardware/dell/xps/15-9500> ./hardware-configuration.nix ];
+  imports = [
+    ./virtualisation.nix
+    <nixos-hardware/dell/xps/15-9500>
+    ./hardware-configuration.nix
+  ];
 
   # ----------------------------------------------------------------------------
   # USERS
@@ -16,13 +19,13 @@
   users.users.nom = {
     isNormalUser = true;
     home = "/home/nom";
-    extraGroups = [ "wheel" "networkmanager" "audio" "lxd" "libvirtd" ];
+    extraGroups = [ "wheel" "networkmanager" "audio" "libvirtd" ];
   };
 
   users.users.sway = {
     isNormalUser = true;
     home = "/home/sway";
-    extraGroups = [ "wheel" "networkmanager" "audio" ];
+    extraGroups = [ "wheel" "networkmanager" "audio" "libvirtd" ];
   };
 
   # ----------------------------------------------------------------------------
@@ -50,9 +53,7 @@
 
   programs.sway = {
     enable = true;
-    extraPackages = with pkgs; [
-      waybar swayidle xwayland
-    ];
+    extraPackages = with pkgs; [ waybar swayidle xwayland ];
   };
 
   # programs.home-manager.enable = true;
@@ -176,8 +177,23 @@
   # ----------------------------------------------------------------------------
   # VIRTUAL MACHINES
   #
-  # https://gitlab.com/xaverdh/nixpkgs/blob/3e7bbe45e828301cca2eff578474eab5e6a889e3/nixos/modules/virtualisation/kvmgt.nix
+  # https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/virtualisation/kvmgt.nix
   # cat /sys/bus/pci/devices/0000:00:02.0/mdev_supported_types/i915-GVTg_V5_4/description
+
+  # virtualisation.kvmgt.enable = true;
+  # # virtualisation.kvmgt.vgpus = {
+  # #   "i915-GVTg_V5_8" = { uuid = "a297db4a-f4c2-11e6-90f6-d3b88d6c9525"; };
+  # # };
+  # environment.systemPackages = with pkgs; [ virtmanager ];
+  # users.extraUsers.user.extraGroups = [ "libvirtd" ];
+
+  # virtualisation.libvirtd = {
+  #   enable = true;
+  #   qemuOvmf = true;
+  #   qemuRunAsRoot = false;
+  #   onBoot = "ignore";
+  #   onShutdown = "shutdown";
+  # };
 
   # virtualisation = {
   #   lxd.enable = true;
