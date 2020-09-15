@@ -145,8 +145,8 @@ in {
         colors = {
           background = "#FF401100";
           focused = {
-            border = "${colors.black}";
-            background = "${colors.black}";
+            border = "#FF373e";
+            background = "${colors.red}";
             text = "${colors.white}";
             indicator = "${colors.black}";
             childBorder = "${colors.black}";
@@ -159,7 +159,7 @@ in {
             childBorder = "${colors.black}";
           };
           unfocused = {
-            border = "${colors.black}";
+            border = "${colors.red}";
             background = "${colors.black}";
             text = "${colors.grey-medium}";
             indicator = "${colors.black}";
@@ -173,7 +173,7 @@ in {
             childBorder = "${colors.black}";
           };
           placeholder = {
-            border = "${colors.grey-dark}";
+            border = "${colors.red}";
             background = "${colors.grey-dark}";
             text = "${colors.grey-light}";
             indicator = "${colors.black}";

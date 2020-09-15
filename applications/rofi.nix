@@ -23,8 +23,8 @@
       padding = 60;
       colors = {
         window = {
-          background = "#000000AA";
-          border = "argb:582a373e";
+          background = "argb:DD0A0705";
+          border = "argb:FF2a373e";
           separator = "#00000000";
         };
         rows = {
