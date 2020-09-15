@@ -59,6 +59,9 @@ with import ../settings.nix; {
     };
   };
 
+  gtk.theme.package = pkgs.pop-gtk-theme;
+  gtk.theme.name = "PopOS";
+
   home.file = {
 
     ".config/waybar" = {
@@ -141,11 +144,12 @@ with import ../settings.nix; {
       brave
       # sublime3
       capitaine-cursors
-      tdesktop
+      tdesktop bc
       signal-desktop
       ffmpegthumbnailer # todo: add to ranger.nix
       ueberzug # todo: add to ranger.nix
       source-code-pro
+      pop-gtk-theme
     ];
 
     sessionVariables = {

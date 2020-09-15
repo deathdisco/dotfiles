@@ -190,7 +190,7 @@ in {
       # exec --no-startup-id "picom"
 
       extraConfig = ''
-        exec --no-startup-id picom --config ~/.picom.conf
+        exec --no-startup-id picom --config ~/.config/picom.conf
         default_orientation vertical
         default_border pixel 1
         focus_follows_mouse no
