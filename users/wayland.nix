@@ -29,7 +29,7 @@ with import ../settings.nix; {
 
     environment.variables = {
       EDITOR = "vim";
-      PATH = "~/.cargo/bin:$PATH";
+      PATH = "~/.bin:~/.cargo/bin:$PATH";
     };
 
     environment.profileVariables = (i: { PATH = [ "${i}/cargo/bin" ]; });

@@ -1,7 +1,7 @@
 with import <nixpkgs> { };
 
 stdenv.mkDerivation rec {
-  name = "ly";
+  name = "ly5";
   src = (builtins.fetchurl
     "https://github.com/cylgom/ly/releases/download/v0.5.0/ly_0.5.0.zip");
 

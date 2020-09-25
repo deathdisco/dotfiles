@@ -10,7 +10,8 @@
     [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
   boot.kernelModules = [ "kvm-intel" ]; # "kvmgt"
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  # boot.kernelParams = [ "i915.enable_gvt=1" ];
+  boot.kernelParams = [ "i915.enable_gvt=1" ];
+  # services.fwupd.enable = true;
 
   environment.variables = { MESA_LOADER_DRIVER_OVERRIDE = "iris"; };
 
