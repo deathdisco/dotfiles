@@ -173,6 +173,9 @@ in {
         },{
           "key": "ctrl+n",
           "command": "cursorDown",
+        }, {
+          "key": "ctrl+e",
+          "command": "cursorLineEnd",
         }
       ]'';
 

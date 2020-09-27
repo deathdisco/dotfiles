@@ -5,13 +5,17 @@
 
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
+
   boot.extraModprobeConfig = "options nvidia-drm modeset=1";
   boot.initrd.kernelModules =
     [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
-  boot.kernelModules = [ "kvm-intel" ]; # "kvmgt"
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelParams = [ "i915.enable_gvt=1" ];
   # services.fwupd.enable = true;
+
+  # crashes upon suspend:
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  boot.kernelModules = [ "kvm-intel" ]; # "kvmgt"
+  boot.kernelParams = [ "i915.enable_gvt=1" ];
 
   environment.variables = { MESA_LOADER_DRIVER_OVERRIDE = "iris"; };
 
@@ -20,7 +24,7 @@
     galliumDrivers = [ "nouveau" "virgl" "swrast" "iris" ];
   }).drivers;
 
-  #hardware.nvidia.modesetting.enable = true;
+  # hardware.nvidia.modesetting.enable = true;
   # hardware.nvidia.prime = {
   #   enable = true;
   #   intelBusId = "PCI:0:2:0";

@@ -4,7 +4,6 @@ with import ../settings.nix; {
     ../packages.nix
     ../window-managers/i3/i3.nix
     ../window-managers/sway/sway.nix
-    ../window-managers/hidpi.nix
     ../applications/alacritty.nix
     ../applications/kitty.nix
     #../applications/zsh.nix
@@ -18,10 +17,11 @@ with import ../settings.nix; {
     #../applications/wayland.nix
     ../applications/pass.nix
 
-    ../collections/audio.nix
+    # ../collections/audio.nix 
+    ../window-managers/hidpi.nix 
   ];
 
-  nixpkgs.config.xsession.pointerCursor = nixpkgs.capitaine-cursors;
+  nixpkgs.config.xsession.pointerCursor = pkgs.capitaine-cursors;
 
   # should likely be in nixos config, not hm
   nixpkgs.config = {
@@ -47,6 +47,7 @@ with import ../settings.nix; {
         alias ls='exa'
         alias j='zrs'
         alias z='zrs'
+        alias r='ranger'
         # source /home/nom/.local/share/zrs/z.sh
         PS1="\w> "
       '';
