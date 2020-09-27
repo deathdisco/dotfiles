@@ -176,6 +176,12 @@ in {
         }, {
           "key": "ctrl+e",
           "command": "cursorLineEnd",
+        }, {
+          "key": "ctrl+a",
+          "command": "cursorLineStart",
+        }, {
+          "key": "ctrl+shift+a",
+          "command": "cursorLineStartSelect",
         }
       ]'';
 
