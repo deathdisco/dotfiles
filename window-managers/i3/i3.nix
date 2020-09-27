@@ -63,15 +63,15 @@ in {
   #  size = 16;
   #};
 
-  gtk.gtk2.extraConfig = ''
-    gtk-cursor-theme-name="capitaine-cursors"
-    gtk-cursor-theme-size=1.5
-  '';
+  # gtk.gtk2.extraConfig = ''
+  #   gtk-cursor-theme-name="capitaine-cursors"
+  #   gtk-cursor-theme-size=1.5
+  # '';
 
-  gtk.gtk3.extraConfig = {
-    "gtk-cursor-theme-name" = "capitaine-cursors";
-    "gtk-cursor-theme-size" = 1.5;
-  };
+  # gtk.gtk3.extraConfig = {
+  #   "gtk-cursor-theme-name" = "capitaine-cursors";
+  #   "gtk-cursor-theme-size" = 1.5;
+  # };
 
   # xsession.initExtra = ''
   #   # ...other stuff...

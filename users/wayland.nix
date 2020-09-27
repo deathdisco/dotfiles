@@ -2,6 +2,8 @@
 with import ../settings.nix; {
   imports = [
     ../packages.nix
+    ../window-managers/hidpi.nix
+    
     ../window-managers/i3/i3.nix
     ../window-managers/sway/sway.nix
     ../applications/alacritty.nix
@@ -17,11 +19,10 @@ with import ../settings.nix; {
     #../applications/wayland.nix
     ../applications/pass.nix
 
-    # ../collections/audio.nix 
-    ../window-managers/hidpi.nix 
+    # ../collections/audio.nix
   ];
 
-  nixpkgs.config.xsession.pointerCursor = pkgs.capitaine-cursors;
+  nixpkgs.config.xsession.pointerCursor = pkgs.bibata-cursors;
 
   # should likely be in nixos config, not hm
   nixpkgs.config = {
@@ -144,7 +145,6 @@ with import ../settings.nix; {
     packages = with pkgs; [
       brave
       # sublime3
-      capitaine-cursors
       tdesktop bc
       signal-desktop
       ffmpegthumbnailer # todo: add to ranger.nix

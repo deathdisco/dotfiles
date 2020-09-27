@@ -132,7 +132,7 @@
     proggyfonts
     source-code-pro
     terminus_font
-    capitaine-cursors
+    # capitaine-cursors
   ];
 
   # High-DPI console font

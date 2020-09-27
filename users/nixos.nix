@@ -16,8 +16,6 @@ with import ../settings.nix; {
     ../applications/firefox.nix
   ];
 
-  nixpkgs.config.xsession.pointerCursor = nixpkgs.capitaine-cursors;
-
   # should likely be in nixos config, not hm
   nixpkgs.config = {
     allowUnfree = true;
@@ -76,11 +74,11 @@ with import ../settings.nix; {
     };
   };
 
-  xresources.properties = {
-    "Xcursor.theme" = "capitaine-cursors";
-    "Xcursor.size" = "76";
-    "Xft.dpi" = "155"; # application dpi for most X11 apps
-  };
+  # xresources.properties = {
+  #   "Xcursor.theme" = "capitaine-cursors";
+  #   "Xcursor.size" = "76";
+  #   "Xft.dpi" = "155"; # application dpi for most X11 apps
+  # };
 
   home.file = {
     ".config/sway" = {
@@ -126,7 +124,6 @@ with import ../settings.nix; {
     packages = with pkgs; [
       brave
       sublime3
-      capitaine-cursors
       tdesktop
       signal-desktop
     ];

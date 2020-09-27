@@ -2,6 +2,7 @@
   email = "deathdisco@tutanota.com";
   github-username = "monomadic";
   wallpaper = "~/dotfiles/wallpapers/leaves.jpg";
+  cursor = "bibata-cursors";
   colors = rec {
     black = "#000000";
     white = "#FFFFFF";

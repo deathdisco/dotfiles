@@ -1,14 +1,27 @@
 { config, pkgs, ... }: {
   xresources.properties = {
-    "Xcursor.theme" = "capitaine-cursors";
-    "Xcursor.size" = "150";
-    "Xft.dpi" = "200"; # cursors, i3bar, then multiplied for GDK etc
-    "Xft.autohint" = 0;
-    "Xft.lcdfilter" = "lcddefault";
-    "Xft.hintstyle" = "hintfull";
-    "Xft.hinting" = 1;
-    "Xft.antialias" = 1;
-    "Xft.rgba" = "rgb";
+    #"Xcursor.theme" = "Bibata Oil";
+    #"Xcursor.size" = "150";
+    "Xft.dpi" = "220"; # cursors, i3bar, then multiplied for GDK etc
+    # "Xft.autohint" = 0;
+    # "Xft.lcdfilter" = "lcddefault";
+    # "Xft.hintstyle" = "hintfull";
+    # "Xft.hinting" = 1;
+    # "Xft.antialias" = 1;
+    # "Xft.rgba" = "rgb";
+  };
+
+  home.packages = with pkgs; [
+    bibata-cursors
+    bibata-extra-cursors
+  ];
+
+  # Classic, Ice, Oil, Amber, Turquoise, Pink, DodgerBlue, DarkRed
+
+  xsession.pointerCursor = {
+    package = pkgs.bibata-cursors;
+    name = "Bibata Turquoise";
+    size = 60;
   };
 
   home.sessionVariables = {
