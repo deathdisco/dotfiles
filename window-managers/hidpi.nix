@@ -1,7 +1,5 @@
 { config, pkgs, ... }: {
   xresources.properties = {
-    #"Xcursor.theme" = "Bibata Oil";
-    #"Xcursor.size" = "150";
     "Xft.dpi" = "220"; # cursors, i3bar, then multiplied for GDK etc
     # "Xft.autohint" = 0;
     # "Xft.lcdfilter" = "lcddefault";
@@ -20,7 +18,7 @@
 
   xsession.pointerCursor = {
     package = pkgs.bibata-cursors;
-    name = "Bibata Turquoise";
+    name = "Bibata Oil";
     size = 60;
   };
 
