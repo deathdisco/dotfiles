@@ -30,7 +30,7 @@
     # workspace_layout default
     # gaps inner 10
     
-    seat seat0 xcursor_theme "capitaine-cursors"
+    # seat seat0 xcursor_theme "capitaine-cursors"
 
     # output eDP-1 pos 1920 0 scale 1.5 res 3840x2400
 
@@ -52,6 +52,8 @@
     bindsym Ctrl+Space exec alacritty
     # bindsym Mod1+Space exec rofi -show drun
     bindsym Mod1+Space exec BEMENU_BACKEND=wayland bemenu-run --bottom --line-height=25 --list=5 --prompt="?" --prefix=">" --nb="#00000044"
+    bindsym Mod1+b exec chromium-browser -enable-features=UseOzonePlatform -ozone-platform=wayland
+    bindsym Mod1+shift+b exec vimb
     bindsym Mod1+0 workspace 10
     bindsym Mod1+1 workspace 1
     bindsym Mod1+2 workspace 2
@@ -63,7 +65,6 @@
     bindsym Mod1+8 workspace 8
     bindsym Mod1+9 workspace 9
     bindsym Mod1+Return fullscreen toggle
-    bindsym Mod1+Semicolon focus right
     bindsym Mod1+Shift+1 move container to workspace 1
     bindsym Mod1+Shift+0 move container to workspace 10
     bindsym Mod1+Shift+2 move container to workspace 2
@@ -74,10 +75,13 @@
     bindsym Mod1+Shift+7 move container to workspace 7
     bindsym Mod1+Shift+8 move container to workspace 8
     bindsym Mod1+Shift+9 move container to workspace 9
+
+    bindsym Mod1+Shift+Left move absolute position center
+
     bindsym Mod1+Shift+Down move down
-    bindsym Mod1+Shift+Left move left
+    #bindsym Mod1+Shift+Left move left
     bindsym Mod1+Shift+Right move right
-    bindsym Mod1+Shift+Tab workspace prev
+    #bindsym Mod1+Shift+Tab workspace prev
     bindsym Mod1+Shift+Up move up
     bindsym Mod1+Shift+e reload
     bindsym Mod1+Shift+q exec i3-msg exit
@@ -87,7 +91,8 @@
     bindsym Mod1+w floating toggle
 
     bindsym Mod1+f exec thunar
-    bindsym Mod1+j focus left
+    bindsym Mod1+tab focus right
+    bindsym Mod1+shift+tab focus left
     bindsym Mod1+n focus down
     bindsym Mod1+p focus up
     bindsym Mod1+q kill
@@ -128,7 +133,7 @@
        font pango:monospace 9
        mode dock
        hidden_state hide
-       position top
+       position bottom
        #swaybar_command ${pkgs.i3status-rust}/bin/i3status-rs $HOME/.config/sway/i3status-rust.toml
        status_command ${pkgs.i3status-rust}/bin/i3status-rs $HOME/.config/sway/i3status-rust.toml
        workspace_buttons yes

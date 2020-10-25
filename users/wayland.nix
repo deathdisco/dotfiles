@@ -76,6 +76,11 @@ with import ../settings.nix; {
       recursive = true;
     };
 
+    ".config/kakoune" = {
+      source = ../applications/kakoune;
+      recursive = true;
+    };
+
     ".xinitrc".text = ''
       xrdb ~/.Xresources
       exec i3

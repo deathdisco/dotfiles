@@ -208,6 +208,8 @@ in {
       "editor.tabSize" = 2;
       "[rust]" = { "editor.tabSize" = 4; };
 
+      "editor.formatOnSave" = true;
+
       "extensions.autoCheckUpdates" = false;
       "extensions.autoUpdate" = false;
       "extensions.ignoreRecommendations" = false; # don't show popups

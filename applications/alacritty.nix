@@ -18,10 +18,10 @@ in {
         window = {
           padding.x = 10;
           padding.y = 10;
-          dimensions = {
-            lines = 25;
-            columns = 100;
-          };
+          # dimensions = {
+          #   lines = 25;
+          #   columns = 100;
+          # };
           key_bindings = [
             {
               key = "K";
