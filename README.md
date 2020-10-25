@@ -1,5 +1,5 @@
 # dotfiles
-[!(https://img.shields.io/badge/Built_With-Nix-5277C3.svg?logo=nixos&labelColor=73C3D5)](https://builtwithnix.org)
+[![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
 
 Configuration for NixOS and [home-manager](https://github.com/rycee/home-manager).
 
