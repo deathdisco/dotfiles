@@ -20,4 +20,7 @@
     onBoot = "ignore";
     onShutdown = "shutdown";
   };
+
+  boot.kernelParams = [ "security=apparmor" ];
+  # virtualisation.lxd.enable = true;
 }

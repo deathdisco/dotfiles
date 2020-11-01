@@ -100,7 +100,6 @@
   # FONTS
 
   fonts.fonts = with pkgs; [
-    dejavu_fonts
     dina-font
     fira-code
     fira-code-symbols

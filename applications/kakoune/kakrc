@@ -1,0 +1,406 @@
+# Preamble
+require-module plug
+
+# Let plug.kak manage itself.
+plug plug projects/plug.kak
+
+# Upgrade plugins
+# Install plugins and build them.
+define-command plug-upgrade -docstring 'plug-upgrade' %{
+  plug-install
+  plug-execute connect make install
+  plug-execute lsp cargo build --release
+}
+
+plug-core %{
+  # Options ────────────────────────────────────────────────────────────────────
+
+  # User interface
+  set-option -add global ui_options ncurses_status_on_top=yes
+  set-option -add global ui_options ncurses_assistant=cat
+  set-option -add global ui_options ncurses_set_title=no
+
+  # Color scheme
+  # Dracula theme for Kakoune
+  # https://draculatheme.com/kakoune
+  colorscheme dracula-transparent
+
+  # Status line
+  set-option global modelinefmt '{yellow}%opt{out_of_view_status_line}{default} {{mode_info}} {magenta}%val{client}{default} at {yellow}%val{session}{default} on {green}%val{bufname}{default} {{context_info}} {cyan}%val{cursor_line}{default}:{cyan}%val{cursor_char_column}{default}'
+
+  # Highlighters
+  add-highlighter global/number-lines number-lines
+  add-highlighter global/show-matching show-matching
+  add-highlighter global/show-whitespaces show-whitespaces
+
+  # Indentation
+  # Indent with 2 spaces and make tabs appear as 2 spaces.
+  set-option global tabstop 2
+  set-option global indentwidth 2
+
+  # Filetype-specific
+  # Makefile
+  hook global WinSetOption filetype=makefile %{
+    set-option window indentwidth 0
+  }
+
+  # Live reload
+  set-option global autoreload yes
+
+  # Fix LiveReload
+  set-option global writemethod replace
+
+  # Windowing
+  hook global ModuleLoaded x11 %{
+    set-option global termcmd 'alacritty -e dash -c'
+  }
+
+  # Tools
+  set-option global makecmd 'make -j 8'
+  set-option global grepcmd 'rg --column --with-filename'
+
+  # Commands ───────────────────────────────────────────────────────────────────
+
+  # Turn Kakoune into an IDE
+  define-command ide -params 0..1 -docstring 'ide [session-name]: Turn Kakoune into an IDE' %{
+    # Session name
+    try %{
+      rename-session %arg{1}
+    }
+
+    # Main client
+    rename-client main
+    set-option global jumpclient main
+
+    # Tools client
+    new %{
+      rename-client tools
+      set-option global toolsclient tools
+    }
+
+    # Docs client
+    new %{
+      rename-client docs
+      set-option global docsclient docs
+    }
+
+    # Project drawer
+    dolphin
+
+    # Git
+    > lazygit
+
+    # Terminal
+    >
+  }
+
+  # Aliases ────────────────────────────────────────────────────────────────────
+
+  # Quick editing
+  define-command -docstring 'Open kakrc' edit-kakoune 'edit ~/.config/kak/kakrc'
+  define-command -docstring 'Open krabby/config.js' edit-krabby 'edit ~/.config/krabby/config.js'
+  define-command -docstring 'Open configuration.nix' edit-nixos 'edit /etc/nixos/configuration.nix'
+  define-command -docstring 'Open tmux.conf' edit-tmux 'edit ~/.tmux.conf'
+  define-command -docstring 'Open git/config' edit-git 'edit ~/.config/git/config'
+  define-command -docstring 'Open sway/config' edit-sway 'edit ~/.config/sway/config'
+  define-command -docstring 'Open wayfire.ini' edit-wayfire 'edit ~/.config/wayfire.ini'
+  define-command -docstring 'Open rc.elv' edit-elvish 'edit ~/.elvish/rc.elv'
+  define-command -docstring 'Open alacritty.yml' edit-alacritty 'edit ~/.config/alacritty/alacritty.yml'
+  define-command -docstring 'Open kitty.conf' edit-kitty 'edit ~/.config/kitty/kitty.conf'
+  define-command -docstring 'Open mpv.conf' edit-mpv 'edit ~/.config/mpv/mpv.conf'
+  define-command -docstring 'Open mpv/input.conf' edit-mpv-input 'edit ~/.config/mpv/input.conf'
+  define-command -docstring 'Open broot/conf.toml' edit-broot 'edit ~/.config/broot/conf.toml'
+  define-command -docstring 'Open diary/YYYY.md' edit-diary %(edit "~/documents/diary/%sh(date '+%Y').md")
+  define-command -docstring 'Open passwords.yml' edit-passwords 'edit ~/.config/passwords.yml'
+  define-command -docstring 'Open words.txt' edit-words 'edit ~/documents/words.txt'
+
+  # Aliases
+  alias global ek edit-kakoune
+  alias global en edit-nixos
+  alias global ed edit-diary
+
+  # Mappings ───────────────────────────────────────────────────────────────────
+
+  # Big keys
+  # [Enter] [Backspace] [Tab] [Alt-Tab]
+  map -docstring 'Enter command prompt' global normal <ret> :
+  map -docstring 'Reduce selections to their cursor' global normal <backspace> ';'
+  map -docstring 'Swap selections cursor and anchor' global normal <tab> '<a-;>'
+  map -docstring 'Ensure selection cursor is after anchor' global normal <a-tab> '<a-:>'
+
+  # Keep the jump functionality on Enter for grep and make.
+  hook global WinSetOption filetype=grep %{
+    map -docstring 'grep-jump' window normal <ret> ': grep-jump<ret>'
+  }
+
+  hook global WinSetOption filetype=make %{
+    map -docstring 'make-jump' window normal <ret> ': make-jump<ret>'
+  }
+
+  # Control keys
+  # [C-a] [C-n] [C-o] [C-q] [C-s] [C-t] [C-w] [C-x]
+  map -docstring 'Alternate buffer' global normal <c-a> ga
+  map -docstring 'Open a new terminal window' global normal <c-n> ': connect-terminal<ret>'
+  map -docstring 'Open file' global normal <c-o> ':edit<space>'
+  map -docstring 'Quit' global normal <c-q> ': quit!<ret>'
+  map -docstring 'Save buffer' global normal <c-s> ': write<ret>'
+  map -docstring 'Open a new tab' global normal <c-t> ': new<ret>'
+  map -docstring 'Terminal' global normal <c-w> ': enter-user-mode terminal<ret>'
+  map -docstring 'Write and quit' global normal <c-x> ': write-quit<ret>'
+
+  # Prompt
+  map -docstring 'Expand the typed expansions in currently entered text' global prompt <a-tab> <a-!>
+
+  # Search
+  map -docstring 'Case insensitive search' global prompt <a-i> '<home>(?i)<end>'
+  map -docstring 'Plain text search' global prompt <a-r> '<home>\Q<end>'
+
+  # Paths
+  map -docstring 'Current buffer name' global prompt <a-?> '<c-r>%'
+  map -docstring 'Current buffer directory' global prompt <a-/> '%sh(dirname "$kak_bufname")<a-!>/'
+
+  # Comment
+  map -docstring 'Comment' global normal '#' ': comment-line<ret>'
+
+  # Select all occurrences of the current selection set.
+  map -docstring 'Select all occurrences of the current selection set' global normal <a-percent> '*%s<ret>'
+
+  # User mode
+  # Swap user mode and clear selections
+  map -docstring 'User mode' global normal <space> ,
+  map -docstring 'Clear selections' global normal , <space>
+
+  # Move macros to ^
+  map -docstring 'Play macro' global normal ^ q
+  map -docstring 'Record macro' global normal <a-^> Q
+}
+
+plug auto-pairs projects/auto-pairs.kak %{
+  auto-pairs-enable
+}
+
+plug batch projects/batch.kak
+
+plug bc projects/bc.kak %{
+  map -docstring 'bc' global normal = ': bc-prompt<ret>'
+  map -docstring 'Repeat bc' global normal + ': bc-prompt<ret><up><ret>'
+}
+
+plug-old buffers https://github.com/Delapouite/kakoune-buffers
+
+plug capitalize-selections projects/capitalize-selections.kak %{
+  map -docstring 'Capitalize selections' global normal <a-`> ': capitalize-selections<ret>'
+}
+
+plug change-directory projects/change-directory.kak
+
+plug-autoload chmod
+
+plug chronic projects/chronic.kak %{
+  map -docstring 'Chronic' global normal t ': enter-user-mode chronic<ret>'
+  map -docstring 'Chronic' global insert <c-t> '<esc>: enter-user-mode chronic-insert<ret>'
+}
+
+plug connect projects/connect.kak %{
+  # Modules
+  require-module connect-fzf
+  require-module connect-broot
+  require-module connect-dolphin
+
+  # Environment variables
+  set-option global connect_environment %{
+    export SHELL=elvish
+  }
+}
+
+plug current-word-highlighter projects/current-word-highlighter.kak %{
+  current-word-highlighter-enable
+}
+
+plug double-tap projects/double-tap.kak %{
+  # Type "jj" to leave insert mode:
+  double-tap-escape global j
+}
+
+plug edit projects/edit.kak
+
+plug evaluate-selections projects/evaluate-selections.kak %{
+  map -docstring 'Evaluate selections' global user = ': evaluate-selections<ret>'
+}
+
+plug explore projects/explore.kak %{
+  explore-enable
+
+  # Configure the file explorer
+  alias global explore-files fzf-files
+  alias global explore-buffers fzf-buffers
+}
+
+plug-old find https://github.com/occivink/kakoune-find
+
+plug-autoload git
+plug-autoload grep
+
+plug-autoload gtd %{
+  gtd-enable
+}
+
+plug jq projects/jq.kak %{
+  map -docstring 'jq' global user | ': jq-prompt<ret>'
+  map -docstring 'jq-selections' global user <a-|> ': jq-prompt-selections<ret>'
+}
+
+plug-old lsp https://github.com/kak-lsp/kak-lsp %{
+  lsp-enable
+
+  # Go to definition and implementation
+  map -docstring 'Definition' global goto d '<esc>: lsp-definition<ret>'
+  map -docstring 'Implementation' global goto D '<esc>: lsp-implementation<ret>'
+}
+
+plug-old luar https://github.com/gustavo-hms/luar
+plug-autoload make
+
+plug manual-indent projects/manual-indent.kak %{
+  # Manual indent
+  hook global WinCreate .* %{
+    manual-indent-enable
+  }
+
+  # Remove filetype hooks
+  hook global WinSetOption filetype=.* %{
+    manual-indent-remove-filetype-hooks
+  }
+}
+
+plug mkdir projects/mkdir.kak %{
+  # Make parent directories as needed.
+  hook global BufWritePre .* %{
+    mkdir -p %sh(dirname "$kak_hook_param")
+  }
+}
+
+plug move-line projects/move-line.kak %{
+  map -docstring 'Move selected lines below' global normal ⓙ ': move-line-below<ret>'
+  map -docstring 'Move selected lines above' global normal <c-k> ': move-line-above<ret>'
+}
+
+plug objectify projects/objectify.kak
+
+plug out-of-view projects/out-of-view.kak %{
+  out-of-view-enable
+}
+
+plug pad-number projects/pad-number.kak %{
+  map -docstring 'Pad numbers with leading zeros' global user 0 ': pad-number %val{count}<ret>'
+}
+
+plug palette projects/palette.kak %{
+  palette-enable
+}
+
+plug phantom projects/phantom.kak %{
+  phantom-enable
+  phantom-add-mappings
+}
+
+plug prelude projects/prelude.kak
+
+plug rails projects/rails.kak %{
+  rails-detect
+}
+
+plug replace-mode projects/replace-mode.kak %{
+  map -docstring 'Replace' global user r ': enter-replace-mode<ret>'
+}
+
+plug search-highlighter projects/search-highlighter.kak %{
+  search-highlighter-enable
+}
+
+plug-autoload show-characters %{
+  add-highlighter global/show-characters ref show-characters
+
+  # Faces
+  set-face global ShowCharactersBackground "%opt{background}+f"
+  set-face global ShowCharactersDimmedBackground "%opt{dimmed_background}+f"
+}
+
+plug snippets projects/snippets.kak %{
+  # Enable snippets
+  snippets-enable
+
+  # Options
+  set-option global snippets_scope global global/arrows global/bullets global/dashes global/punctuation
+
+  # Mappings
+  # Create new snippets
+  map -docstring 'Edit snippets' global user / ': snippets-edit<ret>'
+
+  # Add auto-pairs integration
+  map -docstring 'Expand snippets' global insert <ret> '<a-;>: snippets-enter auto-pairs-insert-new-line<ret>'
+
+  # Hooks
+  # Indent snippets with tabs
+  hook global BufCreate '.+/\.?config/snippets/.+' %{
+    set-option buffer indentwidth 0
+  }
+}
+
+plug split-object projects/split-object.kak %{
+  map -docstring 'Split object' global normal <a-I> ': enter-user-mode split-object<ret>'
+}
+
+plug-old state-save https://gitlab.com/Screwtapello/kakoune-state-save %{
+  # Starting
+  hook global KakBegin .* %{
+    state-save-reg-load colon
+    state-save-reg-load pipe
+    state-save-reg-load slash
+  }
+
+  # Quitting
+  hook global KakEnd .* %{
+    state-save-reg-save colon
+    state-save-reg-save pipe
+    state-save-reg-save slash
+  }
+}
+
+plug-old sudo-write https://github.com/occivink/kakoune-sudo-write
+
+plug surround projects/surround.kak %{
+  # Quoting
+  map -docstring 'Surround' global normal q ': enter-user-mode surround<ret>'
+  map -docstring 'Surround insert' global normal Q ': surround-enter-insert-mode<ret>'
+}
+
+plug terminal-mode projects/terminal-mode.kak
+plug text-objects projects/text-objects.kak
+
+plug toggle-highlighter projects/toggle-highlighter.kak %{
+  map -docstring 'Toggle number-lines highlighter' global user l ': toggle-highlighter global/number-lines number-lines<ret>'
+  map -docstring 'Toggle wrap highlighter' global user w ': toggle-highlighter global/wrap wrap -word<ret>'
+}
+
+plug type-expand projects/type-expand.kak
+plug-old vertical-selection https://github.com/occivink/kakoune-vertical-selection
+plug view-mode projects/view-mode.kak
+
+plug volatile-highlighter projects/volatile-highlighter.kak %{
+  volatile-highlighter-enable
+}
+
+plug wl-clipboard projects/wl-clipboard.kak
+
+plug word-select projects/word-select.kak %{
+  word-select-add-mappings
+}
+
+plug yank-ring projects/yank-ring.kak %{
+  # Modules
+  require-module yank-ring-connect
+
+  # Enable yank-ring
+  yank-ring-enable
+}

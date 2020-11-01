@@ -48,7 +48,6 @@
     # virtmanager
     mesa
     mesa_drivers
-    source-code-pro
   ];
 
   programs.sway = {
@@ -118,7 +117,6 @@
   # FONTS
 
   fonts.fonts = with pkgs; [
-    dejavu_fonts
     dina-font
     fira-code
     fira-code-symbols
@@ -130,7 +128,7 @@
     noto-fonts-emoji
     powerline-fonts
     proggyfonts
-    source-code-pro
+    (callPackage ./source-code-pro.nix { })
     terminus_font
     # capitaine-cursors
   ];
@@ -160,20 +158,20 @@
   # DISPLAY / ACCELERATION
 
   # hardware.nvidia.modesettings.enable = true;
-  hardware.opengl = {
-    enable = true;
+  # hardware.opengl = {
+  #   enable = true;
 
-    #  extraPackages = with pkgs; [
-    #   # linuxPackages.nvidia_x11.out
-    #  vaapiIntel
-    # vaapiVdpau
-    #libvdpau-va-gl
-    #];
-    #driSupport = true;
-    #driSupport32Bit = true;
+  #   #  extraPackages = with pkgs; [
+  #   #   # linuxPackages.nvidia_x11.out
+  #   #  vaapiIntel
+  #   # vaapiVdpau
+  #   #libvdpau-va-gl
+  #   #];
+  #   #driSupport = true;
+  #   #driSupport32Bit = true;
 
-    # extraPackages32 = with pkgs; [ linuxPackages.nvidia_x11.lib32 ];
-  };
+  #   # extraPackages32 = with pkgs; [ linuxPackages.nvidia_x11.lib32 ];
+  # };
 
   # ----------------------------------------------------------------------------
   # VIRTUAL MACHINES

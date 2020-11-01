@@ -24,7 +24,7 @@
 
   home.sessionVariables = {
     GDK_SCALE = 1.0; # ?
-    GDK_DPI_SCALE = 1.0; # brave, chromium, vscode (smaller)
+    GDK_DPI_SCALE = 0.5; # brave, chromium, vscode (smaller)
     ELM_SCALE = 1.5; # elementary apps
     #GRUB_FONT = "/boot/grubfont.pf2";
     PLASMA_USE_QT_SCALING = 1;

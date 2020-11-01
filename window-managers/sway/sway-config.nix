@@ -44,7 +44,7 @@
     # <border> <background> <text> <indicator> <child_border>
     client.focused #000000DD #000000DD #d8dee8 #888888 #888888
     # client.focused_inactive #000000DD #000000DD #d8dee8 #000000 #000000
-    # client.unfocused #000000DD #000000DD #888888 #000000 #000000
+    client.unfocused #00000077 #00000077 #888888 #000000 #000000
     # client.urgent #900000 #900000 #d8dee8 #000000 #000000
     # client.placeholder #111111 #111111 #d8dee8 #000000 #000000
     # client.background #000000
@@ -52,8 +52,8 @@
     bindsym Ctrl+Space exec alacritty
     # bindsym Mod1+Space exec rofi -show drun
     bindsym Mod1+Space exec BEMENU_BACKEND=wayland bemenu-run --bottom --line-height=25 --list=5 --prompt="?" --prefix=">" --nb="#00000044"
-    bindsym Mod1+b exec chromium-browser -enable-features=UseOzonePlatform -ozone-platform=wayland
-    bindsym Mod1+shift+b exec vimb
+    bindsym Mod1+shift+b exec chromium-browser -enable-features=UseOzonePlatform -ozone-platform=wayland
+    bindsym Mod1+b exec qutebrowser
     bindsym Mod1+0 workspace 10
     bindsym Mod1+1 workspace 1
     bindsym Mod1+2 workspace 2

@@ -130,7 +130,7 @@ let
       }
     ];
 in {
-  home.packages = with pkgs; [ rustfmt cargo rustc cmake pkgconfig ];
+  home.packages = with pkgs; [ cmake pkgconfig ];
 
   home.file.".config/VSCodium/User/keybindings.json".text = ''
     [

@@ -2,17 +2,20 @@
 
 {
   imports = [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix> ];
+  nixpkgs.overlays = [
+    (self: super:
+      let
+        nixpkgs-mesa = builtins.fetchTarball
+          "https://github.com/nixos/nixpkgs/archive/bdac777becdbb8780c35be4f552c9d4518fe0bdb.tar.gz";
+      in { mesa_drivers = (import nixpkgs-mesa { }).mesa_drivers; })
+  ];
 
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
 
-  boot.extraModprobeConfig = "options nvidia-drm modeset=1";
-  boot.initrd.kernelModules =
-    [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
-  # services.fwupd.enable = true;
-
-  # crashes upon suspend:
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.extraModprobeConfig = "options nvidia-drm modeset=1";
+  # boot.initrd.kernelModules =
+  #   [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
 
   boot.kernelModules = [ "kvm-intel" ]; # "kvmgt"
   boot.kernelParams = [ "i915.enable_gvt=1" ];
@@ -20,9 +23,10 @@
   environment.variables = { MESA_LOADER_DRIVER_OVERRIDE = "iris"; };
 
   hardware.opengl.enable = true;
-  hardware.opengl.package = (pkgs.mesa.override {
-    galliumDrivers = [ "nouveau" "virgl" "swrast" "iris" ];
-  }).drivers;
+  # hardware.opengl.package = (pkgs.mesa.override {
+  #   galliumDrivers = [ "nouveau" "virgl" "swrast" "iris" ];
+  # }).drivers;
+  hardware.opengl.package = pkgs.mesa_drivers;
 
   # hardware.nvidia.modesetting.enable = true;
   # hardware.nvidia.prime = {

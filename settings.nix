@@ -33,7 +33,7 @@
     };
   };
   fonts = rec {
-    mono = "Source Code Pro";
+    mono = "Source Code Pro for Powerline";
     sans = "Noto Sans";
 
     applications = {
