@@ -14,11 +14,13 @@ make # install home-manager profile for x11+wayland i3 environment
 
 ## Content
 
-- `/applications`: home manager configured application configs
-- `/examples`: other nix configurations I find useful
+- `/examples`: other peoples nix configurations I find useful for reference
+- `/flakes`: slowly moving to flakes over packages
+- `/home-manager`: my `home-manager` config (user configuration)
+- `/iso`: scripts to build bootable nixOS installation isos
+- `/machines`: nixOS systems
 - `/packages`: custom nix packages I have made for unsupported applications
-- `/profiles`: home manager configurations
+- `/scripts`: helper scripts to build the system
 - `/shells`: nix-shells
-- `/systems`: nixos system configurations for native nixos installs
-- `/templates`: starter templates for programming I use. more on this later.
+- `/templates`: I link this to ~/.shells to provide various quick nix-shells
 - `/wallpapers`: self explanatory

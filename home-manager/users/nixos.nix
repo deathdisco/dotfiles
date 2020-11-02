@@ -1,28 +1,27 @@
 { config, pkgs, ... }:
-with import ../settings.nix; {
+with import ../../settings.nix; {
   imports = [
-    ../../packages.nix
-    ../../window-managers/hidpi.nix
-
-    ../../window-managers/i3/i3.nix
-    ../../window-managers/sway/sway.nix
-    ../../applications/alacritty.nix
-    ../../applications/kitty.nix
+    ../packages.nix
+    ../applications/hidpi.nix
+    ../applications/i3/i3.nix
+    ../applications/sway/sway.nix
+    ../applications/alacritty.nix
+    ../applications/kitty.nix
     #../applications/zsh.nix
     #../applications/tmux.nix
     #../applications/skippy.nix
     # editors
     #../applications/vim.nix
-    ../../applications/rofi.nix
-    ../../applications/vscodium.nix
-    ../../applications/firefox.nix
+    ../applications/rofi.nix
+    ../applications/vscodium.nix
+    ../applications/firefox.nix
     #../applications/wayland.nix
-    ../../applications/pass.nix
+    ../applications/pass.nix
 
     # ../collections/audio.nix
 
     # ../applications/doom-emacs.nix
-    ../../applications/neovim.nix
+    ../applications/neovim.nix
   ];
 
   nixpkgs.config.xsession.pointerCursor = pkgs.bibata-cursors;
@@ -73,17 +72,17 @@ with import ../settings.nix; {
   home.file = {
 
     ".config/waybar" = {
-      source = ../../window-managers/sway/waybar;
+      source = ../applications/sway/waybar;
       recursive = true;
     };
 
     ".config/ranger" = {
-      source = ../../applications/ranger;
+      source = ../applications/ranger;
       recursive = true;
     };
 
     ".config/kakoune" = {
-      source = ../../applications/kakoune;
+      source = ../applications/kakoune;
       recursive = true;
     };
 
