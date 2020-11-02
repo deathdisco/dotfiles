@@ -1,5 +1,8 @@
 { pkgs, home, ... }:
-{
+
+let settings = (import ../settings.nix);
+
+in {
   # common tasks launcher script
   # run with: rofi -show fb -modi fb:$HOME/.config/rofi/shortcuts.sh
   # place shortcuts in a ~/.shortcuts text file
@@ -20,7 +23,7 @@
     executable = true;
     text = ''
       configuration {
-        font: "Source Code Pro 30";
+        font: "${settings.fonts.mono} 30";
         location: 0;
         padding: 60;
         yoffset: 0;

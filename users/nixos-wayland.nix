@@ -53,8 +53,9 @@ with import ../settings.nix; {
         					alias z='zrs'
         					alias r='ranger'
         # source /home/nom/.local/share/zrs/z.sh
-        					alias wayland-chomium='chromium -enable-features=UseOzonePlatform -ozone-platform=wayland'
-        					alias wayland-signal='GDK_DPI_SCALE=0.5 signal-desktop'
+        					alias chomium-wayland='chromium -enable-features=UseOzonePlatform -ozone-platform=wayland'
+        					alias signal-wayland='GDK_DPI_SCALE=0.5 signal-desktop'
+                  alias codium-x11='GDK_DPI_SCALE=1.0 codium'
         					PS1="\w> "
         					'';
     };

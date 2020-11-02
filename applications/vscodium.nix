@@ -135,7 +135,7 @@ in {
   home.file.".config/VSCodium/User/keybindings.json".text = ''
     [
         {
-          "key": "ctrl+t",
+          "key": "ctrl+p",
           "command": "workbench.action.quickOpen"
         }
         {

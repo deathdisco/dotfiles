@@ -25,7 +25,7 @@
   users.users.sway = {
     isNormalUser = true;
     home = "/home/sway";
-    extraGroups = [ "wheel" "networkmanager" "audio" "libvirtd" ];
+    extraGroups = [ "wheel" "networkmanager" "audio" "libvirtd" "lxd" ];
   };
 
   # ----------------------------------------------------------------------------
