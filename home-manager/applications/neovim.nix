@@ -6,7 +6,7 @@
 # to check keymappings in vim, verbose imap <tab>
 { config, pkgs, ... }:
 let
-  neovim-nightly = (pkgs.callPackage ../packages/nvim-nightly.nix { });
+  neovim-nightly = (pkgs.callPackage ../../packages/nvim-nightly.nix { });
   customPlugins = {
     neoterm = pkgs.vimUtils.buildVimPlugin {
       name = "neoterm";
@@ -69,85 +69,98 @@ let
     };
   };
   allPlugins = pkgs.vimPlugins // customPlugins;
-  
+
 in {
   #home.packages = with pkgs; [ vifm nodejs rust-analyzer ctags rustup ];
   home.packages = with pkgs; [ rust-analyzer rnix-lsp fzf nodejs rustup ];
   programs.neovim = {
-    
-      enable = true;
-      package = neovim-nightly;
-      # finalPackage = neovim-nightly;
-      # configure = {
-      #   vam.knownPlugins = pkgs.vimPlugins // customPlPugins;
-      #   vam.pluginDictionaries = [{ names = [" neoterm" "coc-explorer" "onedark-vim" ]; }];
-      # };
-      # plugins = with pkgs.vimPlugins; [ coc-explorer ];
-      # nvim-treesitter coc-explorer
-      plugins = with allPlugins; [ coc-actions neomake vim-togglelist coc-rust-analyzer coc-nvim completion-nvim fzf-vim nerdtree vim-airline vim-autoformat barbar nvim-web-devicons ];
-      extraConfig = ''
-        set mouse=a
-        set nobackup
-        set noswapfile
-        set hlsearch is " highlight words while searching
-        set number " show line numbers
-        set title
-        set cmdheight=1
-        set mouse=a
-        "set cmdwinheight=10
 
-        " make tab the trigger for autocomplete
-        inoremap <silent><expr> <TAB>
-              \ pumvisible() ? "\<C-n>" :
-              \ <SID>check_back_space() ? "\<TAB>" :
-              \ coc#refresh()
-        inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+    enable = true;
+    package = neovim-nightly;
+    # finalPackage = neovim-nightly;
+    # configure = {
+    #   vam.knownPlugins = pkgs.vimPlugins // customPlPugins;
+    #   vam.pluginDictionaries = [{ names = [" neoterm" "coc-explorer" "onedark-vim" ]; }];
+    # };
+    # plugins = with pkgs.vimPlugins; [ coc-explorer ];
+    # nvim-treesitter coc-explorer
+    plugins = with allPlugins; [
+      coc-actions
+      neomake
+      vim-togglelist
+      coc-rust-analyzer
+      coc-nvim
+      completion-nvim
+      fzf-vim
+      nerdtree
+      vim-airline
+      vim-autoformat
+      barbar
+      nvim-web-devicons
+    ];
+    extraConfig = ''
+      set mouse=a
+      set nobackup
+      set noswapfile
+      set hlsearch is " highlight words while searching
+      set number " show line numbers
+      set title
+      set cmdheight=1
+      set mouse=a
+      "set cmdwinheight=10
 
-        " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-        " position. Coc only does snippet and additional edit on confirm.
-        " <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-        if exists('*complete_info')
-          inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-        else
-          inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-        endif
+      " make tab the trigger for autocomplete
+      inoremap <silent><expr> <TAB>
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ coc#refresh()
+      inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-        " GoTo code navigation.
-        nmap <silent> gd <Plug>(coc-definition)
-        nmap <silent> gy <Plug>(coc-type-definition)
-        nmap <silent> gi <Plug>(coc-implementation)
-        nmap <silent> gr <Plug>(coc-references)
-        noremap <silent> <C-LeftMouse> <Plug>(coc-definition)
+      " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+      " position. Coc only does snippet and additional edit on confirm.
+      " <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+      if exists('*complete_info')
+        inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+      else
+        inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+      endif
 
-        " Use K to show documentation in preview window.
-        nnoremap <silent> K :call <SID>show_documentation()<CR>
+      " GoTo code navigation.
+      nmap <silent> gd <Plug>(coc-definition)
+      nmap <silent> gy <Plug>(coc-type-definition)
+      nmap <silent> gi <Plug>(coc-implementation)
+      nmap <silent> gr <Plug>(coc-references)
+      noremap <silent> <C-LeftMouse> <Plug>(coc-definition)
 
-        noremap <silent> <C-w> :q<CR>
-        inoremap <silent> <C-w> <ESC>:q<CR>
-        noremap <silent> <C-W> :q!<CR>
-        noremap <silent> <C-q> :quitall<CR>
-        noremap <silent> <C-Q> :quitall!<CR>
-        noremap <silent> <C-s> :w<CR>
-        inoremap <silent> <C-s> <ESC>:w<CR>
-        noremap <silent> <C-t> :tabnew<CR>
+      " Use K to show documentation in preview window.
+      nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-        " autoformat
-        autocmd BufWrite * :Autoformat
+      noremap <silent> <C-w> :q<CR>
+      inoremap <silent> <C-w> <ESC>:q<CR>
+      noremap <silent> <C-W> :q!<CR>
+      noremap <silent> <C-q> :quitall<CR>
+      noremap <silent> <C-Q> :quitall!<CR>
+      noremap <silent> <C-s> :w<CR>
+      inoremap <silent> <C-s> <ESC>:w<CR>
+      noremap <silent> <C-t> :tabnew<CR>
 
-        " nerdtree
-        nnoremap <silent> <C-b> :NERDTreeToggle<CR>
-        let g:NERDTreeWinPos = 'left'
-        let g:NERDTreeWinSize = 30
-        let g:NERDTreeQuitOnOpen = 0
-        let g:NERDTreeHijackNetrw = 0
-        let g:NERDTreeMouseMode = 3 " single click tree
+      " autoformat
+      autocmd BufWrite * :Autoformat
 
-        " FZF
-        noremap <silent> <C-p> :call fzf#run({'sink': 'e', 'window': '10new'})<CR>
-      '';
-    };
+      " nerdtree
+      nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+      let g:NERDTreeWinPos = 'left'
+      let g:NERDTreeWinSize = 30
+      let g:NERDTreeQuitOnOpen = 0
+      let g:NERDTreeHijackNetrw = 0
+      let g:NERDTreeMouseMode = 3 " single click tree
 
-    home.file.".config/nvim/coc-settings.json".text = ''
+      " FZF
+      noremap <silent> <C-p> :call fzf#run({'sink': 'e', 'window': '10new'})<CR>
+    '';
+  };
+
+  home.file.".config/nvim/coc-settings.json".text = ''
     {
       "coc.preferences.formatOnSaveFiletypes": ["rust", "nix"],
       "rust-analyzer.serverPath": "${pkgs.rust-analyzer}/bin/rust-analyzer",
@@ -157,8 +170,8 @@ in {
       "rust-client.rustfmt_path": "${pkgs.rustup}/bin/rustfmt",
       "rust-client.racer_completion": true
     }
-    '';
+  '';
 
-    # home.file.".config/nvim/init.vim".text = ''
-    # '';
+  # home.file.".config/nvim/init.vim".text = ''
+  # '';
 }

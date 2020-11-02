@@ -128,6 +128,26 @@ let
         version = "20.0.3";
         sha256 = "1yd3ixbnssm1kjv0wn109wp6szjlc27k33b2cz1l3bkndmjzf69b";
       }
+      {
+        name = "rainbow-brackets";
+        publisher = "2gua";
+        version = "0.0.6";
+        sha256 = "1m5c7jjxphawh7dmbzmrwf60dz4swn8c31svbzb5nhaazqbnyl2d";
+      }
+
+      # {
+      #   name = "outrun";
+      #   publisher = "samrapdev";
+      #   version = "0.2.2";
+      #   sha256 = "16zvhv7mh48q8jkrpps0i5gk9x6ynn2f5xnb94yxikqv8jjwyhkp";
+      # }
+
+      {
+        name = "theme-bear";
+        publisher = "dahong";
+        version = "2.1.0";
+        sha256 = "175g8azxyvg58im07ngf6n2x6dpkmd7mhfnsdncw4l52scpbqbgc";
+      }
     ];
 in {
   home.packages = with pkgs; [ cmake pkgconfig ];
@@ -135,7 +155,7 @@ in {
   home.file.".config/VSCodium/User/keybindings.json".text = ''
     [
         {
-          "key": "ctrl+o",
+          "key": "ctrl+shift+t",
           "command": "workbench.action.quickOpen"
         }
         {
@@ -237,7 +257,7 @@ in {
 
       "window.menuBarVisibility" = "toggle";
 
-      "workbench.colorTheme" = "Simple Dark";
+      "workbench.colorTheme" = "Bear Theme";
       "workbench.iconTheme" = null;
       "workbench.editor.showIcons" = false;
       # "workbench.fontAliasing" = "antialiased";
