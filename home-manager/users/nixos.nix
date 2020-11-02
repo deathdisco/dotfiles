@@ -1,28 +1,28 @@
 { config, pkgs, ... }:
 with import ../settings.nix; {
   imports = [
-    ../packages.nix
-    ../window-managers/hidpi.nix
+    ../../packages.nix
+    ../../window-managers/hidpi.nix
 
-    ../window-managers/i3/i3.nix
-    ../window-managers/sway/sway.nix
-    ../applications/alacritty.nix
-    ../applications/kitty.nix
+    ../../window-managers/i3/i3.nix
+    ../../window-managers/sway/sway.nix
+    ../../applications/alacritty.nix
+    ../../applications/kitty.nix
     #../applications/zsh.nix
     #../applications/tmux.nix
     #../applications/skippy.nix
     # editors
     #../applications/vim.nix
-    ../applications/rofi.nix
-    ../applications/vscodium.nix
-    ../applications/firefox.nix
+    ../../applications/rofi.nix
+    ../../applications/vscodium.nix
+    ../../applications/firefox.nix
     #../applications/wayland.nix
-    ../applications/pass.nix
+    ../../applications/pass.nix
 
     # ../collections/audio.nix
 
     # ../applications/doom-emacs.nix
-    ../applications/neovim.nix
+    ../../applications/neovim.nix
   ];
 
   nixpkgs.config.xsession.pointerCursor = pkgs.bibata-cursors;
@@ -73,22 +73,23 @@ with import ../settings.nix; {
   home.file = {
 
     ".config/waybar" = {
-      source = ../window-managers/sway/waybar;
+      source = ../../window-managers/sway/waybar;
       recursive = true;
     };
 
     ".config/ranger" = {
-      source = ../applications/ranger;
+      source = ../../applications/ranger;
       recursive = true;
     };
 
     ".config/kakoune" = {
-      source = ../applications/kakoune;
+      source = ../../applications/kakoune;
       recursive = true;
     };
 
     ".xinitrc".text = ''
       			xrdb ~/.Xresources
+            GDK_DPI_SCALE = 1.0;
       			exec i3
       # picom -b --config ~/.config/picom.conf
       			'';
@@ -163,7 +164,7 @@ with import ../settings.nix; {
       ueberzug # todo: add to ranger.nix
       # source-code-pro
       pop-gtk-theme
-      (callPackage ../packages/nerdfonts/source-code-pro.nix { })
+      (callPackage ../../packages/nerdfonts/source-code-pro.nix { })
     ];
 
     sessionVariables = {

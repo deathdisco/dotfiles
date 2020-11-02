@@ -7,6 +7,11 @@ Configuration for NixOS and [home-manager](https://github.com/rycee/home-manager
 
 I don't recommend using these files yourself, but pick and choose pieces. I'm trying to keep all files modular, but to be honest it's still a little messy.
 
+``` bash
+make system # install nixos system for Dell XPS 9500
+make # install home-manager profile for x11+wayland i3 environment
+```
+
 ## Content
 
 - `/applications`: home manager configured application configs
