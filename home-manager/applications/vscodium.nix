@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 let
+  # vscode-insiders = pkgs.vscode.override { isInsiders = true; };
   extensions =
     # (with pkgs.vscode-extensions; [ bbenoist.Nix matklad.rust-analyzer ])
     (with pkgs.vscode-extensions; [ bbenoist.Nix ])
@@ -136,11 +137,11 @@ let
       }
 
       # {
-      #   name = "outrun";
-      #   publisher = "samrapdev";
-      #   version = "0.2.2";
-      #   sha256 = "16zvhv7mh48q8jkrpps0i5gk9x6ynn2f5xnb94yxikqv8jjwyhkp";
-      # }
+      #   name = "rust-doc-viewer";
+      #   publisher = "JScearcy";
+      #   version = "1.0.15";
+      #   sha256 = "17038gsd57hpph0c6hzhw1h1w7m4rj52z9v9xfmm8i1aiwxyzpwr";
+      # }up 200%
 
       {
         name = "theme-bear";
@@ -208,6 +209,7 @@ in {
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
+    # package = vscode-insiders;
     extensions = extensions;
     userSettings = {
       "debug.allowBreakpointsEverywhere" = true;
@@ -215,9 +217,6 @@ in {
       "debug.showInlineBreakpointCandidates" = true;
       "debug.toolBarLocation" = "docked";
 
-      # "lldb.adapterEnv" = {
-      #   "PATH" = "${pkgs.cargo}/bin/cargo";
-      # };
       "lldb.libpython" = "${pkgs.python3}/lib/libpython3.so";
       "lldb.showDisassembly" = "never";
       # "lldb.executable" = "${pkgs.lldb_10}/bin/lldb";

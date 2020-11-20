@@ -72,7 +72,7 @@ let
 
 in {
   #home.packages = with pkgs; [ vifm nodejs rust-analyzer ctags rustup ];
-  home.packages = with pkgs; [ rust-analyzer rnix-lsp fzf nodejs rustup ];
+  # home.packages = with pkgs; [ rust-analyzer rnix-lsp fzf nodejs rustup ];
   programs.neovim = {
 
     enable = true;

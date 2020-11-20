@@ -22,6 +22,7 @@ with import ../../settings.nix; {
 
     # ../applications/doom-emacs.nix
     ../applications/neovim.nix
+    ../applications/rust.nix
   ];
 
   nixpkgs.config.xsession.pointerCursor = pkgs.bibata-cursors;
@@ -51,10 +52,11 @@ with import ../../settings.nix; {
         					alias j='zrs'
         					alias z='zrs'
         					alias r='ranger'
-        # source /home/nom/.local/share/zrs/z.sh
+                  # source /home/nom/.local/share/zrs/z.sh
         					alias chomium-wayland='chromium -enable-features=UseOzonePlatform -ozone-platform=wayland'
         					alias signal-wayland='GDK_DPI_SCALE=0.5 signal-desktop'
                   alias codium-x11='GDK_DPI_SCALE=1.0 codium'
+                  alias telegram-x11='QT_QPA_PLATFORM=xcb telegram-desktop'
         					PS1="\w> "
         					'';
     };
@@ -88,7 +90,7 @@ with import ../../settings.nix; {
 
     ".xinitrc".text = ''
       			xrdb ~/.Xresources
-            GDK_DPI_SCALE = 1.0;
+            export GDK_DPI_SCALE=1.0
       			exec i3
       # picom -b --config ~/.config/picom.conf
       			'';
@@ -152,8 +154,15 @@ with import ../../settings.nix; {
   #   };
   # };
 
+  nixpkgs.config.packageOverrides = pkgs: {
+    bip39 = pkgs.callPackage (import
+      (builtins.fetchGit { url = "https://github.com/monomadic/bip39-cli"; }))
+      { };
+  };
+
   home = {
     packages = with pkgs; [
+      # bip39
       brave
       # sublime3
       tdesktop
@@ -164,12 +173,13 @@ with import ../../settings.nix; {
       # source-code-pro
       pop-gtk-theme
       (callPackage ../../packages/nerdfonts/source-code-pro.nix { })
+      # (callPackage ../../packages/rust.nix { })
     ];
 
     sessionVariables = {
       EDITOR = "vim";
       LANG = "en_US.UTF-8";
-      PATH = "~/.cargo/bin:$PATH";
+      PATH = "$HOME/.cargo/bin:$PATH";
     };
 
     stateVersion = "19.09";
