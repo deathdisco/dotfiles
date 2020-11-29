@@ -1,11 +1,12 @@
-{ stdenv, fetchzip }:
+{ stdenv, fetchzip, ... }:
 
 stdenv.mkDerivation rec {
   name = "source-code-pro-nerdfonts";
   version = "2.1.0";
 
   src = fetchzip {
-    url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v${version}/SourceCodePro.zip";
+    url =
+      "https://github.com/ryanoasis/nerd-fonts/releases/download/v${version}/SourceCodePro.zip";
     sha256 = "116s7md53lql8wd08wcld64yq1z4ighkld4p3pl4z72xhvxwmbnf";
     stripRoot = false;
   };
@@ -15,7 +16,7 @@ stdenv.mkDerivation rec {
 
   meta = with stdenv.lib; {
     description = "Nerdfont version of Source Code Pro";
-    homepage = https://github.com/ryanoasis/nerd-fonts;
+    homepage = "https://github.com/ryanoasis/nerd-fonts";
     license = licenses.mit;
   };
 }

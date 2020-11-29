@@ -1,9 +1,9 @@
-{ config, nixpkgs, ... }:
+{ config, pkgs, ... }:
 with import ../settings.nix; {
   imports = [
     ../packages.nix
     ../applications/hidpi.nix
-    #../applications/i3/i3.nix
+    ../applications/i3/i3.nix
     ../applications/sway/sway.nix
     ../applications/alacritty.nix
     ../applications/kitty.nix
