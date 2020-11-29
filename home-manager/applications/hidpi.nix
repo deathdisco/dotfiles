@@ -9,7 +9,7 @@
     # "Xft.rgba" = "rgb";
   };
 
-  home.packages = with pkgs; [ bibata-cursors bibata-extra-cursors ];
+  # home.packages = with pkgs; [ bibata-cursors bibata-extra-cursors ];
 
   # Classic, Ice, Oil, Amber, Turquoise, Pink, DodgerBlue, DarkRed
 

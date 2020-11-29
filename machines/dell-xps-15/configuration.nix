@@ -15,7 +15,7 @@
 
   imports = [
     ./virtualisation.nix
-    <nixos-hardware/dell/xps/15-9500>
+    #<nixos-hardware/dell/xps/15-9500>
     ./hardware-configuration.nix
   ];
 

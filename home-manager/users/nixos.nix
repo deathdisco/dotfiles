@@ -1,9 +1,9 @@
-{ config, pkgs, ... }:
-with import ../../settings.nix; {
+{ config, nixpkgs, ... }:
+with import ../settings.nix; {
   imports = [
     ../packages.nix
     ../applications/hidpi.nix
-    ../applications/i3/i3.nix
+    #../applications/i3/i3.nix
     ../applications/sway/sway.nix
     ../applications/alacritty.nix
     ../applications/kitty.nix
@@ -25,21 +25,21 @@ with import ../../settings.nix; {
     ../applications/rust.nix
   ];
 
-  nixpkgs.config.xsession.pointerCursor = pkgs.bibata-cursors;
+  #nixpkgs.config.xsession.pointerCursor = nixpkgs.bibata-cursors;
 
   # should likely be in nixos config, not hm
-  nixpkgs.config = {
-    allowUnfree = true;
+  # nixpkgs.config = {
+  #   allowUnfree = true;
 
-    environment.variables = {
-      EDITOR = "vim";
-      PATH = "~/.bin:~/.cargo/bin:$PATH";
-    };
+  #   environment.variables = {
+  #     EDITOR = "vim";
+  #     PATH = "~/.bin:~/.cargo/bin:$PATH";
+  #   };
 
-    environment.profileVariables = (i: { PATH = [ "${i}/cargo/bin" ]; });
+  #   environment.profileVariables = (i: { PATH = [ "${i}/cargo/bin" ]; });
 
-    # fonts.fontconfig.enable = true;
-  };
+  #   # fonts.fontconfig.enable = true;
+  # };
 
   programs = {
     home-manager.enable = true; # required by home manager
@@ -68,7 +68,7 @@ with import ../../settings.nix; {
     };
   };
 
-  gtk.theme.package = pkgs.pop-gtk-theme;
+  gtk.theme.package = nixpkgs.pop-gtk-theme;
   gtk.theme.name = "PopOS";
 
   home.file = {
@@ -157,11 +157,11 @@ with import ../../settings.nix; {
   #   };
   # };
 
-  nixpkgs.config.packageOverrides = pkgs: {
-    bip39 = pkgs.callPackage (import
-      (builtins.fetchGit { url = "https://github.com/monomadic/bip39-cli"; }))
-      { };
-  };
+  # nixpkgs.config.packageOverrides = pkgs: {
+  #   bip39 = nixpkgs.callPackage (import
+  #     (builtins.fetchGit { url = "https://github.com/monomadic/bip39-cli"; }))
+  #     { };
+  # };
 
   home = {
     packages = with pkgs; [

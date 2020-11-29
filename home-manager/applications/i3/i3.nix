@@ -18,7 +18,7 @@ in {
   imports = [ ../../applications/picom.nix ];
 
   # Enable the X11 windowing system.
-  nixpkgs.config.services.xserver = { enable = true; };
+  pkgs.config.services.xserver = { enable = true; };
 
   #xsession.windowManager.i3 = {
   #  	enable = true;

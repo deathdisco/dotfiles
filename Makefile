@@ -7,6 +7,7 @@ system:
 	home-manager switch --file home-manager/users/nixos.nix
 
 flake:
+	set -x
 	nix flake update --update-input nixpkgs
 	nix flake update --update-input home-manager
 	sudo nixos-rebuild switch --flake '.#'
