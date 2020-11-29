@@ -6,6 +6,13 @@
   nixpkgs.config.allowUnfree = true;
   # nixpkgs.config.allowBroken = true;
 
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
+
   imports = [
     ./virtualisation.nix
     <nixos-hardware/dell/xps/15-9500>

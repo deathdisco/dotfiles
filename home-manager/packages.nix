@@ -1,94 +1,99 @@
 # TODO move this and clean it up
 
-{ config, pkgs, ... }:
-{ home.packages = with pkgs; [
-	scim # ncurses spreadsheet
-		nixfmt
-		killall
+{ config, pkgs, ... }: {
+  home.packages = with pkgs; [
+    scim # ncurses spreadsheet
+    nixfmt
+    killall
 
-#cli
-		htop bottom gotop # performance monitor
+    # nixFlakes # flake support
 
-		gnupg # used by ripasso
-		apg # password gen
+    #cli
+    htop
+    bottom
+    gotop # performance monitor
 
-		ranger # file manager
-		tmux # terminal multiplexer
-		byobu # alternative text multiplexer
+    gnupg # used by ripasso
+    apg # password gen
 
-		glow # markdown preview
+    ranger # file manager
+    tmux # terminal multiplexer
+    byobu # alternative text multiplexer
 
-# sxiv # suckless image viewer
+    glow # markdown preview
 
-		atool # decompression
+    # sxiv # suckless image viewer
 
-# bspwm
+    atool # decompression
 
-		unrar
-		neofetch
+    # bspwm
 
-		broot # awesome file manager, sorter, finder
-		fff # fucking fast file manager
+    unrar
+    neofetch
 
-		fzf # fuzzy finder and launcher
-		fd # rust alternative to find
-		youtube-dl # video downloader
-		bat # cat with syntax highlighting
-# dust # du replacement
-		ripgrep # fast rust grepping tool
-		megatools # mega.nz cli tools
-# autojump # z/j directory jump for zsh
-		peco # output/list filtering
-		tealdeer # rust tldr client - man page summarising https://github.com/dbrgn/tealdeer
-		gitAndTools.tig # c-based curses git client https://github.com/jonas/tig
-		ctodo # todo list
-		exa # ls replacement
+    broot # awesome file manager, sorter, finder
+    fff # fucking fast file manager
 
-		kakoune # terminal editor
-		amp # rust based cli xi frontend
-		ffmpeg
+    fzf # fuzzy finder and launcher
+    fd # rust alternative to find
+    youtube-dl # video downloader
+    bat # cat with syntax highlighting
+    # dust # du replacement
+    ripgrep # fast rust grepping tool
+    #megatools # mega.nz cli tools
+    # autojump # z/j directory jump for zsh
+    peco # output/list filtering
+    tealdeer # rust tldr client - man page summarising https://github.com/dbrgn/tealdeer
+    gitAndTools.tig # c-based curses git client https://github.com/jonas/tig
+    ctodo # todo list
+    exa # ls replacement
 
-		nox # better nix package manager frontend
-# chafa # image to ascii converter
+    kakoune # terminal editor
+    amp # rust based cli xi frontend
+    ffmpeg
 
-# web dev stuff
-		gron # json grepper
-		jq # json cli parser
-		http-prompt # interactive http api (built on httpie)
-		jid # drill down json (golang) https://github.com/simeji/jid
+    nox # better nix package manager frontend
+    # chafa # image to ascii converter
 
-# re stuff
-		hexyl # hex editor
-		hecate # hex editor (golang) https://github.com/evanmiller/hecate
+    # web dev stuff
+    gron # json grepper
+    jq # json cli parser
+    http-prompt # interactive http api (built on httpie)
+    jid # drill down json (golang) https://github.com/simeji/jid
 
-# archives
-		unzip
-# patchelf # patch elf binaries for nixos
+    # re stuff
+    hexyl # hex editor
+    hecate # hex editor (golang) https://github.com/evanmiller/hecate
 
-# network
-# nmap
-		httpie
-# wavemon # wifi monitoring ncurses
+    # archives
+    unzip
+    # patchelf # patch elf binaries for nixos
 
-# disks
-# parted # disk partitioning
-# bashmount # removable disk mount/unmount https://github.com/jamielinux/bashmount
-# diskrsync
-# diskscan # scan disks for errors
-# btrfs-progs # btrfs utilities
-# ncdu # disk usage
+    # network
+    # nmap
+    httpie
+    # wavemon # wifi monitoring ncurses
 
-# web services
-		googler # google cli
-		haxor-news # hacker news cli
-		rtv # reddit cli
+    # disks
+    # parted # disk partitioning
+    # bashmount # removable disk mount/unmount https://github.com/jamielinux/bashmount
+    # diskrsync
+    # diskscan # scan disks for errors
+    # btrfs-progs # btrfs utilities
+    # ncdu # disk usage
 
-# ncurses toys
-		cmatrix
+    # web services
+    googler # google cli
+    haxor-news # hacker news cli
+    rtv # reddit cli
 
-# file management
-		broot
+    # ncurses toys
+    cmatrix
 
-# screenshots
-		slurp # selector
-		];}
+    # file management
+    broot
+
+    # screenshots
+    slurp # selector
+  ];
+}

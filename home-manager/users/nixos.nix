@@ -98,6 +98,9 @@ with import ../../settings.nix; {
     ".config/mimeapps.list".text = ''
       [Default Applications]
       inode/directory=ranger.desktop
+      x-scheme-handler/tg=userapp-Telegram Desktop-GZ8GU0.desktop
+      [Added Associations]
+      x-scheme-handler/tg=userapp-Telegram Desktop-GZ8GU0.desktop;
       	'';
 
     ".local/share/applications/ranger.desktop".text = ''
