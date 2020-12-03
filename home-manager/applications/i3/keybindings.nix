@@ -5,7 +5,7 @@
   # launchers
   "${mod}+f" = "exec thunar";
   "${mod}+d" = "exec dmenu_run";
-  "${mod}+space" = "rofi -show drun";
+  "${mod}+space" = "exec rofi -show drun";
   # "${mod}+space" = "exec bemenu-run --bottom --line-height=25 --list=5 --prompt=\"?\" --prefix=\">\" --nb=\"#00000044\"";
   "${mod}+shift+space" =
     "exec rofi -show fb -modi fb:$HOME/.config/rofi/shortcuts.sh";

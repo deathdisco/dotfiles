@@ -24,3 +24,10 @@ make # install home-manager profile for x11+wayland i3 environment
 - `/shells`: nix-shells
 - `/templates`: I link this to ~/.shells to provide various quick nix-shells
 - `/wallpapers`: self explanatory
+
+## Notes
+
+Installing unfree packages with flakes means using a non-hermetic environment.
+``` bash:
+nix profile install nixpkgs#_1password-gui --impure
+```

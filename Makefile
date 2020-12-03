@@ -11,4 +11,4 @@ build:
 	nix flake update --update-input nixpkgs
 	nix flake update --update-input home-manager
 	nix flake update --update-input nixos-hardware
-	sudo nixos-rebuild switch --flake '.#'
+	sudo nixos-rebuild switch --flake '.#' --impure

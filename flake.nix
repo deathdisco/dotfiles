@@ -13,12 +13,11 @@
 
   outputs = { self, home-manager, nixpkgs, nixos-hardware, ... }: rec {
     nixosConfigurations = {
-
       nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          nixos-hardware.nixosModules.dell-xps-15-9500
           ./machines/dell-xps-15/configuration.nix
+          nixos-hardware.nixosModules.dell-xps-15-9500
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
