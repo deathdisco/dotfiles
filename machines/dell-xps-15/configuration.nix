@@ -1,7 +1,7 @@
 # link: sudo ln -s /../systems/huawei-matebook-13/nixos /etc/nixos # NOTE: USE FULL PATHS
 # nixos-rebuild switch
 
-{ config, pkgs, ... }: {
+{ config, pkgs, inputs, ... }: {
   nixpkgs.config.allowUnfree = true;
   # nixpkgs.config.allowBroken = true;
 
@@ -13,6 +13,7 @@
   };
 
   imports = [
+    #"${inputs.nixpkgs}/nixos/modules/installer/scan/not-detected.nix"
     ./virtualisation.nix
     #<nixos-hardware/dell/xps/15-9500>
     ./hardware-configuration.nix
@@ -86,23 +87,15 @@
 
   networking = {
     networkmanager.enable = true; # networkmanager
-    # wireless.enable = true; # wpa_supplicant
 
-    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-    # wireless.iwd.enable = true;
-    # networkmanager.wifi.backend = "iwd";
-    # wireless.networks = {
-    # };
+  #   # wireless.enable = true; # wpa_supplicant
+  #   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-    # networking.wireless.networks = {
-    #   echelon = {
-    #     pskRaw = "dca6d6ed41f4ab5a984c9f55f6f66d4efdc720ebf66959810f4329bb391c5435";
-    #   };
-    # }
-    # # wpa_passphrase ESSID PSK
+  #   # wireless.iwd.enable = true;
+  #   # networkmanager.wifi.backend = "iwd";
 
-    useDHCP = false; # deprecated
-    interfaces.wlp0s20f3.useDHCP = true;
+  #   #useDHCP = false; # deprecated
+  #   #interfaces.wlp0s20f3.useDHCP = true;
   };
 
   # ----------------------------------------------------------------------------

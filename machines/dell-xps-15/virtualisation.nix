@@ -22,5 +22,4 @@
   };
 
   boot.kernelParams = [ "security=apparmor" ];
-  virtualisation.lxd.enable = true;
 }
