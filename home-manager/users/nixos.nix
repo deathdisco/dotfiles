@@ -48,7 +48,6 @@ with import ../settings.nix; {
       enable = true;
       sessionVariables.EDITOR = "vim";
       bashrcExtra = ''
-        					alias ls='exa'
         					alias j='zrs'
         					alias z='zrs'
         					alias r='ranger'

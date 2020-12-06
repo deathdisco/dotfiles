@@ -75,6 +75,7 @@
   #boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.loader.grub.useOSProber = true;
   # boot.blacklistedKernelModules = [ "nouveau" ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # text only prompt, no display manager
   # services.xserver.displayManager.startx.enable = true;
@@ -88,14 +89,16 @@
   networking = {
     networkmanager.enable = true; # networkmanager
 
-  #   # wireless.enable = true; # wpa_supplicant
-  #   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    #   # wireless.enable = true; # wpa_supplicant
+    #   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  #   # wireless.iwd.enable = true;
-  #   # networkmanager.wifi.backend = "iwd";
+    #   # wireless.iwd.enable = true;
+    #   # networkmanager.wifi.backend = "iwd";
 
-  #   #useDHCP = false; # deprecated
-  #   #interfaces.wlp0s20f3.useDHCP = true;
+    #   #useDHCP = false; # deprecated
+    #   #interfaces.wlp0s20f3.useDHCP = true;
+
+    usePredictableInterfaceNames = true;
   };
 
   # ----------------------------------------------------------------------------
