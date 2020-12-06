@@ -10,6 +10,8 @@
       in { mesa_drivers = (import nixpkgs-mesa { }).mesa_drivers; })
   ];
 
+  hardware.enableRedistributableFirmware = true;
+
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
 

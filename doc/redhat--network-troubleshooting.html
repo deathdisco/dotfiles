@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+<head>
+<script id="dpal" src="https://www.redhat.com/ma/dpal.js"></script>
+<meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"a03a21ae8a",applicationID:"467345710"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(6),c=e(7),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(8);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(5),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,y=["click","keydown","mousedown","pointerdown","touchstart"];y.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],4:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],5:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],6:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],7:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],8:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?f(e,c,o):o()}function n(n,r,i,o){if(!p.aborted||o){e&&e(n,r,i);for(var a=t(i),c=v(n),f=c.length,u=0;u<f;u++)c[u].apply(a,r);var d=s[w[n]];return d&&d.push([b,n,r,a]),a}}function l(e,t){h[e]=v(e).concat(t)}function m(e,t){var n=h[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return h[e]||[]}function g(e){return d[e]=d[e]||i(n)}function y(e,t){u(e,function(e,n){t=t||"feature",w[n]=t,t in s||(s[t]=[])})}var h={},w={},b={on:l,addEventListener:l,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:y,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(p.aborted=!0,s=p.backlog={})}var c="nr@context",f=e("gos"),u=e(6),s={},d={},p=t.exports=i();p.backlog=s},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=b.info=NREUM.info,t=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+b.offset],null,"api"),c("timing",["load",n]);var r=p.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===p.readyState&&o()}function o(){c("mark",["domContent",a()+b.offset],null,"api")}var a=e(2),c=e("handle"),f=e(6),u=e("ee"),s=e(4),d=window,p=d.document,l="addEventListener",m="attachEvent",v=d.XMLHttpRequest,g=v&&v.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:v,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1184.min.js"},w=v&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),b=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:w,userAgent:s};e(1),e(3),p[l]?(p[l]("DOMContentLoaded",o,!1),d[l]("load",r,!1)):(p[m]("onreadystatechange",i),d[m]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0},{}],"wrap-function":[function(e,t,n){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(7),a="nr@original",c=Object.prototype.hasOwnProperty,f=!1;t.exports=function(e,t){function n(e,t,n,i){function nrWrapper(){var r,a,c,f;try{a=this,r=o(arguments),c="function"==typeof n?n(r,a):n||{}}catch(u){p([u,"",[r,a,i],c])}s(t+"start",[r,a,i],c);try{return f=e.apply(a,r)}catch(d){throw s(t+"err",[r,a,d],c),d}finally{s(t+"end",[r,a,f],c)}}return r(e)?e:(t||(t=""),nrWrapper[a]=e,d(e,nrWrapper),nrWrapper)}function u(e,t,i,o){i||(i="");var a,c,f,u="-"===i.charAt(0);for(f=0;f<t.length;f++)c=t[f],a=e[c],r(a)||(e[c]=n(a,u?c+i:i,o,c))}function s(n,r,i){if(!f||t){var o=f;f=!0;try{e.emit(n,r,i,t)}catch(a){p([a,n,r,i])}f=o}}function d(e,t){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(e);return n.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(r){p([r])}for(var i in e)c.call(e,i)&&(t[i]=e[i]);return t}function p(t){try{e.emit("internal-error",t)}catch(n){}}return e||(e=i),n.inPlace=u,n.flag=a,n}},{}]},{},["loader"]);</script>
+<link rel="canonical" href="https://www.redhat.com/sysadmin/beginners-guide-network-troubleshooting-linux" />
+<meta property="og:site_name" content="Enable Sysadmin" />
+<meta name="twitter:card" content="photo" />
+<meta name="dcterms.title" content="A beginner&#039;s guide to network troubleshooting in Linux" />
+<meta name="twitter:title" content="A beginner&#039;s guide to network troubleshooting in Linux" />
+<meta name="dcterms.creator" content="Anthony Critelli" />
+<meta name="description" content="Every system administrator needs to have at least a basic understanding of network troubleshooting. And the first rule of network troubleshooting to remember is, &quot;Packets don&#039;t lie.&quot;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.redhat.com/sysadmin/beginners-guide-network-troubleshooting-linux" />
+<meta name="twitter:site:id" content="14627400" />
+<meta property="og:title" content="A beginner&#039;s guide to network troubleshooting in Linux" />
+<meta name="twitter:creator" content="@" />
+<meta name="dcterms.publisher" content="Red Hat, Inc." />
+<meta name="twitter:url" content="https://www.redhat.com/sysadmin/beginners-guide-network-troubleshooting-linux" />
+<meta name="twitter:image" content="https://www.redhat.com/sysadmin/sites/default/files/styles/full/public/2019-09/cables_0.jpg?itok=M88WUv0-" />
+<meta name="twitter:image:width" content="600" />
+<meta name="twitter:image:height" content="1000" />
+<meta name="twitter:image:alt" content="Red Hat, Inc." />
+<meta property="og:image" content="https://www.redhat.com/sysadmin/sites/default/files/styles/google_discover/public/2019-09/cables_0.jpg?itok=bYdm5AdC" />
+<meta property="og:image:secure_url" content="https://www.redhat.com/sysadmin/sites/default/files/styles/google_discover/public/2019-09/cables_0.jpg?itok=bYdm5AdC" />
+<meta name="dcterms.language" content="en" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:video:width" content="600" />
+<meta property="og:image:width" content="1000" />
+<meta property="og:image:height" content="675" />
+<meta property="og:image:alt" content="https://www.redhat.com/sysadmin/sites/default/files/styles/google_discover/public/2019-09/cables_0.jpg?itok=bYdm5AdC" />
+<meta property="og:updated_time" content="2019-09-26T12:55:57+0000" />
+<meta property="og:street_address" content="100 East Davie Street" />
+<meta property="og:locality" content="Raleigh" />
+<meta property="og:region" content="NC" />
+<meta property="og:postal_code" content="27601" />
+<meta property="og:country_name" content="United States" />
+<meta property="og:phone_number" content="+1 919 754 4950" />
+<meta property="og:fax_number" content="+1 919 800 3804" />
+<meta property="og:locale" content="en_US" />
+<meta property="article:author" content="https://www.redhat.com/sysadmin/users/anthony-critelli" />
+<meta property="article:publisher" content="https://www.facebook.com/redhatinc" />
+<meta property="article:section" content="Enable Sysadmin" />
+<meta property="article:tag" content="Networking" />
+<meta property="article:tag" content="Linux" />
+<meta property="article:modified_time" content="2019-09-26T12:55:57+0000" />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "TechArticle",
+            "headline": "A beginner\u0027s guide to network troubleshooting in Linux",
+            "name": "A beginner\u0027s guide to network troubleshooting in Linux",
+            "about": [
+                "Networking",
+                "Linux"
+            ],
+            "description": "Every system administrator needs to have at least a basic understanding of network troubleshooting. And the first rule of network troubleshooting to remember is, \u0022Packets don\u0027t lie.\u0022",
+            "image": {
+                "@type": "ImageObject",
+                "url": "https://www.redhat.com/sysadmin/sites/default/files/styles/full/public/2019-09/cables_0.jpg?itok=M88WUv0-",
+                "width": "1000",
+                "height": "600"
+            },
+            "dateModified": "2019-09-26T12:55:57+0000",
+            "author": {
+                "@type": "Person",
+                "@id": "https://www.redhat.com/sysadmin/users/anthony-critelli",
+                "name": "Anthony Critelli",
+                "url": "https://www.redhat.com/sysadmin/users/anthony-critelli",
+                "sameAs": "https://twitter.com/"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "@id": "https://www.redhat.com/"
+            },
+            "mainEntityOfPage": "https://www.redhat.com/sysadmin/beginners-guide-network-troubleshooting-linux"
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://www.redhat.com/sysadmin/beginners-guide-network-troubleshooting-linux",
+            "publisher": {
+                "@type": "Organization",
+                "@id": "https://www.redhat.com/"
+            }
+        },
+        {
+            "@type": "Person",
+            "name": "Anthony Critelli",
+            "sameAs": "https://twitter.com/",
+            "image": {
+                "@type": "ImageObject",
+                "url": "https://www.redhat.com/sysadmin/sites/default/files/styles/user_picture_square/public/pictures/2019-09/Anthony%20Critelli.jpg?itok=Xp4Nn-4G",
+                "width": "240",
+                "height": "240"
+            }
+        },
+        {
+            "@type": "Corporation",
+            "@id": "https://www.redhat.com/",
+            "name": "Red Hat, Inc.",
+            "url": "https://www.redhat.com/",
+            "sameAs": [
+                "https://en.wikipedia.org/wiki/Red_Hat",
+                "http://www.linkedin.com/company/red-hat",
+                "http://www.youtube.com/user/RedHatVideos",
+                "https://www.facebook.com/redhatinc",
+                "https://twitter.com/RedHat"
+            ],
+            "telephone": "+1 919 754 4950",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+1-888-RED-HAT1",
+                "availableLanguage": "English",
+                "contactType": "sales",
+                "faxnumber": "+1 919 800 3804"
+            },
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.redhat.com/sysadmin/themes/custom/sysadmin/assets/images/red-hat-logo.png",
+                "width": "254",
+                "height": "60"
+            },
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "100 East Davie Street",
+                "addressLocality": "Raleigh",
+                "addressRegion": "NC",
+                "postalCode": "27601",
+                "addressCountry": "United States"
+            }
+        },
+        {
+            "@type": "WebSite",
+            "@id": "https://www.redhat.com/sysadmin/",
+            "name": "Enable Sysadmin",
+            "url": "https://www.redhat.com/sysadmin/",
+            "publisher": {
+                "@type": "Organization",
+                "@id": "https://www.redhat.com/"
+            }
+        }
+    ]
+}</script>
+<meta name="robots" content="max-image-preview:large" />
+<link rel="shortcut icon" href="/sysadmin/themes/custom/sysadmin/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="revision" href="https://www.redhat.com/sysadmin/beginners-guide-network-troubleshooting-linux" />
+<link rel="apple-touch-icon" sizes="180x180" href="/sysadmin/themes/custom/sysadmin/assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/sysadmin/themes/custom/sysadmin/assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/sysadmin/themes/custom/sysadmin/assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="/sysadmin/themes/custom/sysadmin/assets/favicon/site.webmanifest">
+<link rel="mask-icon" href="/sysadmin/themes/custom/sysadmin/assets/favicon/safari-pinned-tab.svg" color="#ee0000">
+<meta name="msapplication-TileColor" content="#1a1a1a">
+<meta name="theme-color" content="#ffffff">
+<title>A beginner&#039;s guide to network troubleshooting in Linux | Enable Sysadmin</title>
+<link rel="stylesheet" media="all" href="/sysadmin/sites/default/files/css/css_2Ew0_ikik0izh0qMFMR7w68r84J2tIix6ef-CYJmkec.css" />
+<link rel="stylesheet" media="all" href="/sysadmin/sites/default/files/css/css_gGRMdr75XlcR9J0iJo8mIghgaz02dh2Sp6Oexln3n2g.css" />
+
+
+<!--[if lte IE 8]>
+<script src="/sysadmin/sites/default/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/sysadmin/sites/default/files/js/js_QHqjxhGPGgZFwOfW92tmrVpssmC1sbO0zDG4TgLmaEI.js"></script>
+
+
+</head>
+<body>
+<a href="#main-content" class="visually-hidden focusable">
+Skip to main content
+</a>
+
+  <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+
+<div class="redhat-cookie-banner">
+<section id="redhat-cookie-privacy-banner" class="redhat-cookie-banner-wrapper" style="display: block;">
+  <div class="container my-3 pr-5">
+    <p>We use cookies on our websites to deliver our online services. Details about how we use cookies and how you may disable them are set out in our <a href="http://www.redhat.com/en/about/privacy-policy#cookies">Privacy Statement</a>. By using this website you agree to our use of cookies.
+    <span class="cookie-more">
+    <a id="redhat-cookie-privacy-banner-close" href="javascript:void(0);" class="cookie-close">&times;</a>
+    </span>
+    </p>
+  </div>
+</section>
+</div>
+
+<div class="page d-flex flex-column">
+  <div class="navbar navbar-expand-lg justify-content-between navbar-dark bg-dark">
+    <div class="container">
+                
+  <div class="block block--sysadmin-navbar-branding">
+
+  
+    
+
+    
+  <a href="https://www.redhat.com/" class="navbar-brand ">
+            <img src="/sysadmin/themes/custom/sysadmin/logo.svg" width="135" height="31" class="d-inline-block align-top" alt="Red Hat logo" />
+
+        
+  </a>
+
+
+  </div>
+
+
+      
+      <div class="navbar-toggler-wrapper">
+        <button class="navbar-toggler" type="button" data-toggle="collapse"  data-parent="#collapse-parent" data-target="#search-collapse" aria-controls="search-collapse" aria-expanded="false" aria-label="Toggle search">
+          <svg class="icon-collapsed" width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><line x1="18.95" y1="19.15" x2="25.25" y2="25.75"/><circle cx="13.25" cy="12.75" r="8.5"/></svg>
+          <svg class="icon-expanded" width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><line x1="7.25" y1="7.25" x2="22.75" y2="22.75"/><line x1="7.25" y1="22.75" x2="22.75" y2="7.25"/></svg>
+          <span style="vertical-align: middle;">Search</span>
+        </button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-parent="#collapse-parent" data-target="#mobilenav-collapse" aria-controls="mobilenav-collapse" aria-expanded="false" aria-label="Toggle navigation">
+          <svg class="icon-collapsed" width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h22M4 15h22M4 23h22"/></svg>
+          <svg class="icon-expanded" width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><line x1="7.25" y1="7.25" x2="22.75" y2="22.75"/><line x1="7.25" y1="22.75" x2="22.75" y2="7.25"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="collapse-parent">
+    <div id="search-collapse" class="search-collapse collapse" data-parent="#collapse-parent">
+      <div class="py-4 px-3">
+        <form class="form-inline m-2" action="/sysadmin/search/node" accept-charset="UTF-8" method="get">
+          <div class="input-group flex-fill">
+            <input class="form-control" type="search" name="keys" id="search" value="" placeholder="Search this site…" aria-label="Search this site…">
+            <div class="input-group-append">
+              <button class="btn btn-secondary font-weight-bold" type="submit">Search</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="mobilenav-collapse" class="mobilenav-collapse d-lg-none collapse" data-parent="#collapse-parent">
+                
+  <div class="block block--sysadmin-navbar-sitename sitename">
+
+  
+    
+
+    
+  <a href="/sysadmin/" class="navbar-brand sitename">
+        Enable Sysadmin
+  </a>
+
+  <span class="d-none d-lg-inline ml-1 mr-3 h5 navbar-sitename-divider">&nbsp;</span>
+
+  </div>
+
+  <div class="block block--sysadmin-main-menu">
+
+  
+    
+
+      
+  
+
+
+  <ul class="nav navbar-nav">
+                                          <li class="nav-item  dropdown">
+                      <a href="/sysadmin/" class="nav-link dropdown-toggle" data-toggle="dropdown" data-drupal-link-system-path="&lt;front&gt;">Articles</a>
+                          <div class="dropdown-menu">
+              <a href="/sysadmin/topics/automation" class="dropdown-item" data-drupal-link-system-path="taxonomy/term/146">Automation</a>
+              <a href="/sysadmin/topics/career" class="dropdown-item" data-drupal-link-system-path="taxonomy/term/51">Career</a>
+              <a href="/sysadmin/topics/containers" class="dropdown-item" data-drupal-link-system-path="taxonomy/term/36"> Containers</a>
+              <a href="/sysadmin/topics/sysadmin-culture" class="dropdown-item" data-drupal-link-system-path="taxonomy/term/41">Culture</a>
+              <a href="/sysadmin/topics/kubernetes" class="dropdown-item" data-drupal-link-system-path="taxonomy/term/66">Kubernetes</a>
+              <a href="/sysadmin/topics/linux" class="dropdown-item" data-drupal-link-system-path="taxonomy/term/21">Linux</a>
+              <a href="/sysadmin/topics/programming" class="dropdown-item" data-drupal-link-system-path="taxonomy/term/71"> Programming</a>
+              <a href="/sysadmin/topics/security" class="dropdown-item" data-drupal-link-system-path="taxonomy/term/96">Security</a>
+  </div>
+                              </li>
+                                      <li class="nav-item  dropdown">
+                      <a href="/sysadmin/about" class="nav-link dropdown-toggle" data-toggle="dropdown" data-drupal-link-system-path="node/71">About</a>
+                          <div class="dropdown-menu">
+              <a href="/sysadmin/about" class="dropdown-item" data-drupal-link-system-path="node/71">Topics</a>
+              <a href="/sysadmin/email" class="dropdown-item" data-drupal-link-system-path="node/376">Email newsletter</a>
+              <a href="/sysadmin/join-community" class="dropdown-item" data-drupal-link-system-path="node/641">Join the community</a>
+              <a href="/sysadmin/community-guidelines" class="dropdown-item" data-drupal-link-system-path="node/156">Community guidelines</a>
+              <a href="/sysadmin/sudoers-program" class="dropdown-item" data-drupal-link-system-path="node/2106">Sudoers program</a>
+              <a href="/sysadmin/meet-team" class="dropdown-item" data-drupal-link-system-path="node/2316">Meet the team</a>
+              <a href="/sysadmin/faq" class="dropdown-item" data-drupal-link-system-path="node/1526">FAQs</a>
+  </div>
+                              </li>
+                                      <li class="nav-item  ">
+                      <a href="/sysadmin/welcome" class="nav-link">Welcome</a>
+                  </li>
+            </ul>
+
+
+  
+  </div>
+
+
+      
+              
+          </div>
+  </div>
+
+  
+
+
+<nav class="navbar navbar-expand-lg justify-content-between navbar-light  d-none d-lg-block text-dark bg-light border-bottom-light-gray">
+      <div class="container">
+  
+      
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse">
+                  <div class="mr-auto d-flex navbar-desktop">
+            
+  <div class="block block--sysadmin-navbar-sitename sitename">
+
+  
+    
+
+    
+  <a href="/sysadmin/" class="navbar-brand sitename">
+        Enable Sysadmin
+  </a>
+
+  <span class="d-none d-lg-inline ml-1 mr-3 h5 navbar-sitename-divider">&nbsp;</span>
+
+  </div>
+
+  <div class="block block--sysadmin-main-menu">
+
+  
+    
+
+      
+  
+
+
+  <ul class="nav navbar-nav">
+                                          <li class="nav-item  dropdown">
+                      <a href="/sysadmin/" class="nav-link dropdown-toggle" data-toggle="dropdown" data-drupal-link-system-path="&lt;front&gt;">Articles</a>
+                          <div class="dropdown-menu">
+              <a href="/sysadmin/topics/automation" class="dropdown-item" data-drupal-link-system-path="taxonomy/term/146">Automation</a>
+              <a href="/sysadmin/topics/career" class="dropdown-item" data-drupal-link-system-path="taxonomy/term/51">Career</a>
+              <a href="/sysadmin/topics/containers" class="dropdown-item" data-drupal-link-system-path="taxonomy/term/36"> Containers</a>
+              <a href="/sysadmin/topics/sysadmin-culture" class="dropdown-item" data-drupal-link-system-path="taxonomy/term/41">Culture</a>
+              <a href="/sysadmin/topics/kubernetes" class="dropdown-item" data-drupal-link-system-path="taxonomy/term/66">Kubernetes</a>
+              <a href="/sysadmin/topics/linux" class="dropdown-item" data-drupal-link-system-path="taxonomy/term/21">Linux</a>
+              <a href="/sysadmin/topics/programming" class="dropdown-item" data-drupal-link-system-path="taxonomy/term/71"> Programming</a>
+              <a href="/sysadmin/topics/security" class="dropdown-item" data-drupal-link-system-path="taxonomy/term/96">Security</a>
+  </div>
+                              </li>
+                                      <li class="nav-item  dropdown">
+                      <a href="/sysadmin/about" class="nav-link dropdown-toggle" data-toggle="dropdown" data-drupal-link-system-path="node/71">About</a>
+                          <div class="dropdown-menu">
+              <a href="/sysadmin/about" class="dropdown-item" data-drupal-link-system-path="node/71">Topics</a>
+              <a href="/sysadmin/email" class="dropdown-item" data-drupal-link-system-path="node/376">Email newsletter</a>
+              <a href="/sysadmin/join-community" class="dropdown-item" data-drupal-link-system-path="node/641">Join the community</a>
+              <a href="/sysadmin/community-guidelines" class="dropdown-item" data-drupal-link-system-path="node/156">Community guidelines</a>
+              <a href="/sysadmin/sudoers-program" class="dropdown-item" data-drupal-link-system-path="node/2106">Sudoers program</a>
+              <a href="/sysadmin/meet-team" class="dropdown-item" data-drupal-link-system-path="node/2316">Meet the team</a>
+              <a href="/sysadmin/faq" class="dropdown-item" data-drupal-link-system-path="node/1526">FAQs</a>
+  </div>
+                              </li>
+                                      <li class="nav-item  ">
+                      <a href="/sysadmin/welcome" class="nav-link">Welcome</a>
+                  </li>
+            </ul>
+
+
+  
+  </div>
+
+
+        </div>
+          
+                  
+      
+      
+
+<div class="dropdown show text-align-right">
+    <a href="/sysadmin/subscribe" class="navbar-util navbar-util--rss" aria-label="Subscribe to our feed or newsletter blast">
+    <svg width="22" height="23" viewBox="0 0 22 23" xmlns="http://www.w3.org/2000/svg"><title>Subscribe to our RSS feed or Email newsletter</title><path d="M0 4.23c9.79 0 17.75 8 17.75 17.84h4.23A22.05 22.05 0 0 0 0 0v4.23z M0 7.67v4.23c2.74 0 5.33 1.07 7.27 3.03a10.26 10.26 0 0 1 3 7.3h4.24c0-8.02-6.5-14.56-14.51-14.56M2.93 16.87a2.94 2.94 0 0 0 0 5.85 2.93 2.93 0 1 0 0-5.85" fill-rule="evenodd"/></svg>
+
+    <span class="sr-only">Subscribe to our RSS feed or Email newsletter.</span>
+  </a>
+
+    <a id="dropdownSearchLink" href="/sysadmin/search/node" class="navbar-util navbar-util--search" role="button" aria-label="Search this site…" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg" style="fill:none;stroke-width:3;stroke:#000;stroke-linecap:round;"><line x1="18.95" y1="19.15" x2="25.25" y2="25.75"/><circle cx="13.25" cy="12.75" r="8.5"/></svg>
+
+  </a>
+  <div class="dropdown-menu dropdown-menu-right p-1 pt-2" aria-labelledby="dropdownSearchLink">
+    <form class="form-inline m-2" action="/sysadmin/search/node" accept-charset="UTF-8" method="get">
+      <div class="input-group flex-fill">
+        <input class="form-control" type="search" name="keys" id="search" value="" placeholder="Search this site…" aria-label="Search this site…">
+        <div class="input-group-append">
+          <button class="btn btn-secondary font-weight-bold" type="submit">GO</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  </div>
+      </div>
+
+      </div>
+  </nav>
+
+  <main class="pb-5">
+                  <header class="page__header">
+          <div class="container">
+              <div data-drupal-messages-fallback class="hidden"></div>
+
+
+          </div>
+        </header>
+          
+    <a name="main-content" tabindex="-1"></a>
+
+                  <div class="page__content">
+                  
+  <div class="block block--sysadmin-content">
+
+  
+    
+
+      <article data-history-node-id="761" role="article" about="/sysadmin/beginners-guide-network-troubleshooting-linux" typeof="schema:Article" id="node--article--761" class="full full--article node node--promoted">
+  
+    <span property="schema:name" content="A beginner&#039;s guide to network troubleshooting in Linux" class="hidden"></span>
+  <span property="schema:interactionCount" content="UserComments:0" class="hidden"></span>
+
+
+      <div  class="section my-5 narrow">
+  <div class="container">
+    <div >
+      
+  <div class="block">
+
+  
+    
+
+      <span property="schema:name"><h1 class="font-weight-bold">A beginner's guide to network troubleshooting in Linux</h1>
+</span>
+
+  
+  </div>
+
+  <div class="block">
+
+  
+    
+
+      
+            <div class="article__field-subhead">Every system administrator needs to have at least a basic understanding of network troubleshooting. And the first rule of network troubleshooting to remember is, &quot;Packets don&#039;t lie.&quot;</div>
+      
+  
+  </div>
+
+    </div>
+  </div>
+</div>
+<div  class="section pb-5 narrow">
+  <div class="container">
+    <div >
+      
+  <div class="block">
+
+  
+    
+
+      <p class="article-byline">
+  <span class="article-date">
+    <span class="label">Posted:</span>
+    September 24, 2019
+  </span>
+    <span aria-hidden="true">|</span>
+  <span class="article-authors">
+    <strong class="sr-only">by</strong>
+          <a href="/sysadmin/users/anthony-critelli" class="article-author article-author--primary">Anthony Critelli<span class="author-affiliate"> (Sudoer)</span></a>      </span>
+  </p>
+
+  
+  </div>
+
+  <div class="block">
+
+  
+    
+
+      
+            <div class="article__field-media"><figure>
+  
+  
+  <div class="blazy image__field-media-image" data-blazy="">
+    <div class="field__label font-weight-bold visually-hidden">
+      Image    </div>
+                  <div class="field__item">
+
+
+
+                    <div class="media media--blazy media--loading media--image">
+      
+<img class="b-lazy media__image media__element img-fluid" data-src="/sysadmin/sites/default/files/styles/full/public/2019-09/cables_0.jpg?itok=M88WUv0-" height="600" width="1000" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" typeof="foaf:Image" loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Ethernet cables" />
+
+        
+      
+    </div>
+        
+  
+</div>
+              </div>
+
+  <figcaption>
+    
+            <div class="image__field-media-description"><a href="https://www.flickr.com/photos/29155878@N03/16480450157">"Ethernet switch"</a> by <a href="https://www.flickr.com/photos/29155878@N03">Open Grid Scheduler / Grid Engine</a> is licensed under <a href="https://creativecommons.org/licenses/CC0/1.0/?ref=ccsearch&amp;atype=rich">CC0 1.0</a></div>
+      
+  </figcaption>
+</figure>
+</div>
+      
+  
+  </div>
+
+  <div class="block">
+
+  
+    
+
+      
+            <div property="schema:text" class="article__body"><p id="beginner’s-guide-to-network-troubleshooting">When I worked in a network-focused role, one of the biggest challenges was always bridging the gap between network and systems engineering. Sysadmins, lacking visibility into the network, would often blame the network for outages or strange issues. Network admins, unable to control the servers and fatigued by the "guilty until proven innocent" attitude toward the network, would often blame the network endpoints.</p>
+
+<p>Of course, blame doesn’t solve problems. Taking time to understand the basics of someone’s domain can go a long way toward improving relationships with other teams and shepherding faster resolutions to problems. This fact is especially true for sysadmins. By having a basic understanding of network troubleshooting, we can bring stronger evidence to our networking colleagues when we suspect that the network may be at fault. Similarly, we can often save time by performing some initial troubleshooting on our own.</p>
+
+<p>In this article, we’ll cover the basics of network troubleshooting via the Linux command line.</p>
+
+<h2 id="quick-review-of-the-tcpip-model">A quick review of the TCP/IP model</h2>
+
+<p>First, let’s take a moment to review the fundamentals of the TCP/IP network model. While most people use the <a href="https://en.wikipedia.org/wiki/OSI_model" target="_blank">Open Systems Interconnection (OSI)</a> model to discuss network theory, the TCP/IP model more accurately represents the suite of protocols that are deployed in modern networks.</p>
+
+<div data-embed-button="media_entity_embed" data-entity-embed-display="view_mode:media.embed_large" data-entity-type="media" data-entity-uuid="511f0788-b410-49af-88f7-cdff437de573" data-langcode="en" class="align-center embedded-entity embedded-entity--image embedded-entity--image--embed-large"><article><div class="blazy image__field-media-image" data-blazy="">
+    <div class="field__label font-weight-bold visually-hidden">
+      Image    </div>
+                  <div class="field__item">
+
+
+
+                    <div class="media media--blazy media--loading media--image">
+      
+<img class="b-lazy media__image media__element img-fluid" data-src="/sysadmin/sites/default/files/styles/embed_large/public/2019-09/TCPIP_OSI_0.png?itok=C4Z8UqH2" height="1283" width="1232" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" typeof="foaf:Image" loading="lazy" alt="OSI Model Layers and corresponding TCP/IP Layers" /></div>
+        
+  
+</div>
+              </div>
+
+  </article></div>
+<p>The layers in the TCP/IP network model, in order, include:</p>
+
+<ul><li><strong>Layer 5:</strong> Application</li>
+	<li><strong>Layer 4:</strong> Transport</li>
+	<li><strong>Layer 3:</strong> Network/Internet</li>
+	<li><strong>Layer 2:</strong> Data Link</li>
+	<li><strong>Layer 1:</strong> Physical</li>
+</ul><p>I’ll assume that you are familiar with this model, and will proceed by discussing ways to troubleshoot issues at stack Layers 1 through 4. Where to start troubleshooting is situation-dependent. For example, if you can SSH to a server, but the server can’t connect to a MySQL database, the problem is unlikely to be the physical or data link layers on the local server. In general, it’s a good idea to work your way down the stack. Start with the application, and then gradually troubleshoot each lower layer until you’ve isolated the problem.</p>
+
+<p>With that background out of the way, let’s jump to the command line and start troubleshooting.</p>
+
+<h2 id="layer-1-the-physical-layer">Layer 1: The physical layer</h2>
+
+<p>We often take the physical layer for granted ("did you make sure the cable is plugged in?"), but we can easily troubleshoot physical layer problems from the Linux command line. That is if you have console connectivity to the host, which might not be the case for some remote systems.</p>
+
+<p>Let’s start with the most basic question: Is our physical interface up? The <code>ip link show</code> command tells us:</p>
+
+<pre>
+<code class="language-shell"># ip link show
+
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+2: eth0: &lt;BROADCAST,MULTICAST&gt; mtu 1500 qdisc pfifo_fast state DOWN mode DEFAULT group default qlen 1000
+link/ether 52:54:00:82:d6:6e brd ff:ff:ff:ff:ff:ff
+</code></pre>
+
+<p>Notice the indication of DOWN in the above output for the eth0 interface. This result means that Layer 1 isn’t coming up. We might try troubleshooting by checking the cabling or the remote end of the connection (e.g., the switch) for problems.</p>
+
+<p>Before you start checking cables, though, it’s a good idea to make sure that the interface isn’t just disabled. Issuing a command to bring the interface up can rule this problem out:</p>
+
+<pre>
+<code class="language-shell"># ip link set eth0 up
+</code></pre>
+
+<p>The output of <code>ip link show</code> can be difficult to parse at a quick glance. Luckily, the <code>-br</code> switch prints this output in a much more readable table format:</p>
+
+<pre>
+<code class="language-shell"># ip -br link show
+lo UNKNOWN 00:00:00:00:00:00 &lt;LOOPBACK,UP,LOWER_UP&gt;
+eth0 UP 52:54:00:82:d6:6e &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt;
+</code></pre>
+
+<p>It looks like <code>ip link set eth0 up</code> did the trick, and eth0 is back in business.</p>
+
+<div data-embed-button="resource_list" data-entity-embed-display="view_mode:resource_list.link" data-entity-type="resource_list" data-entity-uuid="60b26066-acd0-4332-afa7-d98c9a079f02" data-langcode="en" class="align-right embedded-entity embedded-entity--resources embedded-entity--resources--link"><aside id="resource-list-more-linux-resources" class="eck-entity mt-2 py-3 pr-3 border-top border-danger"><h2 class="h4">
+      More Linux resources
+  </h2>
+
+<ul class="pl-3 mb-0"><li class="my-2"><a href="https://developers.redhat.com/cheat-sheets/advanced-linux-commands/?intcmp=701f20000012ngPAAQ">Advanced Linux Commands Cheat Sheet for Developers</a></li>
+      <li class="my-2"><a href="https://access.redhat.com/products/red-hat-insights/?intcmp=701f20000012ngPAAQ">Get Started with Red Hat Insights</a></li>
+      <li class="my-2"><a href="https://developers.redhat.com/cheat-sheets/linux-commands-cheat-sheet/?intcmp=701f20000012ngPAAQ">Download Now: Basic Linux Commands Cheat Sheet</a></li>
+      <li class="my-2"><a href="https://rhtapps.redhat.com/assessment/?intcmp=701f20000012ngPAAQ">Linux System Administration Skills Assessment</a></li>
+  </ul></aside></div>
+<p>These commands are great for troubleshooting obvious physical issues, but what about more insidious issues? Interfaces can negotiate at the incorrect speed, or collisions and physical layer problems can cause packet loss or corruption that results in costly retransmissions. How do we start troubleshooting those issues?</p>
+
+<p>We can use the <code>-s</code> flag with the <code>ip</code> command to print additional statistics about an interface. The output below shows a mostly clean interface, with only a few dropped receive packets and no other signs of physical layer issues:</p>
+
+<pre>
+<code class="language-shell"># ip -s link show eth0
+2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
+link/ether 52:54:00:82:d6:6e brd ff:ff:ff:ff:ff:ff
+RX: bytes packets errors dropped overrun mcast
+34107919 5808 0 6 0 0
+TX: bytes packets errors dropped carrier collsns
+434573 4487 0 0 0 0
+</code></pre>
+
+<p>For more advanced Layer 1 troubleshooting, the <code>ethtool</code> utility is an excellent option. A particularly good use case for this command is checking to see if an interface has negotiated the correct speed. An interface that has negotiated the wrong speed (e.g. a 10Gbps interface that only reports 1Gbps speeds) can be an indicator of a hardware/cabling issue, or a negotiation misconfiguration on one side of the link (e.g., a misconfigured switch port).</p>
+
+<p>Our results might look like this:</p>
+
+<pre>
+<code class="language-shell"># ethtool eth0
+Settings for eth0:
+Supported ports: [ TP ]
+Supported link modes: 10baseT/Half 10baseT/Full
+100baseT/Half 100baseT/Full
+1000baseT/Full
+Supported pause frame use: Symmetric
+Supports auto-negotiation: Yes
+Supported FEC modes: Not reported
+Advertised link modes: 10baseT/Half 10baseT/Full
+100baseT/Half 100baseT/Full
+1000baseT/Full
+Advertised pause frame use: Symmetric
+Advertised auto-negotiation: Yes
+Advertised FEC modes: Not reported
+Speed: 1000Mb/s
+Duplex: Full
+Port: Twisted Pair
+PHYAD: 1
+Transceiver: internal
+Auto-negotiation: on
+MDI-X: on (auto)
+Supports Wake-on: d
+Wake-on: d
+Current message level: 0x00000007 (7)
+drv probe link
+Link detected: yes
+</code></pre>
+
+<p>Note that the output above shows a link that has correctly negotiated to a speed of 1000Mbps and full-duplex.</p>
+
+<h2 id="layer-2-the-data-link-layer">Layer 2: The data link layer</h2>
+
+<p>The data link layer is responsible for <em>local</em> network connectivity; essentially, the communication of frames between hosts on the same Layer 2 domain (commonly called a local area network). The most relevant Layer 2 protocol for most sysadmins is the <a href="https://en.wikipedia.org/wiki/Address_Resolution_Protocol" target="_blank">Address Resolution Protocol (ARP)</a>, which maps Layer 3 IP addresses to Layer 2 Ethernet MAC addresses. When a host tries to contact another host on its local network (such as the default gateway), it likely has the other host’s IP address, but it doesn’t know the other host’s MAC address. ARP solves this issue and figures out the MAC address for us.</p>
+
+<p>A common problem you might encounter is an ARP entry that won’t populate, particularly for your host’s default gateway. If your localhost can’t successfully resolve its gateway’s Layer 2 MAC address, then it won’t be able to send any traffic to remote networks. This problem might be caused by having the wrong IP address configured for the gateway, or it may be another issue, such as a misconfigured switch port.</p>
+
+<p>We can check the entries in our ARP table with the <code>ip neighbor</code> command:</p>
+
+<pre>
+<code class="language-shell"># ip neighbor show
+192.168.122.1 dev eth0 lladdr 52:54:00:11:23:84 REACHABLE
+</code></pre>
+
+<p>Note that the gateway’s MAC address is populated (we’ll talk more about how to find your gateway in the next section). If there was a problem with ARP, then we would see a resolution failure:</p>
+
+<pre>
+<code class="language-shell"># ip neighbor show
+192.168.122.1 dev eth0 FAILED
+</code></pre>
+
+<p>Another common use of the <code>ip neighbor</code> command involves manipulating the ARP table. Imagine that your networking team just replaced the upstream router (which is your server’s default gateway). The MAC address may have changed as well since MAC addresses are hardware addresses that are assigned at the factory.</p>
+
+<p class="pullquote"><strong>Note:</strong> While unique MAC addresses are assigned to devices at the factory, it is possible to change or spoof these. Many modern networks often also use protocols such as the <a href="https://en.wikipedia.org/wiki/Virtual_Router_Redundancy_Protocol" target="_blank">Virtual Router Redundancy Protocol (VRRP)</a>, which use a generated MAC address.</p>
+
+<p>Linux caches the ARP entry for a period of time, so you may not be able to send traffic to your default gateway until the ARP entry for your gateway times out. For highly important systems, this result is undesirable. Luckily, you can manually delete an ARP entry, which will force a new ARP discovery process:</p>
+
+<pre>
+<code class="language-shell"># ip neighbor show
+192.168.122.170 dev eth0 lladdr 52:54:00:04:2c:5d REACHABLE
+192.168.122.1 dev eth0 lladdr 52:54:00:11:23:84 REACHABLE
+# ip neighbor delete 192.168.122.170 dev eth0
+# ip neighbor show
+192.168.122.1 dev eth0 lladdr 52:54:00:11:23:84 REACHABLE
+</code></pre>
+
+<p>In the above example, we see a populated ARP entry for 192.168.122.70 on eth0. We then delete the ARP entry and can see that it has been removed from the table.</p>
+
+<h2 id="layer-3-the-networkinternet-layer">Layer 3: The network/internet layer</h2>
+
+<p>Layer 3 involves working with IP addresses, which should be familiar to any sysadmin. IP addressing provides hosts with a way to reach other hosts that are outside of their local network (though we often use them on local networks as well). One of the first steps to troubleshooting is checking a machine’s local IP address, which can be done with the <code>ip address</code> command, again making use of the <code>-br</code> flag to simplify the output:</p>
+
+<pre>
+<code class="language-shell"># ip -br address show
+lo UNKNOWN 127.0.0.1/8 ::1/128
+eth0 UP 192.168.122.135/24 fe80::184e:a34d:1d37:441a/64 fe80::c52f:d96e:a4a2:743/64
+</code></pre>
+
+<p>We can see that our eth0 interface has an IPv4 address of 192.168.122.135. If we didn’t have an IP address, then we’d want to troubleshoot that issue. The lack of an IP address can be caused by a local misconfiguration, such as an incorrect network interface config file, or it can be caused by problems with DHCP.</p>
+
+<p>The most common frontline tool that most sysadmins use to troubleshoot Layer 3 is the <code>ping</code> utility. Ping sends an ICMP Echo Request packet to a remote host, and it expects an ICMP Echo Reply in return. If you’re having connectivity issues to a remote host, <code>ping</code> is a common utility to begin your troubleshooting. Executing a simple ping from the command line sends ICMP echoes to the remote host indefinitely; you’ll need to CTRL+C to end the ping or pass the <code>-c &lt;num pings&gt;</code> flag, like so:</p>
+
+<pre>
+<code class="language-shell"># ping www.google.com
+PING www.google.com (172.217.165.4) 56(84) bytes of data.
+64 bytes from yyz12s06-in-f4.1e100.net (172.217.165.4): icmp_seq=1 ttl=54 time=12.5 ms
+64 bytes from yyz12s06-in-f4.1e100.net (172.217.165.4): icmp_seq=2 ttl=54 time=12.6 ms
+64 bytes from yyz12s06-in-f4.1e100.net (172.217.165.4): icmp_seq=3 ttl=54 time=12.5 ms
+^C
+--- www.google.com ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2002ms
+rtt min/avg/max/mdev = 12.527/12.567/12.615/0.036 ms
+</code></pre>
+
+<p>Notice that each ping includes the amount of time it took to receive a response. While <code>ping</code> can be an easy way to tell if a host is alive and responding, it is by no means definitive. Many network operators block ICMP packets as a security precaution, although many others <a href="http://shouldiblockicmp.com/" target="_blank">disagree with this practice.</a> Another common gotcha is relying on the time field as an accurate indicator of network latency. ICMP packets can be rate limited by intermediate network gear, and they shouldn’t be relied upon to provide true representations of application latency.</p>
+
+<p>The next tool in the Layer 3 troubleshooting tool belt is the <code>traceroute</code> command. Traceroute takes advantage of the Time to Live (TTL) field in IP packets to determine the path that traffic takes to its destination. Traceroute will send out one packet at a time, beginning with a TTL of one. Since the packet expires in transit, the upstream router sends back an ICMP Time-to-Live Exceeded packet. Traceroute then increments the TTL to determine the next hop. The resulting output is a list of intermediate routers that a packet traversed on its way to the destination:</p>
+
+<pre>
+<code class="language-shell"># traceroute www.google.com
+traceroute to www.google.com (172.217.10.36), 30 hops max, 60 byte packets
+1 acritelli-laptop (192.168.122.1) 0.103 ms 0.057 ms 0.027 ms
+2 192.168.1.1 (192.168.1.1) 5.302 ms 8.024 ms 8.021 ms
+3 142.254.218.133 (142.254.218.133) 20.754 ms 25.862 ms 25.826 ms
+4 agg58.rochnyei01h.northeast.rr.com (24.58.233.117) 35.770 ms 35.772 ms 35.754 ms
+5 agg62.hnrtnyaf02r.northeast.rr.com (24.58.52.46) 25.983 ms 32.833 ms 32.864 ms
+6 be28.albynyyf01r.northeast.rr.com (24.58.32.70) 43.963 ms 43.067 ms 43.084 ms
+7 bu-ether16.nycmny837aw-bcr00.tbone.rr.com (66.109.6.74) 47.566 ms 32.169 ms 32.995 ms
+8 0.ae1.pr0.nyc20.tbone.rr.com (66.109.6.163) 27.277 ms * 0.ae4.pr0.nyc20.tbone.rr.com (66.109.1.35) 32.270 ms
+9 ix-ae-6-0.tcore1.n75-new-york.as6453.net (66.110.96.53) 32.224 ms ix-ae-10-0.tcore1.n75-new-york.as6453.net (66.110.96.13) 36.775 ms 36.701 ms
+10 72.14.195.232 (72.14.195.232) 32.041 ms 31.935 ms 31.843 ms
+11 * * *
+12 216.239.62.20 (216.239.62.20) 70.011 ms 172.253.69.220 (172.253.69.220) 83.370 ms lga34s13-in-f4.1e100.net (172.217.10.36) 38.067 ms
+</code></pre>
+
+<p>Traceroute seems like a great tool, but it’s important to understand its limitations. As with ICMP, intermediate routers may filter the packets that <code>traceroute</code> relies on, such as the ICMP Time-to-Live Exceeded message. But more importantly, the path that traffic takes to and from a destination is not necessarily symmetric, and it’s not always the same. Traceroute can mislead you into thinking that your traffic takes a nice, linear path to and from its destination. However, this situation is rarely the case. Traffic may follow a different return path, and paths can change dynamically for many reasons. While <code>traceroute</code> may provide accurate path representations in small corporate networks, it often isn’t accurate when trying to trace across large networks or the internet.</p>
+
+<p>Another common issue that you’ll likely run into is a lack of an upstream gateway for a particular route or a lack of a default route. When an IP packet is sent to a different network, it must be sent to a gateway for further processing. The gateway should know how to route the packet to its final destination. The list of gateways for different routes is stored in a <em>routing table</em>, which can be inspected and manipulated using <code>ip route</code> commands.</p>
+
+<p>We can print the routing table using the <code>ip route show</code> command:</p>
+
+<pre>
+<code class="language-shell"># ip route show
+default via 192.168.122.1 dev eth0 proto dhcp metric 100
+192.168.122.0/24 dev eth0 proto kernel scope link src 192.168.122.135 metric 100
+</code></pre>
+
+<p>Simple topologies often just have a default gateway configured, represented by the "default" entry at the top of the table. A missing or incorrect default gateway is a common issue.</p>
+
+<p>If our topology is more complex and we require different routes for different networks, we can check the route for a specific prefix:</p>
+
+<pre>
+<code class="language-shell"># ip route show 10.0.0.0/8
+10.0.0.0/8 via 192.168.122.200 dev eth0
+</code></pre>
+
+<p>In the example above, we are sending all traffic destined to the 10.0.0.0/8 network to a different gateway (192.168.122.200).</p>
+
+<p>While not a Layer 3 protocol, it’s worth mentioning DNS while we’re talking about IP addressing. Among other things, the Domain Name System (DNS) translates IP addresses into human-readable names, such as <code>www.redhat.com</code>. DNS problems are extremely common, and they are sometimes opaque to troubleshoot. Plenty of books and online guides have been written on DNS, but we’ll focus on the basics here.</p>
+
+<p>A telltale sign of DNS trouble is the ability to connect to a remote host by IP address but not its hostname. Performing a quick <code>nslookup</code> on the hostname can tell us quite a bit (<code>nslookup</code> is part of the <code>bind-utils</code> package on Red Hat Enterprise Linux-based systems):</p>
+
+<pre>
+<code class="language-shell"># nslookup www.google.com
+Server: 192.168.122.1
+Address: 192.168.122.1#53
+
+Non-authoritative answer:
+Name: www.google.com
+Address: 172.217.3.100
+</code></pre>
+
+<p>The output above shows the server that the lookup was performed against 192.168.122.1 and the resulting IP address was 172.217.3.100.</p>
+
+<p>If you perform an <code>nslookup</code> for a host but <code>ping</code> or <code>traceroute</code> try to use a different IP address, you’re probably looking at a host file entry problem. As a result, inspect the host file for problems:</p>
+
+<pre>
+<code class="language-shell"># nslookup www.google.com
+Server: 192.168.122.1
+Address: 192.168.122.1#53
+  
+Non-authoritative answer:
+Name: www.google.com
+Address: 172.217.12.132
+
+# ping -c 1 www.google.com
+PING www.google.com (1.2.3.4) 56(84) bytes of data.
+^C
+--- www.google.com ping statistics ---
+1 packets transmitted, 0 received, 100% packet loss, time 0ms
+
+# cat /etc/hosts
+127.0.0.1 localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1 localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+1.2.3.4 www.google.com
+</code></pre>
+
+<p>Notice that in the example above, the address for <code>www.google.com</code> resolved to 172.217.12.132. However, when we tried to ping the host, traffic was being sent to 1.2.3.4. Taking a look at the <code>/etc/hosts</code> file, we can see an override that someone must have carelessly added. Host file override issues are <em>extremely</em> common, especially if you work with application developers who often need to make these overrides to test their code during development.</p>
+
+<h2 id="layer-4-the-transport-layer">Layer 4: The transport layer</h2>
+
+<p>The transport layer consists of the TCP and UDP protocols, with TCP being a connection-oriented protocol and UDP being connectionless. Applications listen on <em>sockets</em>, which consist of an IP address and a port. Traffic destined to an IP address on a specific port will be directed to the listening application by the kernel. A full discussion of these protocols is beyond the scope of this article, so we’ll focus on how to troubleshoot connectivity issues at these layers.</p>
+
+<p>The first thing that you may want to do is see what ports are listening on the localhost. The result can be useful if you can’t connect to a particular service on the machine, such as a web or SSH server. Another common issue occurs when a daemon or service won’t start because of something else listening on a port. The <code>ss</code> command is invaluable for performing these types of actions:</p>
+
+<pre>
+<code class="language-shell"># ss -tunlp4
+Netid State Recv-Q Send-Q Local Address:Port Peer Address:Port
+udp UNCONN 0 0 *:68 *:* users:(("dhclient",pid=3167,fd=6))
+udp UNCONN 0 0 127.0.0.1:323 *:* users:(("chronyd",pid=2821,fd=1))
+tcp LISTEN 0 128 *:22 *:* users:(("sshd",pid=3366,fd=3))
+tcp LISTEN 0 100 127.0.0.1:25 *:* users:(("master",pid=3600,fd=13))
+</code></pre>
+
+<p>Let’s break down these flags:</p>
+
+<ul><li><strong>-t</strong> - Show TCP ports.</li>
+	<li><strong>-u</strong> - Show UDP ports.</li>
+	<li><strong>-n</strong> - Do not try to resolve hostnames.</li>
+	<li><strong>-l</strong> - Show only listening ports.</li>
+	<li><strong>-p</strong> - Show the processes that are using a particular socket.</li>
+	<li><strong>-4</strong> - Show only IPv4 sockets.</li>
+</ul><p>Taking a look at the output, we can see several listening services. The <code>sshd</code> application is listening on port 22 on all IP addresses, denoted by the <code>*:22</code> output.</p>
+
+<p>The <code>ss</code> command is a powerful tool, and a review of its brief man page can help you locate flags and options to find whatever you’re looking for.</p>
+
+<p>Another common troubleshooting scenario involves remote connectivity. Imagine that your local machine can’t connect to a remote port, such as MySQL on port 3306. An unlikely, but commonly installed tool can be your friend when troubleshooting these types of issues: <code>telnet</code>. The <code>telnet</code> command attempts to establish a TCP connection with whatever host and port you give it. This feature is perfect for testing remote TCP connectivity:</p>
+
+<pre>
+<code class="language-shell"># telnet database.example.com 3306
+
+Trying 192.168.1.10...
+^C
+</code></pre>
+
+<p>In the output above, <code>telnet</code> hangs until we kill it. This result tells us that we can’t get to port 3306 on the remote machine. Maybe the application isn’t listening, and we need to employ the previous troubleshooting steps using <code>ss</code> on the remote host—if we have access. Another possibility is a host or intermediate firewall that is filtering the traffic. We may need to work with the network team to verify Layer 4 connectivity across the path.</p>
+
+<p>Telnet works fine for TCP, but what about UDP? The <code>netcat</code> tool provides a simple way to check a remote UDP port:</p>
+
+<pre>
+<code class="language-shell"># nc 192.168.122.1 -u 80
+test
+Ncat: Connection refused.
+</code></pre>
+
+<p>The <code>netcat</code> utility can be used for many other things, including testing TCP connectivity. Note that <code>netcat</code> may not be installed on your system, and it’s often considered a security risk to leave lying around. You may want to consider uninstalling it when you’re done troubleshooting.</p>
+
+<p>The examples above discussed common, simple utilities. However, a much more powerful tool is <code>nmap</code>. Entire books have been devoted to <code>nmap</code> functionality, so we won’t cover it in this beginner’s article, but you should know some of the things that it’s capable of doing:</p>
+
+<ul><li>TCP and UDP port scanning remote machines.</li>
+	<li>OS fingerprinting.</li>
+	<li>Determining if remote ports are closed or simply filtered.</li>
+</ul><h2 id="wrapping-up">Wrapping up</h2>
+
+<p>We covered a lot of introductory network ground in this article, working our way up the network stack from cables and switches to IP addresses and ports. The tools discussed here should give you a good starting point toward troubleshooting basic network connectivity issues, and they should prove helpful when trying to provide as much detail as possible to your network team.</p>
+
+<p>As you progress in your network troubleshooting journey, you’ll undoubtedly come across previously unknown command flags, fancy one-liners, and powerful new tools (<code>tcpdump</code> and <a href="https://www.wireshark.org" target="_blank">Wireshark</a> are my favorites) to dig into the causes of your network issues. Have fun, and remember: The packets don’t lie!</p>
+</div>
+      
+  
+  </div>
+
+  <div class="block">
+
+  
+    
+
+      <div class="views-element-container"><div class="listicle-view js-view-dom-id-d7d4207149932fb60194b8152abb816594736664d90b83e75c795b99ddd7bf2b">
+  
+  
+  
+
+  
+  
+  
+
+    <h3>What to read next</h3>
+    <div class="listicle-row"><div class="views-field views-field-field-listicle"><div class="field-content"><article data-history-node-id="811" role="article" about="/sysadmin/configuring-ipv6-rhel-7-8" typeof="schema:Article" id="node--article--811" class="listicle listicle--article node node--promoted">
+  <div class="row align-items-center">
+    <div class="col-md-6 listicle-image">
+            <div class="article__field-media"><article>
+  
+      
+  <div class="blazy image__field-media-image" data-blazy="">
+    <div class="field__label font-weight-bold visually-hidden">
+      Image    </div>
+                  <div class="field__item">
+
+
+
+                    <div class="media media--blazy media--loading media--image">
+      
+<img class="b-lazy media__image media__element img-fluid" data-src="/sysadmin/sites/default/files/styles/card/public/2019-09/Lego_Color_Bricks_0.jpg?itok=iHyt_JNp" height="420" width="700" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" typeof="foaf:Image" loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Configuring an IPv6 Address in RHEL 7 and 8" />
+
+        
+      
+    </div>
+        
+  
+</div>
+              </div>
+
+  </article>
+</div>
+      </div>
+    <div class="col-md-6 listicle-body">
+      <div class="h4 listicle-title pt-4 pt-md-0"><a href="/sysadmin/configuring-ipv6-rhel-7-8"><span property="schema:name">Configuring an IPv6 address in Red Hat Enterprise Linux 7 and 8</span>
+</a></div>
+      <div class="listicle-text font-weight-light py-2">
+        
+            <div property="schema:text" class="article__body">Exploring IPv6? Here's how to set it up on Red Hat Enterprise Linux 7 and 8 systems.</div>
+      
+      </div>
+
+      <div class="listicle-footer">
+        <div class="article-date">
+          <span class="label">Posted:</span>
+          September 25, 2019
+        </div>
+        <div class="article-authors">
+                      <span class="label">Author:</span>
+                                <a href="/sysadmin/users/valentin-bajrami" class="article-author article-author--primary">Valentin Bajrami<span class="author-affiliate"> (Red Hat Accelerator, Sudoer)</span></a>                  </div>
+      </div>
+    </div>
+  </div>
+</article>
+<article data-history-node-id="816" role="article" about="/sysadmin/ipv6-packets-and-ipsec" typeof="schema:Article" id="node--article--816" class="listicle listicle--article node node--promoted">
+  <div class="row align-items-center">
+    <div class="col-md-6 listicle-image">
+            <div class="article__field-media"><article>
+  
+      
+  <div class="blazy image__field-media-image" data-blazy="">
+    <div class="field__label font-weight-bold visually-hidden">
+      Image    </div>
+                  <div class="field__item">
+
+
+
+                    <div class="media media--blazy media--loading media--image">
+      
+<img class="b-lazy media__image media__element img-fluid" data-src="/sysadmin/sites/default/files/styles/card/public/2019-09/closed-coming-soon-door-4291.jpg?itok=7kEG_hHB" height="420" width="700" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" typeof="foaf:Image" loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Green Shed doors locked by padlock and chain. " />
+
+        
+      
+    </div>
+        
+  
+</div>
+              </div>
+
+  </article>
+</div>
+      </div>
+    <div class="col-md-6 listicle-body">
+      <div class="h4 listicle-title pt-4 pt-md-0"><a href="/sysadmin/ipv6-packets-and-ipsec"><span property="schema:name">An introduction to IPv6 packets and IPSec</span>
+</a></div>
+      <div class="listicle-text font-weight-light py-2">
+        
+            <div property="schema:text" class="article__body">Let's break down IPv6 packets and take a look at how IPSec is implemented in this protocol.</div>
+      
+      </div>
+
+      <div class="listicle-footer">
+        <div class="article-date">
+          <span class="label">Posted:</span>
+          September 26, 2019
+        </div>
+        <div class="article-authors">
+                      <span class="label">Author:</span>
+                                <a href="/sysadmin/users/valentin-bajrami" class="article-author article-author--primary">Valentin Bajrami<span class="author-affiliate"> (Red Hat Accelerator, Sudoer)</span></a>                  </div>
+      </div>
+    </div>
+  </div>
+</article>
+</div></div></div>
+
+    
+
+  
+  
+
+  
+  
+</div>
+</div>
+
+  
+  </div>
+
+  <div class="block">
+
+  
+    
+
+      <div class="topics">
+  <strong>Topics:</strong>&nbsp;&nbsp;
+      <a href="/sysadmin/topics/networking" class="btn btn-primary btn-sm font-weight-bold">Networking</a>&nbsp;&nbsp;
+      <a href="/sysadmin/topics/linux" class="btn btn-primary btn-sm font-weight-bold">Linux</a>&nbsp;&nbsp;
+  </div>
+  
+  </div>
+
+    </div>
+  </div>
+</div>
+<div >
+  <div >
+    
+  <div class="block">
+
+  
+    
+
+      
+<section data-history-node-id="761" role="article" about="/sysadmin/beginners-guide-network-troubleshooting-linux" typeof="schema:Article" id="node--article--761" class="section my-5 py-5 bg-light-gray authors-bio authors-bio--article">
+  <div class="container">
+          <div class="row">
+        <div class="col-md-2 text-center">
+                      
+<img data-affiliation="Sudoer" src="/sysadmin/sites/default/files/styles/user_picture_square/public/pictures/2019-09/Anthony%20Critelli.jpg?itok=Xp4Nn-4G" width="240" height="240" typeof="foaf:Image" loading="lazy" class="rounded-circle img-fluid" src="/sysadmin/sites/default/files/styles/user_picture_square/public/pictures/2019-09/Anthony%20Critelli.jpg?itok=Xp4Nn-4G" alt="Author’s photo" />
+
+
+          
+        </div>
+        <div class="col-md-10 col-lg-8">
+          <h2 class="font-weight-light text-center text-md-left">
+                          Anthony Critelli
+                      </h2>
+          <div>
+                          <p>
+                Anthony Critelli is a Linux systems engineer with interests in automation, containerization, tracing, and performance. He started his professional career as a network engineer and eventually made the switch to the Linux systems side of IT. He holds a B.S. and an M.S.
+                                  <a href="/sysadmin/users/anthony-critelli" class="author-more-link">More about me</a>
+                              </p>
+                      </div>
+        </div>
+      </div>
+      </div>
+</section>
+
+
+
+  
+  </div>
+
+  <div class="block">
+
+  
+    
+
+      
+
+  
+  </div>
+
+  </div>
+</div>
+<div  class="section">
+  <div class="container">
+    <div >
+      
+  <div class="block">
+
+  
+    
+
+      <div class="views-element-container"><div class="js-view-dom-id-ea108299d990b56c8b9e186fb94f6529b36ee223b75ac167153fd437c37c6753">
+  
+  
+  
+
+  
+  
+  
+
+    <h2>Related Content</h2>
+                        <div class="card-deck my-4">
+                        <article data-history-node-id="3571" role="article" about="/sysadmin/enable-sysadmins-very-best-november-2020" typeof="schema:Article" id="node--article--3571" class="card card--article node node--promoted">
+      <div class="card-img-top">
+            <div class="article__field-media"><article>
+  
+      
+  <div class="blazy image__field-media-image" data-blazy="">
+    <div class="field__label font-weight-bold visually-hidden">
+      Image    </div>
+                  <div class="field__item">
+
+
+
+                    <div class="media media--blazy media--loading media--responsive media--image">
+        
+<img class="media__image media__element b-lazy b-responsive img-fluid" srcset="" data-srcset="/sysadmin/sites/default/files/styles/card/public/2020-12/pexels-karolina-grabowska-5718104_0.jpg?itok=e2cbUS9N 1x" data-src="/sysadmin/sites/default/files/styles/card/public/2020-12/pexels-karolina-grabowska-5718104_0.jpg?itok=e2cbUS9N" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" typeof="foaf:Image" loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="thanksgiving dinner" />
+
+
+        
+      
+    </div>
+        
+  
+</div>
+              </div>
+
+  </article>
+</div>
+      </div>
+      <div class="card-body">
+    <div class="h4 card-title"><a href="/sysadmin/enable-sysadmins-very-best-november-2020"><span property="schema:name">Enable Sysadmin&#039;s very best of November 2020</span>
+</a></div>
+    <div class="card-text">
+            <div property="schema:text" class="article__body">Stack your plate with all the of our best content from November 2020.</div>
+      </div>
+  </div>
+  <div class="card-footer">
+    <div class="article-date">
+      <span class="label">Posted:</span>
+      December 2, 2020
+    </div>
+    <div class="article-authors">
+              <span class="label">Author:</span>
+                    <a href="/sysadmin/users/tcarriga" class="article-author article-author--primary">Tyler Carrigan<span class="author-affiliate"> (Red Hat)</span></a>          </div>
+  </div>
+</article>
+
+
+                            <article data-history-node-id="3526" role="article" about="/sysadmin/audit-permissions-find" typeof="schema:Article" id="node--article--3526" class="card card--article node node--promoted">
+      <div class="card-img-top">
+            <div class="article__field-media"><article>
+  
+      
+  <div class="blazy image__field-media-image" data-blazy="">
+    <div class="field__label font-weight-bold visually-hidden">
+      Image    </div>
+                  <div class="field__item">
+
+
+
+                    <div class="media media--blazy media--loading media--responsive media--image">
+        
+<img class="media__image media__element b-lazy b-responsive img-fluid" srcset="" data-srcset="/sysadmin/sites/default/files/styles/card/public/2020-11/Finding%20Permissions.jpg?itok=1pXS20ap 1x" data-src="/sysadmin/sites/default/files/styles/card/public/2020-11/Finding%20Permissions.jpg?itok=1pXS20ap" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" typeof="foaf:Image" loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="How to use find to audit permissions" />
+
+
+        
+      
+    </div>
+        
+  
+</div>
+              </div>
+
+  </article>
+</div>
+      </div>
+      <div class="card-body">
+    <div class="h4 card-title"><a href="/sysadmin/audit-permissions-find"><span property="schema:name">How to audit permissions with the find command</span>
+</a></div>
+    <div class="card-text">
+            <div property="schema:text" class="article__body">You can audit permissions on your Linux system by using the find command with the -perm option. Plus four bonus permissions auditing methods.</div>
+      </div>
+  </div>
+  <div class="card-footer">
+    <div class="article-date">
+      <span class="label">Posted:</span>
+      December 4, 2020
+    </div>
+    <div class="article-authors">
+              <span class="label">Author:</span>
+                    <a href="/sysadmin/users/damon-garn" class="article-author article-author--primary">Damon Garn</a>          </div>
+  </div>
+</article>
+
+
+                            <article data-history-node-id="3521" role="article" about="/sysadmin/kubernetes-components" typeof="schema:Article" id="node--article--3521" class="card card--article node node--promoted">
+      <div class="card-img-top">
+            <div class="article__field-media"><article>
+  
+      
+  <div class="blazy image__field-media-image" data-blazy="">
+    <div class="field__label font-weight-bold visually-hidden">
+      Image    </div>
+                  <div class="field__item">
+
+
+
+                    <div class="media media--blazy media--loading media--responsive media--image">
+        
+<img class="media__image media__element b-lazy b-responsive img-fluid" srcset="" data-srcset="/sysadmin/sites/default/files/styles/card/public/2020-11/k8s_architecture.jpg?itok=KBAmQpPw 1x" data-src="/sysadmin/sites/default/files/styles/card/public/2020-11/k8s_architecture.jpg?itok=KBAmQpPw" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" typeof="foaf:Image" loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Kubernetes architecture and concepts" />
+
+
+        
+      
+    </div>
+        
+  
+</div>
+              </div>
+
+  </article>
+</div>
+      </div>
+      <div class="card-body">
+    <div class="h4 card-title"><a href="/sysadmin/kubernetes-components"><span property="schema:name">A sysadmin&#039;s guide to basic Kubernetes components</span>
+</a></div>
+    <div class="card-text">
+            <div property="schema:text" class="article__body">Kubernetes control plane nodes and worker nodes, their features, and how they interact.</div>
+      </div>
+  </div>
+  <div class="card-footer">
+    <div class="article-date">
+      <span class="label">Posted:</span>
+      December 1, 2020
+    </div>
+    <div class="article-authors">
+              <span class="label">Author:</span>
+                    <a href="/sysadmin/users/shashank-hegde" class="article-author article-author--primary">Shashank Nandishwar Hegde<span class="author-affiliate"> (Red Hat, Sudoer)</span></a>          </div>
+  </div>
+</article>
+
+
+                              </div>
+            
+    
+
+  
+  
+
+  
+  
+</div>
+</div>
+
+  
+  </div>
+
+    </div>
+  </div>
+</div>
+<div  class="section my-5 pb-5 narrow">
+  <div class="container">
+    <div >
+      
+    </div>
+  </div>
+</div>
+<div  class="section my-5 pb-5 ">
+  <div class="container">
+    <div >
+      
+
+  <div class="block block--cta cta cta--red-on-black cta-- my-5 p-3 text-center">
+
+  
+    
+
+    <div class="d-md-flex justify-content-around align-items-center flex-wrap">
+    <div class="cta__content my-2">
+      
+            <div class="cta__field-content p-2"><p class="h4 mb-4 mt-3 font-weight-bold">OUR BEST CONTENT, DELIVERED TO YOUR INBOX</p>
+
+<p><iframe title="Subscribe to our newsletter" aria-label="Embedded form to subscribe to our email newsletter" frameborder="0" height="50" scrolling="no" src="/sysadmin/eloqua-embedded-subscribe.html?offer_id=701f20000012gE7AAI" style="max-width:670px;margin:0 auto;" width="100%"></iframe></p>
+</div>
+      
+    </div>
+      </div>
+  
+  </div>
+
+    </div>
+  </div>
+</div>
+
+  </article>
+
+  
+  </div>
+
+
+              </div>
+        </main>
+
+            <footer>
+              <div class="page__colophon bg-dark-gray py-4 bg-dark-gray">
+          <div class="container">
+              
+  <div class="block block--basic block--sysadmin-colophon-disclaimer">
+
+  
+    
+
+      
+            <div class="basic__body"><p>The opinions expressed on this website are those of each author, not of the author's employer or of Red Hat. The content published on this site are community contributions and are for informational purpose only AND ARE NOT, AND ARE NOT INTENDED TO BE, RED HAT DOCUMENTATION, SUPPORT, OR ADVICE.</p>
+
+<p>Red Hat and the Red Hat logo are trademarks of Red Hat, Inc., registered in the United States and other countries.</p>
+</div>
+      
+  
+  </div>
+
+
+          </div>
+        </div>
+                    <div class="page__footer bg-dark py-3">
+        <div class="container">
+          <div class="d-sm-flex justify-content-between align-items-center">
+              
+
+  
+    
+
+    
+  <a href="https://www.redhat.com/" class="navbar-brand mr-0 mr-lg-auto mb-3 mb-sm-0">
+            <img src="/sysadmin/themes/custom/sysadmin/logo.svg" width="135" height="31" class="d-inline-block align-top" alt="Red Hat logo" />
+
+        
+  </a>
+
+
+
+  <div class="block block--basic block--copyright my-0 mx-sm-3 mb-1 mb-sm-0">
+
+  
+    
+
+      
+            <div class="basic__body"><p>Copyright ©2020 Red Hat, Inc.</p>
+</div>
+      
+  
+  </div>
+
+  <div class="block block--sysadmin-footer my-0 mb-1 mb-sm-0">
+
+  
+    
+
+      
+  
+
+
+  <ul class="nav d-flex d-sm-block d-md-flex justify-content-center align-items-center">
+                                          <li class="nav-item  ">
+                      <a href="https://www.redhat.com/en/about/privacy-policy" class="nav-link">Privacy Policy</a>
+                  </li>
+                                      <li class="nav-item  ">
+                      <a href="https://www.redhat.com/en/about/terms-use" class="nav-link">Terms of Use</a>
+                  </li>
+                                      <li class="nav-item  ">
+                      <a href="https://www.redhat.com/en/about/all-policies-guidelines" class="nav-link">All policies and guidelines</a>
+                  </li>
+            </ul>
+
+
+  
+  </div>
+
+  <div class="block block--basic block--footerredhatsummit">
+
+  
+    
+
+      
+            <div class="basic__body"><div style="margin-left: 1rem"><a href="https://www.redhat.com/summit?intcmp=701f20000012ngPAAQ" target="_blank"><img alt="Red Hat Summit" src="https://www.redhat.com/cms/managed-files/Logo-Red_Hat-Summit-A-Standard-RGB-02_0.svg" width="72px" /></a></div>
+</div>
+      
+  
+  </div>
+
+  <div class="block block--sharelinks">
+
+  
+    
+
+      <div class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style" data-a2a-url="https://www.redhat.com/sysadmin/beginners-guide-network-troubleshooting-linux">
+  <a class="a2a_button_twitter a2a_counter"></a>
+  <a class="a2a_button_facebook a2a_counter"></a>
+  <a class="a2a_button_linkedin a2a_counter"></a>
+  <a class="a2a_button_reddit a2a_counter"></a>
+  <a class="a2a_button_email a2a_counter"></a>
+</div>
+<div class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_default_style">
+  <a class="a2a_button_twitter a2a_counter"></a>
+  <a class="a2a_button_facebook a2a_counter"></a>
+  <a class="a2a_button_linkedin a2a_counter"></a>
+  <a class="a2a_button_reddit a2a_counter"></a>
+  <a class="a2a_button_email a2a_counter"></a>
+</div>
+
+<script>
+  var a2a_config = a2a_config || {};
+  a2a_config.templates = a2a_config.templates || {};
+  a2a_config.templates.twitter = {
+    text: "A beginner's guide to network troubleshooting in Linux https://red.ht/2me0bwD via #EnableSysadmin",
+  };
+    a2a_config.templates.facebook = {
+    hashtag: "#EnableSysadmin",
+  };
+  </script>
+
+  
+  </div>
+
+
+  <div class="block block--cta block--ctasubscribesidebar cta cta--blue-on-white cta-- my-5 p-3 text-center">
+
+  
+    
+
+    <div class="d-md-flex justify-content-around align-items-center flex-wrap">
+    <div class="cta__content my-2">
+      
+            <div class="cta__field-content p-2"><div class="subscribe-sidebar">
+<div class="target-band-never-show-button">x</div>
+
+<h4>Subscribe now</h4>
+
+<p class="eloqua-email-capture-text">Get the highlights in your inbox every week.</p>
+
+<p><iframe aria-label="Embedded form to subscribe to our email newsletter" frameborder="0" height="50" scrolling="no" src="/sysadmin/eloqua-embedded-email-capture-block.html?offer_id=701f20000012gE7AAI" style="max-width:670px;margin:0 auto;" title="Subscribe to our newsletter" width="100%"></iframe></p>
+</div>
+</div>
+      
+    </div>
+      </div>
+  
+  </div>
+
+
+          </div>
+        </div>
+            </footer>
+      </div>
+
+  </div>
+
+
+<script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/sysadmin\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/761","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ckeditorheight":{"offset":1,"line_height":1.5,"unit":"em","disable_autogrow":null},"colorbox":{"opacity":"0.85","current":"{current} of {total}","previous":"\u00ab Prev","next":"Next \u00bb","close":"Close","maxWidth":"98%","maxHeight":"98%","fixed":true,"mobiledetect":true,"mobiledevicewidth":"480px"},"blazy":{"loadInvisible":false,"offset":100,"saveViewportOffsetDelay":50,"validateDelay":25},"blazyIo":{"enabled":false,"disconnect":false,"rootMargin":"0px","threshold":[0]},"user":{"uid":0,"permissionsHash":"2ddc6cf1f04642fe2dbcaf7b6d1801d17bf0f6ec0ae19d4cc9e10b02dea0f05e"}}</script>
+
+<!--[if lte IE 9]>
+<script src="/sysadmin/sites/default/files/js/js_VhqXmo4azheUjYC30rijnR_Dddo0WjWkF27k5gTL8S4.js"></script>
+<![endif]-->
+<script src="/sysadmin/sites/default/files/js/js_8IsPVhGX4Oc5iftl-rwoiH9vbGgwJV86Y0eMejTf0r0.js"></script>
+
+  <script type="text/javascript">
+    if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+      _satellite.pageBottom();
+    }
+  </script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"a03a21ae8a","applicationID":"467345710","transactionName":"ZlNTbUBQDxZUWxJRVl8ZcFpGWA4LGnwUTUlQWm1XXVUEOXZXCExLXlpdXEBtLwpRXTBRXEZ1XldGQw4JWV0UFQdHX1RO","queueTime":0,"applicationTime":423,"atts":"ShRQGwhKHBg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>
