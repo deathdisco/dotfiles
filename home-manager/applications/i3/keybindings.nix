@@ -9,9 +9,9 @@
   # "${mod}+space" = "exec bemenu-run --bottom --line-height=25 --list=5 --prompt=\"?\" --prefix=\">\" --nb=\"#00000044\"";
   "${mod}+shift+space" =
     "exec rofi -show fb -modi fb:$HOME/.config/rofi/shortcuts.sh";
-  "Ctrl+space" = "exec alacritty";
+  "Ctrl+space" = "exec kitty";
   "${mod}+s" = "exec rofi -show windowcd";
-  "Super_L" = "exec skippy-xd";
+  "${mod}+=" = "exec skippy-xd";
   "${mod}+shift+0" =
     ''exec i3lock  --c "#000000" -i ~/dotfiles/wallpapers/ascii-skull.png'';
 

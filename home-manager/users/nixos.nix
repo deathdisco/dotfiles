@@ -10,18 +10,15 @@ with import ../settings.nix; {
     #../applications/zsh.nix
     #../applications/tmux.nix
     #../applications/skippy.nix
-    # editors
-    #../applications/vim.nix
     ../applications/rofi.nix
     ../applications/vscodium.nix
     ../applications/firefox.nix
     #../applications/wayland.nix
     ../applications/pass.nix
-
     # ../collections/audio.nix
-
     # ../applications/doom-emacs.nix
-    ../applications/neovim.nix
+    #../applications/vim.nix
+    #../applications/neovim.nix
     ../applications/rust.nix
   ];
 

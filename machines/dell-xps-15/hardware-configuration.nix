@@ -1,16 +1,28 @@
 { config, lib, pkgs, ... }:
-
-{
+let
+  killerWifiFirmware = pkgs.fetchzip {
+    url =
+      "https://wireless.wiki.kernel.org/_media/en/users/drivers/iwlwifi/iwlwifi-qu-48.13675109.0.tgz";
+    sha256 = "1iq6fy50pv36zsd3qxbyjs3rn1x2541v8z74kcd3n0hqs6406xni";
+  };
+in {
   # imports = [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix> ];
   nixpkgs.overlays = [
     (self: super:
       let
         nixpkgs-mesa = builtins.fetchTarball
           "https://github.com/nixos/nixpkgs/archive/bdac777becdbb8780c35be4f552c9d4518fe0bdb.tar.gz";
+        sha256 = "0iq6fy50pv36zsd3qxbyjs3rn1x2541v8z74kcd3n0hqs6406xni";
       in { mesa_drivers = (import nixpkgs-mesa { }).mesa_drivers; })
   ];
 
   hardware.enableRedistributableFirmware = true;
+  hardware.firmware = [
+    (pkgs.runCommandNoCC "killerWifiFirmware" { } ''
+      mkdir -p $out/lib/firmware
+      cp ${killerWifiFirmware}/iwlwifi-Qu-*-48.ucode $out/lib/firmware
+    '')
+  ];
 
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
@@ -19,8 +31,8 @@
   # boot.initrd.kernelModules =
   #   [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
 
-  boot.kernelModules = [ "kvm-intel" ]; # "kvmgt"
-  boot.kernelParams = [ "i915.enable_gvt=1" ];
+  # boot.kernelModules = [ "kvm-intel" ]; # "kvmgt"
+  # boot.kernelParams = [ "i915.enable_gvt=1" ];
 
   environment.variables = { MESA_LOADER_DRIVER_OVERRIDE = "iris"; };
 
@@ -56,8 +68,8 @@
 
   # nix.maxJobs = lib.mkDefault 8;
   # powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  powerManagement = {
-    enable = true;
-    cpuFreqGovernor = lib.mkDefault "ondemand"; # "powersave"
-  };
+  # powerManagement = {
+  #   enable = true;
+  #   cpuFreqGovernor = lib.mkDefault "ondemand"; # "powersave"
+  # };
 }

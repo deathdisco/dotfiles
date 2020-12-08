@@ -17,6 +17,7 @@
     ./virtualisation.nix
     #<nixos-hardware/dell/xps/15-9500>
     ./hardware-configuration.nix
+    #./services.nix
   ];
 
   # ----------------------------------------------------------------------------
@@ -51,7 +52,7 @@
     exfat-utils # windows compatibility
     pciutils # includes lspci
     glxinfo # opengl
-    pmutils # power management, laptop suspend, lid close etc
+    # pmutils # power management, laptop suspend, lid close etc
     # virtmanager
     mesa
     mesa_drivers
@@ -75,7 +76,7 @@
   #boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.loader.grub.useOSProber = true;
   # boot.blacklistedKernelModules = [ "nouveau" ];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # text only prompt, no display manager
   # services.xserver.displayManager.startx.enable = true;

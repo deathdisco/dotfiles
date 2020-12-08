@@ -6,12 +6,13 @@
 
   # environment.systemPackages = with pkgs; [ virtmanager ];
 
-  virtualisation.kvmgt.enable = true;
-  virtualisation.kvmgt.vgpus = {
-    i915-GVTg_V5_8.uuid = [ "17d182c0-f6c3-11ea-8f07-73e5a9d78eef" ];
-  };
+  # virtualisation.kvmgt.enable = true;
+  # virtualisation.kvmgt.vgpus = {
+  #   i915-GVTg_V5_8.uuid = [ "17d182c0-f6c3-11ea-8f07-73e5a9d78eef" ];
+  # };
+  # users.extraUsers.user.extraGroups = [ "libvirtd" ];
+
   # virtualisation.lxd.enable = true;
-  users.extraUsers.user.extraGroups = [ "libvirtd" ];
 
   virtualisation.libvirtd = {
     enable = true;

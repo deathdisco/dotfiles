@@ -2,6 +2,7 @@
 let
   moz_overlay = import (builtins.fetchTarball
     "https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz");
+  sha256 = "0jq6fy50pv36zsd3qxbyjs3rn1x2541v8z74kcd3n0hqs6406xni";
   nixpkgs = import <nixpkgs> { overlays = [ moz_overlay ]; };
 in with nixpkgs;
 stdenv.mkDerivation {

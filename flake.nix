@@ -2,27 +2,31 @@
   description = "Monomadic NixOS System Config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # sudo nix-channel --add https://nixos.org/channels/nixos-20.03 nixos
+    stable.url = "github:NixOS/nixpkgs/nixos-20.03";
+    unstable.url = "nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+    home = {
+      url = "github:rycee/home-manager/bqv-flakes";
+      inputs.nixpkgs.follows = "stable";
     };
+    nur.url = "github:nix-community/NUR";
+    hardware.url = "github:NixOS/nixos-hardware";
   };
 
-  outputs = { self, home-manager, nixpkgs, nixos-hardware, ... }: rec {
+  outputs = { self, stable, unstable, home, nur, hardware }: rec {
+    inherit (stable) lib;
     nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
+      nixos = lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          hardware.nixosModules.dell-xps-15-9500
           ./machines/dell-xps-15/configuration.nix
-          nixos-hardware.nixosModules.dell-xps-15-9500
-          home-manager.nixosModules.home-manager
+          home.nixosModules.home-manager
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.sway = import ./home-manager/users/nixos.nix;
+            home.useGlobalPkgs = true;
+            home.useUserPackages = true;
+            home.users.sway = import ./home-manager/users/nixos.nix;
           }
         ];
       };

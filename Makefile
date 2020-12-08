@@ -1,6 +1,6 @@
-legacy:
-	sudo bash scripts/install machines/dell-xps-15
-	home-manager switch --file home-manager/users/nixos.nix
+# legacy:
+# 	sudo bash scripts/install machines/dell-xps-15
+# 	home-manager switch --file home-manager/users/nixos.nix
 
 update:
 	nix flake update --update-input nixpkgs
@@ -9,4 +9,4 @@ update:
 
 build:
 	set -x
-	sudo nixos-rebuild switch --flake '.#' --impure
+	sudo nixos-rebuild switch --flake '.#'
