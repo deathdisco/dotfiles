@@ -7,6 +7,7 @@
     killall
 
     # nixFlakes # flake support
+    llvmPackages.bintools
 
     #cli
     htop
