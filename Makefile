@@ -9,4 +9,4 @@ update: build
 
 build:
 	set -x
-	sudo nixos-rebuild switch --flake '.#' --show-trace
+	sudo nixos-rebuild switch --flake '.#' --impure

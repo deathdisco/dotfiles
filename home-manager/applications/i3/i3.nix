@@ -43,6 +43,7 @@ in {
     glibcLocales # for rofi
     feh # image viewer, also for desktop wallpaper
     flameshot # image capture x11 only
+    rofi
     xorg.xauth
     xorg.twm
     xorg.xmodmap
