@@ -2,9 +2,7 @@
 
 {
   # Select internationalisation properties.
-  i18n = {
-    defaultLocale = "en_US.UTF-8";
-  };
+  i18n = { defaultLocale = "en_US.UTF-8"; };
   console = {
     font = "Lat2-Terminus16";
     keyMap = "us";
@@ -26,9 +24,11 @@
     config = {
       allowUnfree = true;
       packageOverrides = pkgs: {
-        snix = import (builtins.fetchTarball "https://github.com/sondr3/nix-expressions/archive/master.tar.gz") {
-          inherit pkgs;
-        };
+        snix = import (builtins.fetchTarball {
+          src =
+            "https://github.com/sondr3/nix-expressions/archive/master.tar.gz";
+          sha256 = "1iq6fy50pv36zsd3qxbyjs3rn1x2541v8z74kcd3n0hqs6406xni";
+        }) { inherit pkgs; };
       };
     };
   };

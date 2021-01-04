@@ -10,11 +10,12 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
+    trustedUsers = [ "root" "sway" ];
   };
 
   imports = [
     #"${inputs.nixpkgs}/nixos/modules/installer/scan/not-detected.nix"
-    ./virtualisation.nix
+    # ./virtualisation.nix
     #<nixos-hardware/dell/xps/15-9500>
     ./hardware-configuration.nix
     #./services.nix
@@ -24,11 +25,11 @@
   # USERS
 
   # users.defaultUserShell = pkgs.zsh;
-  users.users.nom = {
-    isNormalUser = true;
-    home = "/home/nom";
-    extraGroups = [ "wheel" "networkmanager" "audio" "libvirtd" ];
-  };
+  # users.users.nom = {
+  #   isNormalUser = true;
+  #   home = "/home/nom";
+  #   extraGroups = [ "wheel" "networkmanager" "audio" "libvirtd" ];
+  # };
 
   users.users.sway = {
     isNormalUser = true;
@@ -288,5 +289,5 @@
 
   environment.variables = { EDITOR = "vim"; };
 
-  system.stateVersion = "19.09"; # Did you read the comment?
+  # system.stateVersion = "19.09"; # Did you read the comment?
 }

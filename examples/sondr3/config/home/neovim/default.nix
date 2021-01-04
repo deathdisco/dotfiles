@@ -3,11 +3,11 @@
 with import ../../../lib;
 
 let
-  snix = import (builtins.fetchTarball "https://github.com/sondr3/nix-expressions/archive/master.tar.gz") {
-    inherit pkgs;
-  };
-in
-{
+  snix = import (builtins.fetchTarball {
+    src = "https://github.com/sondr3/nix-expressions/archive/master.tar.gz";
+    sha256 = "0iq6fy50pv36zsd3qxbyjs3rn1x2541v8z74kcd3n0hqs6406xni";
+  }) { inherit pkgs; };
+in {
   programs.neovim = {
     enable = true;
     package = pkgs.neovim-unwrapped;

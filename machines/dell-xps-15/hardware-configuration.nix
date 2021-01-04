@@ -10,9 +10,11 @@ in {
   nixpkgs.overlays = [
     (self: super:
       let
-        nixpkgs-mesa = builtins.fetchTarball
-          "https://github.com/nixos/nixpkgs/archive/bdac777becdbb8780c35be4f552c9d4518fe0bdb.tar.gz";
-        sha256 = "0iq6fy50pv36zsd3qxbyjs3rn1x2541v8z74kcd3n0hqs6406xni";
+        nixpkgs-mesa = builtins.fetchTarball {
+          url =
+            "https://github.com/nixos/nixpkgs/archive/bdac777becdbb8780c35be4f552c9d4518fe0bdb.tar.gz";
+          sha256 = "18hi3cgagzkrxrwv6d9yjazqg5q2kiacjn3hhb94j4gs6c6kdxrk";
+        };
       in { mesa_drivers = (import nixpkgs-mesa { }).mesa_drivers; })
   ];
 
