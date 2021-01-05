@@ -50,8 +50,10 @@ with import ../settings.nix; {
         					alias r='ranger'
                   # source /home/nom/.local/share/zrs/z.sh
         					alias chomium-wayland='chromium -enable-features=UseOzonePlatform -ozone-platform=wayland'
+        					alias brave-wayland='brave -enable-features=UseOzonePlatform -ozone-platform=wayland'
         					alias signal-wayland='GDK_DPI_SCALE=0.5 signal-desktop'
                   alias codium-x11='GDK_DPI_SCALE=1.0 codium'
+                  alias codium-wayland='GDK_DPI_SCALE=0.5 codium'
                   alias telegram-x11='QT_QPA_PLATFORM=xcb telegram-desktop'
         					PS1="\w> "
         					'';
