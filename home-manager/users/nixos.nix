@@ -49,12 +49,13 @@ with import ../settings.nix; {
         					alias z='zrs'
         					alias r='ranger'
                   # source /home/nom/.local/share/zrs/z.sh
-        					alias chomium-wayland='chromium -enable-features=UseOzonePlatform -ozone-platform=wayland'
-        					alias brave-wayland='brave -enable-features=UseOzonePlatform -ozone-platform=wayland'
-        					alias signal-wayland='GDK_DPI_SCALE=0.5 signal-desktop'
-                  alias codium-x11='GDK_DPI_SCALE=1.0 codium'
-                  alias codium-wayland='GDK_DPI_SCALE=0.5 codium'
-                  alias telegram-x11='QT_QPA_PLATFORM=xcb telegram-desktop'
+        					alias chomium-wayland = 'chromium -enable-features=UseOzonePlatform -ozone-platform=wayland'
+        					alias brave-wayland   = 'brave -enable-features=UseOzonePlatform -ozone-platform=wayland'
+        					alias signal-wayland  = 'GDK_DPI_SCALE=0.5 signal-desktop'
+                  alias codium-x11      = 'GDK_DPI_SCALE=1.0 codium'
+                  alias codium-wayland  = 'GDK_DPI_SCALE=0.5 codium'
+                  alias telegram-x11    = 'QT_QPA_PLATFORM=xcb telegram-desktop'
+                  alias flameshot-x11   = 'QT_QPA_PLATFORM=xcb flameshot'
         					PS1="\w> "
         					'';
     };

@@ -1,4 +1,0 @@
-#!/bin/sh
-
-sudo cp $1/*.nix /etc/nixos/ &&
-sudo nixos-rebuild switch

@@ -29,9 +29,9 @@ in {
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
 
-  # boot.extraModprobeConfig = "options nvidia-drm modeset=1";
-  # boot.initrd.kernelModules =
-  #   [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
+  boot.extraModprobeConfig = "options nvidia-drm modeset=1";
+  boot.initrd.kernelModules =
+    [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
 
   # boot.kernelModules = [ "kvm-intel" ]; # "kvmgt"
   # boot.kernelParams = [ "i915.enable_gvt=1" ];
